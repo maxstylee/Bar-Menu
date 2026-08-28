@@ -10,7 +10,7 @@ import { AdminDashboard } from "./pages/AdminDashboard";
 
 export function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Bar-Menu">
       <LanguageProvider>
         <AuthProvider>
           <ToastProvider>
