@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import logoSvg from "../assets/logo.svg";
 import { useMenu } from "../hooks/useMenu";
 import { useAuth } from "../context/AuthContext";
 import { useLanguage } from "../context/LanguageContext";
@@ -13,34 +14,29 @@ import { Button } from "../components/common/Button";
 import {
   PlusCircle,
   LogOut,
-  Sparkles,
   Search,
   Eye,
   CheckCircle2,
   AlertCircle,
   Wine,
   Layers,
-  ShieldCheck,
-  TrendingUp,
 } from "lucide-react";
 
 export function AdminDashboard() {
   const navigate = useNavigate();
-  const { user, signOut, isDemoAdmin } = useAuth();
-  const { language, getLocalizedField, t } = useLanguage();
+  const { user, signOut } = useAuth();
+  const { getLocalizedField, t } = useLanguage();
   const { success, error: toastError } = useToast();
 
   const {
     items,
     categories,
-    loading,
     addItem,
     updateItem,
     deleteItem,
     toggleAvailability,
     quickUpdatePrice,
     rollbackImage,
-    refreshMenu,
   } = useMenu();
 
   // Local Table Search & Category Filter
@@ -135,9 +131,9 @@ export function AdminDashboard() {
     }
   };
 
-  const handleQuickSavePrice = async (itemId, newPrice) => {
+  const handleQuickSavePrice = async (itemId, newPriceTRY, newPriceUSD) => {
     try {
-      await quickUpdatePrice(itemId, newPrice);
+      await quickUpdatePrice(itemId, newPriceTRY, newPriceUSD);
       success(t("toastPriceUpdated"));
     } catch (err) {
       toastError(err.message || t("toastError"));
@@ -164,62 +160,59 @@ export function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-[#0c1017] text-slate-100 flex flex-col selection:bg-amber-500/30 selection:text-amber-300">
-      {/* Top Admin Navigation Header */}
+      {/* Mobile-Optimized Top Admin Navigation Header */}
       <header className="sticky top-0 z-40 backdrop-blur-md bg-[#0c1017]/90 border-b border-slate-800 shadow-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#131b2a] border border-amber-500/30 flex items-center justify-center p-1.5 shadow-amber-glow">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between gap-2">
+          {/* Brand & User Info */}
+          <div className="flex items-center gap-2.5 min-w-0 flex-1">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#131b2a] border border-amber-500/30 flex items-center justify-center p-1.5 shadow-amber-glow flex-shrink-0">
               <img
-                src="/src/assets/logo.svg"
+                src={logoSvg}
                 alt="TUI Blue Logo"
                 className="w-full h-full"
               />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h1 className="font-outfit font-extrabold text-base sm:text-lg text-white">
-                  {t("brandTitle")}
-                </h1>
-                <span className="text-[10px] font-bold text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/20">
-                  {isDemoAdmin ? "DEMO ADMIN" : "ADMIN SUITE"}
-                </span>
-              </div>
-              <p className="text-[11px] text-slate-400">
+            <div className="min-w-0 flex-1">
+              <h1 className="font-outfit font-extrabold text-sm sm:text-base text-white truncate">
+                {t("brandTitle")}
+              </h1>
+              <p className="text-[10px] sm:text-[11px] text-slate-400 truncate">
                 {user?.email || "admin@tuiblue.com"}
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          {/* Action Controls: Compact and Overflow-Free */}
+          <div className="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0">
             <LanguageSwitcher variant="dropdown" />
 
             <Link
               to="/"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#161f30] hover:bg-[#1e293b] text-slate-300 hover:text-white border border-slate-700/80 text-xs font-semibold transition-all"
+              className="flex items-center gap-1 sm:gap-1.5 px-2.5 py-1.5 rounded-xl bg-[#161f30] hover:bg-[#1e293b] text-slate-300 hover:text-white border border-slate-700/80 text-xs font-semibold transition-all"
               title="View live guest menu"
             >
               <Eye className="w-3.5 h-3.5 text-amber-400" />
-              <span className="hidden sm:inline">{t("guestMenu")}</span>
+              <span className="hidden md:inline">{t("guestMenu")}</span>
             </Link>
 
             <button
               onClick={handleSignOut}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 border border-rose-800/50 text-xs font-semibold transition-all cursor-pointer"
+              className="flex items-center gap-1 sm:gap-1.5 px-2.5 py-1.5 rounded-xl bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 border border-rose-800/50 text-xs font-semibold transition-all cursor-pointer"
               title="Sign Out"
             >
               <LogOut className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">{t("logout")}</span>
+              <span className="hidden md:inline">{t("logout")}</span>
             </button>
           </div>
         </div>
       </header>
 
       {/* Main Container */}
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-6 space-y-6 overflow-x-hidden">
         {/* Page Title & Hero */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h2 className="font-outfit font-extrabold text-2xl sm:text-3xl text-white">
+            <h2 className="font-outfit font-extrabold text-xl sm:text-3xl text-white">
               {t("dashboardTitle")}
             </h2>
             <p className="text-xs sm:text-sm text-slate-400 mt-1">
@@ -239,70 +232,70 @@ export function AdminDashboard() {
         </div>
 
         {/* 4-Card Stats Bar */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {/* Total */}
-          <div className="bg-[#161f30] border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
+          <div className="bg-[#161f30] border border-slate-800 rounded-2xl p-3.5 sm:p-4 flex items-center justify-between">
             <div>
               <p className="text-xs font-semibold text-slate-400">
                 {t("statTotalItems")}
               </p>
-              <p className="text-2xl font-extrabold font-outfit text-white mt-1">
+              <p className="text-xl sm:text-2xl font-extrabold font-outfit text-white mt-1">
                 {stats.total}
               </p>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-amber-400">
-              <Wine className="w-5 h-5" />
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-amber-400">
+              <Wine className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
 
           {/* Active Live */}
-          <div className="bg-[#161f30] border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
+          <div className="bg-[#161f30] border border-slate-800 rounded-2xl p-3.5 sm:p-4 flex items-center justify-between">
             <div>
               <p className="text-xs font-semibold text-slate-400">
                 {t("statActiveItems")}
               </p>
-              <p className="text-2xl font-extrabold font-outfit text-emerald-400 mt-1">
+              <p className="text-xl sm:text-2xl font-extrabold font-outfit text-emerald-400 mt-1">
                 {stats.active}
               </p>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
-              <CheckCircle2 className="w-5 h-5" />
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+              <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
 
           {/* Stop Listed */}
-          <div className="bg-[#161f30] border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
+          <div className="bg-[#161f30] border border-slate-800 rounded-2xl p-3.5 sm:p-4 flex items-center justify-between">
             <div>
               <p className="text-xs font-semibold text-slate-400">
                 {t("statStopListed")}
               </p>
-              <p className="text-2xl font-extrabold font-outfit text-rose-400 mt-1">
+              <p className="text-xl sm:text-2xl font-extrabold font-outfit text-rose-400 mt-1">
                 {stats.stopListed}
               </p>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400">
-              <AlertCircle className="w-5 h-5" />
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-rose-500/10 border border-rose-500/20 flex items-center justify-center text-rose-400">
+              <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
 
           {/* Categories */}
-          <div className="bg-[#161f30] border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
+          <div className="bg-[#161f30] border border-slate-800 rounded-2xl p-3.5 sm:p-4 flex items-center justify-between">
             <div>
               <p className="text-xs font-semibold text-slate-400">
                 {t("statCategories")}
               </p>
-              <p className="text-2xl font-extrabold font-outfit text-amber-300 mt-1">
+              <p className="text-xl sm:text-2xl font-extrabold font-outfit text-amber-300 mt-1">
                 {stats.catCount}
               </p>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
-              <Layers className="w-5 h-5" />
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
+              <Layers className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </div>
         </div>
 
         {/* Filter Controls Toolbar */}
-        <div className="bg-[#161f30] border border-slate-800 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="bg-[#161f30] border border-slate-800 rounded-2xl p-3.5 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           {/* Live Search */}
           <div className="relative w-full sm:max-w-xs">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />

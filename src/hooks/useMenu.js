@@ -64,13 +64,13 @@ export function useMenu() {
 
   /**
    * Processes new image file upload with Dual-Image version control
-   * - Compress to WebP (<200KB)
+   * - Compress client side (<200KB)
    * - 1st upload: new -> current_image_url
    * - 2nd upload: current -> previous_image_url, new -> current_image_url
    * - 3rd upload: delete old previous from storage, current -> previous, new -> current
    */
   const handleDualImageUpload = async (imageFile, existingCurrentUrl, existingPreviousUrl) => {
-    // 1. Compress client-side to WebP
+    // 1. Compress client-side
     const compression = await compressImageToWebP(imageFile);
     
     // 2. Upload compressed file to storage
@@ -278,18 +278,19 @@ export function useMenu() {
   };
 
   /**
-   * Fast inline price adjustment
+   * Fast inline price adjustment for Dual Currency (TRY & USD)
    */
-  const quickUpdatePrice = async (itemId, newPrice) => {
-    const parsedPrice = parseFloat(newPrice);
-    if (isNaN(parsedPrice) || parsedPrice < 0) {
-      throw new Error('Invalid price value');
-    }
+  const quickUpdatePrice = async (itemId, newPriceTRY, newPriceUSD) => {
+    const parsedTRY = parseFloat(newPriceTRY);
+    const parsedUSD = parseFloat(newPriceUSD);
+
+    const price_try = !isNaN(parsedTRY) && parsedTRY >= 0 ? parsedTRY : 0;
+    const price_usd = !isNaN(parsedUSD) && parsedUSD >= 0 ? parsedUSD : 0;
 
     if (isSupabaseConfigured && supabase) {
       const { error } = await supabase
         .from('menu_items')
-        .update({ price: parsedPrice })
+        .update({ price_try, price_usd, price: price_usd })
         .eq('id', itemId);
 
       if (error) throw error;
@@ -297,7 +298,7 @@ export function useMenu() {
 
     setItems((prev) => {
       const updated = prev.map((i) =>
-        i.id === itemId ? { ...i, price: parsedPrice } : i
+        i.id === itemId ? { ...i, price_try, price_usd, price: price_usd } : i
       );
       saveLocalMenuItems(updated);
       return updated;

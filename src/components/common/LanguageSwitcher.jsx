@@ -30,14 +30,13 @@ export function LanguageSwitcher({ variant = "dropdown", className = "" }) {
           <button
             key={lang.code}
             onClick={() => setLanguage(lang.code)}
-            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold transition-all ${
+            className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
               language === lang.code
                 ? "bg-amber-500 text-slate-950 shadow-sm"
                 : "text-slate-400 hover:text-slate-200 hover:bg-slate-800"
             }`}
           >
-            <span>{lang.flag}</span>
-            <span>{lang.label}</span>
+            {lang.label}
           </button>
         ))}
       </div>
@@ -48,20 +47,19 @@ export function LanguageSwitcher({ variant = "dropdown", className = "" }) {
     <div className={`relative ${className}`} ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-1.5 bg-[#161f30]/90 hover:bg-[#1e293b] border border-slate-700/80 rounded-xl text-xs font-medium text-slate-200 transition-all focus:outline-none focus:ring-1 focus:ring-amber-500/50"
+        className="flex items-center gap-1.5 px-3 py-1.5 bg-[#161f30]/90 hover:bg-[#1e293b] border border-slate-700/80 rounded-xl text-xs font-semibold text-slate-200 transition-all focus:outline-none focus:ring-1 focus:ring-amber-500/50"
         aria-label="Select Language"
         aria-expanded={isOpen}
       >
         <Globe className="w-3.5 h-3.5 text-amber-400" />
-        <span className="text-sm">{activeLang.flag}</span>
-        <span className="font-semibold">{activeLang.label}</span>
+        <span className="font-bold tracking-wide">{activeLang.label}</span>
         <ChevronDown
           className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
         />
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-40 bg-[#161f30] border border-slate-700/90 rounded-xl shadow-xl shadow-black/60 py-1.5 z-50 backdrop-blur-md animate-slide-up">
+        <div className="absolute right-0 mt-2 w-36 bg-[#161f30] border border-slate-700/90 rounded-xl shadow-xl shadow-black/60 py-1.5 z-50 backdrop-blur-md animate-slide-up">
           {supportedLanguages.map((lang) => {
             const isSelected = language === lang.code;
             return (
@@ -71,14 +69,16 @@ export function LanguageSwitcher({ variant = "dropdown", className = "" }) {
                   setLanguage(lang.code);
                   setIsOpen(false);
                 }}
-                className={`w-full flex items-center justify-between px-3.5 py-2 text-xs transition-colors ${
+                className={`w-full flex items-center justify-between px-3 py-1.5 text-xs transition-colors ${
                   isSelected
-                    ? "bg-amber-500/15 text-amber-300 font-semibold"
+                    ? "bg-amber-500/15 text-amber-300 font-bold"
                     : "text-slate-300 hover:bg-slate-800/80 hover:text-white"
                 }`}
               >
-                <div className="flex items-center gap-2.5">
-                  <span className="text-sm">{lang.flag}</span>
+                <div className="flex items-center gap-2">
+                  <span className="font-bold text-[10px] text-amber-400 bg-slate-800 px-1.5 py-0.5 rounded border border-slate-700">
+                    {lang.label}
+                  </span>
                   <span>{lang.name}</span>
                 </div>
                 {isSelected && <Check className="w-3.5 h-3.5 text-amber-400" />}

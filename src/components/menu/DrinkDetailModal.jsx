@@ -3,7 +3,7 @@ import { Modal } from "../common/Modal";
 import { VolumeBadge, Badge } from "../common/Badge";
 import { useLanguage } from "../../context/LanguageContext";
 import { Button } from "../common/Button";
-import { Sparkles, AlertCircle, CheckCircle2, GlassWater } from "lucide-react";
+import { Sparkles, AlertCircle, CheckCircle2 } from "lucide-react";
 
 export function DrinkDetailModal({ item, isOpen, onClose }) {
   const { getLocalizedField, t } = useLanguage();
@@ -13,6 +13,9 @@ export function DrinkDetailModal({ item, isOpen, onClose }) {
   const title = getLocalizedField(item, "title");
   const description = getLocalizedField(item, "description");
   const isAvailable = item.is_available !== false;
+
+  const priceTry = item.price_try !== undefined && item.price_try !== null ? item.price_try : Math.round((item.price || 0) * 35);
+  const priceUsd = item.price_usd !== undefined && item.price_usd !== null ? item.price_usd : (item.price || 0);
 
   return (
     <Modal
@@ -34,10 +37,11 @@ export function DrinkDetailModal({ item, isOpen, onClose }) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#161f30] via-transparent to-black/40" />
 
-          {/* Floating Price Tag */}
-          <div className="absolute bottom-3 right-3 bg-gradient-to-r from-amber-600 to-amber-500 text-slate-950 font-outfit font-extrabold text-xl px-4 py-1.5 rounded-xl shadow-amber-glow">
-            {t("currencySymbol")}
-            {Number(item.price).toFixed(2)}
+          {/* Floating Dual Price Tag */}
+          <div className="absolute bottom-3 right-3 bg-gradient-to-r from-slate-900 to-[#131b2a] border border-amber-500/50 font-outfit font-extrabold text-lg px-4 py-1.5 rounded-xl shadow-amber-glow flex items-center gap-2">
+            <span className="text-amber-400">₺{Number(priceTry).toFixed(0)}</span>
+            <span className="text-slate-600 font-normal">/</span>
+            <span className="text-emerald-400">${Number(priceUsd).toFixed(2)}</span>
           </div>
 
           {/* Top Status */}

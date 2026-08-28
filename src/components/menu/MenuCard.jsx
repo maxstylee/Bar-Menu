@@ -12,6 +12,9 @@ export function MenuCard({ item, onClick }) {
   const description = getLocalizedField(item, "description");
   const isAvailable = item.is_available !== false;
 
+  const priceTry = item.price_try !== undefined && item.price_try !== null ? item.price_try : Math.round((item.price || 0) * 35);
+  const priceUsd = item.price_usd !== undefined && item.price_usd !== null ? item.price_usd : (item.price || 0);
+
   // Fallback placeholder image if Unsplash fails
   const fallbackImage =
     "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80";
@@ -97,14 +100,13 @@ export function MenuCard({ item, onClick }) {
           )}
         </div>
 
-        {/* Bottom Price & Tags Section */}
+        {/* Bottom Dual Price (TRY & USD) & Tags Section */}
         <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
-          {/* Price with warm amber glow */}
-          <div className="flex items-baseline gap-1">
-            <span className="font-outfit font-extrabold text-lg sm:text-xl text-amber-400 tracking-tight">
-              {t("currencySymbol")}
-              {Number(item.price).toFixed(2)}
-            </span>
+          {/* Dual Currency Price Badge */}
+          <div className="flex items-baseline gap-1.5 font-outfit font-extrabold text-base sm:text-lg tracking-tight">
+            <span className="text-amber-400">₺{Number(priceTry).toFixed(0)}</span>
+            <span className="text-slate-600 font-normal text-xs">/</span>
+            <span className="text-emerald-400">${Number(priceUsd).toFixed(2)}</span>
           </div>
 
           {/* First tag or category hint */}

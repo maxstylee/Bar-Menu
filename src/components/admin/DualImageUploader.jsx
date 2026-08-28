@@ -9,8 +9,8 @@ import {
   Sparkles,
   CheckCircle2,
   AlertCircle,
-  FileCheck,
   ImageIcon,
+  Eye,
 } from "lucide-react";
 
 export function DualImageUploader({
@@ -34,7 +34,7 @@ export function DualImageUploader({
     if (!file) return;
 
     if (!file.type.startsWith("image/")) {
-      setErrorMsg("Please select a valid image file (JPG, PNG, WebP, HEIC).");
+      setErrorMsg("Please select a valid image file (JPG, PNG, HEIC).");
       return;
     }
 
@@ -42,7 +42,7 @@ export function DualImageUploader({
       setIsCompressing(true);
       setErrorMsg(null);
 
-      // Perform Client-Side WebP Compression (<200KB)
+      // Perform Client-Side Optimization (<200KB)
       const result = await compressImageToWebP(file);
 
       setLocalPreview(result.previewUrl);
@@ -88,62 +88,74 @@ export function DualImageUploader({
           <Sparkles className="w-3.5 h-3.5" />
           {t("dualImageTitle")}
         </label>
-        <Badge variant="amber" size="xs">
-          Auto WebP Engine
+        <Badge variant="emerald" size="xs">
+          Auto Image Optimizer
         </Badge>
       </div>
 
-      {/* Slots Grid: Active Slot (1) & Backup Slot (2) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {/* Slot 1: Active Image */}
-        <div className="bg-[#131b2a] border border-slate-800 rounded-xl p-3 flex flex-col justify-between">
+      {/* Main Image Container: Prominent Active Image + Backup Slot */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
+        {/* Active Main Image (Noticeably Larger, Centered, Prominent) */}
+        <div className="md:col-span-2 bg-[#131b2a] border-2 border-amber-500/50 shadow-amber-glow/20 rounded-2xl p-4 flex flex-col justify-between">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="text-xs font-bold text-amber-300 flex items-center gap-1.5 uppercase tracking-wide">
+              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
               {t("activeSlot")}
             </span>
-            {compressionStats && (
+            {compressionStats ? (
               <Badge variant="emerald" size="xs">
-                -{compressionStats.compressionRatio}%
+                Optimized -{compressionStats.compressionRatio}%
+              </Badge>
+            ) : (
+              <Badge variant="amber" size="xs">
+                Live On Menu
               </Badge>
             )}
           </div>
 
-          <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden bg-slate-900 border border-slate-800 flex items-center justify-center">
+          {/* Centered Large Preview */}
+          <div className="relative aspect-[16/10] w-full rounded-xl overflow-hidden bg-slate-900 border border-slate-700/80 flex items-center justify-center mx-auto shadow-inner">
             {activeDisplayUrl ? (
-              <img
-                src={activeDisplayUrl}
-                alt="Active Preview"
-                className="w-full h-full object-cover"
-              />
+              <>
+                <img
+                  src={activeDisplayUrl}
+                  alt="Active Drink"
+                  className="w-full h-full object-cover object-center"
+                />
+                <div className="absolute top-2.5 left-2.5">
+                  <span className="bg-emerald-600/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-md flex items-center gap-1 backdrop-blur-xs">
+                    <Eye className="w-3.5 h-3.5" /> Active Display
+                  </span>
+                </div>
+              </>
             ) : (
-              <div className="text-center p-3 text-slate-500">
-                <ImageIcon className="w-8 h-8 mx-auto mb-1 text-slate-600" />
-                <span className="text-xs">No active image</span>
+              <div className="text-center p-4 text-slate-500">
+                <ImageIcon className="w-10 h-10 mx-auto mb-2 text-slate-600" />
+                <span className="text-xs font-medium">No image uploaded yet</span>
               </div>
             )}
           </div>
 
           {compressionStats && (
-            <div className="mt-2 text-[11px] text-slate-400 space-y-0.5 bg-slate-900/60 p-2 rounded-lg border border-slate-800">
-              <div className="flex justify-between">
-                <span>Original:</span>
-                <span className="text-slate-300 font-mono">
+            <div className="mt-3 text-[11px] text-slate-400 flex items-center justify-between bg-slate-900/80 px-3 py-2 rounded-xl border border-slate-800">
+              <span>
+                Original:{" "}
+                <strong className="text-slate-300 font-mono">
                   {formatBytes(compressionStats.originalSize)}
-                </span>
-              </div>
-              <div className="flex justify-between font-semibold text-emerald-400">
-                <span>WebP Payload:</span>
-                <span className="font-mono">
+                </strong>
+              </span>
+              <span className="text-emerald-400 font-semibold">
+                Optimized:{" "}
+                <strong className="font-mono">
                   {formatBytes(compressionStats.compressedSize)}
-                </span>
-              </div>
+                </strong>
+              </span>
             </div>
           )}
         </div>
 
-        {/* Slot 2: Backup / Previous Image */}
-        <div className="bg-[#131b2a] border border-slate-800 rounded-xl p-3 flex flex-col justify-between">
+        {/* Backup / Rollback Image Slot */}
+        <div className="bg-[#131b2a] border border-slate-800 rounded-2xl p-4 flex flex-col justify-between">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-semibold text-slate-400 flex items-center gap-1.5">
               <RotateCcw className="w-3.5 h-3.5 text-amber-400" />
@@ -151,7 +163,7 @@ export function DualImageUploader({
             </span>
             {previousImageUrl ? (
               <Badge variant="slate" size="xs">
-                Saved Backup
+                Backup Ready
               </Badge>
             ) : (
               <Badge variant="slate" size="xs">
@@ -160,29 +172,29 @@ export function DualImageUploader({
             )}
           </div>
 
-          <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden bg-slate-900 border border-slate-800 flex items-center justify-center">
+          <div className="relative aspect-[4/3] w-full rounded-xl overflow-hidden bg-slate-900 border border-slate-800 flex items-center justify-center">
             {previousImageUrl ? (
               <img
                 src={previousImageUrl}
                 alt="Previous Backup"
-                className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
+                className="w-full h-full object-cover opacity-75 hover:opacity-100 transition-opacity"
               />
             ) : (
               <div className="text-center p-3 text-slate-600">
-                <RotateCcw className="w-8 h-8 mx-auto mb-1 opacity-40" />
-                <span className="text-xs">{t("noBackupImage")}</span>
+                <RotateCcw className="w-6 h-6 mx-auto mb-1 opacity-30" />
+                <span className="text-[11px]">{t("noBackupImage")}</span>
               </div>
             )}
           </div>
 
           {/* Rollback Action Button */}
-          {previousImageUrl && onRollback && (
-            <div className="mt-2">
+          {previousImageUrl && onRollback ? (
+            <div className="mt-3">
               <Button
                 type="button"
                 variant="secondary"
                 size="sm"
-                className="w-full text-xs font-semibold border-amber-500/30 hover:border-amber-500 hover:text-amber-300"
+                className="w-full text-xs font-semibold border-amber-500/40 text-amber-300 hover:bg-amber-500/15"
                 onClick={onRollback}
                 loading={isRollbackLoading}
                 icon={RotateCcw}
@@ -190,6 +202,10 @@ export function DualImageUploader({
                 {t("restorePrevious")}
               </Button>
             </div>
+          ) : (
+            <p className="mt-3 text-[10px] text-slate-500 text-center">
+              Replaces backup automatically when you upload new photos
+            </p>
           )}
         </div>
       </div>
@@ -201,7 +217,7 @@ export function DualImageUploader({
         onDragOver={handleDrag}
         onDrop={handleDrop}
         onClick={() => fileInputRef.current?.click()}
-        className={`relative border-2 border-dashed rounded-xl p-4 text-center cursor-pointer transition-all duration-200 ${
+        className={`relative border-2 border-dashed rounded-2xl p-5 text-center cursor-pointer transition-all duration-200 ${
           dragActive
             ? "border-amber-500 bg-amber-500/10"
             : "border-slate-700/80 bg-[#161f30]/60 hover:bg-[#161f30] hover:border-slate-600"
@@ -210,7 +226,7 @@ export function DualImageUploader({
         <input
           ref={fileInputRef}
           type="file"
-          accept="image/png, image/jpeg, image/jpg, image/webp, image/heic"
+          accept="image/png, image/jpeg, image/jpg, image/heic"
           className="hidden"
           onChange={(e) => {
             if (e.target.files && e.target.files[0]) {
@@ -223,13 +239,13 @@ export function DualImageUploader({
           <div className="py-3 flex flex-col items-center gap-2">
             <Sparkles className="w-6 h-6 text-amber-400 animate-spin" />
             <span className="text-xs font-semibold text-amber-300">
-              Compressing to optimized WebP (&lt;200KB)...
+              Optimizing image (&lt;200KB)...
             </span>
           </div>
         ) : (
           <div className="py-2 flex flex-col items-center gap-1.5">
-            <UploadCloud className="w-7 h-7 text-amber-400/90" />
-            <p className="text-xs font-semibold text-slate-200">
+            <UploadCloud className="w-7 h-7 text-amber-400" />
+            <p className="text-xs font-bold text-slate-200">
               {t("dragDropText")}
             </p>
             <p className="text-[11px] text-slate-400">{t("fileSupport")}</p>

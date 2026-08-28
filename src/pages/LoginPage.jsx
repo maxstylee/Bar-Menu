@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
+import logoSvg from '../assets/logo.svg';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import { useToast } from '../context/ToastContext';
@@ -9,7 +10,6 @@ import { LanguageSwitcher } from '../components/common/LanguageSwitcher';
 import {
   Lock,
   Mail,
-  ShieldCheck,
   Sparkles,
   ArrowLeft,
   KeyRound,
@@ -83,7 +83,7 @@ export function LoginPage() {
           {/* Brand Header */}
           <div className="text-center space-y-2">
             <div className="w-14 h-14 rounded-2xl bg-[#131b2a] border border-amber-500/30 flex items-center justify-center p-2.5 mx-auto shadow-amber-glow">
-              <img src="/src/assets/logo.svg" alt="TUI Blue Logo" className="w-full h-full" />
+              <img src={logoSvg} alt="TUI Blue Logo" className="w-full h-full" />
             </div>
             <h2 className="font-outfit font-extrabold text-2xl text-white">
               {t('adminLoginTitle')}

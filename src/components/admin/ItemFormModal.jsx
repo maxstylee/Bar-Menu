@@ -5,8 +5,6 @@ import { Input } from '../common/Input';
 import { DualImageUploader } from './DualImageUploader';
 import { useLanguage } from '../../context/LanguageContext';
 import {
-  Sparkles,
-  Euro,
   Wine,
   CheckCircle2,
   AlertCircle,
@@ -41,7 +39,8 @@ export function ItemFormModal({
     description_en: '',
     description_ru: '',
     description_de: '',
-    price: '',
+    price_try: '',
+    price_usd: '',
     volume_ml: '',
     abv: '',
     is_alcoholic: true,
@@ -63,7 +62,8 @@ export function ItemFormModal({
         description_en: item.description_en || '',
         description_ru: item.description_ru || '',
         description_de: item.description_de || '',
-        price: item.price !== undefined ? String(item.price) : '',
+        price_try: item.price_try !== undefined && item.price_try !== null ? String(item.price_try) : (item.price ? String(Math.round(item.price * 35)) : ''),
+        price_usd: item.price_usd !== undefined && item.price_usd !== null ? String(item.price_usd) : (item.price ? String(item.price) : ''),
         volume_ml: item.volume_ml !== undefined ? String(item.volume_ml) : '',
         abv: item.abv !== undefined ? String(item.abv) : '0',
         is_alcoholic: item.is_alcoholic ?? true,
@@ -83,7 +83,8 @@ export function ItemFormModal({
         description_en: '',
         description_ru: '',
         description_de: '',
-        price: '',
+        price_try: '650',
+        price_usd: '18.50',
         volume_ml: '250',
         abv: '12.0',
         is_alcoholic: true,
@@ -98,7 +99,14 @@ export function ItemFormModal({
   }, [item, categories, isOpen]);
 
   const handleChange = (field, value) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+    setFormData((prev) => {
+      const updated = { ...prev, [field]: value };
+      // Auto-calculate rough counterpart if user changes one price
+      if (field === 'price_usd' && value && !isNaN(parseFloat(value)) && !prev.price_try_manual) {
+        updated.price_try = (parseFloat(value) * 35).toFixed(0);
+      }
+      return updated;
+    });
   };
 
   const handleRollback = async () => {
@@ -126,9 +134,12 @@ export function ItemFormModal({
       setError('Please provide at least an English or Turkish title.');
       return;
     }
-    const numPrice = parseFloat(formData.price);
-    if (isNaN(numPrice) || numPrice < 0) {
-      setError('Please enter a valid price.');
+
+    const numPriceTRY = parseFloat(formData.price_try);
+    const numPriceUSD = parseFloat(formData.price_usd);
+
+    if (isNaN(numPriceTRY) || numPriceTRY < 0 || isNaN(numPriceUSD) || numPriceUSD < 0) {
+      setError('Please enter valid prices in both Turkish Lira (₺) and US Dollars ($).');
       return;
     }
 
@@ -150,7 +161,9 @@ export function ItemFormModal({
         description_en: formData.description_en,
         description_ru: formData.description_ru,
         description_de: formData.description_de,
-        price: numPrice,
+        price_try: numPriceTRY,
+        price_usd: numPriceUSD,
+        price: numPriceUSD, // fallback
         volume_ml: formData.volume_ml ? parseInt(formData.volume_ml, 10) : null,
         abv: formData.is_alcoholic ? (formData.abv ? parseFloat(formData.abv) : 0) : 0,
         is_alcoholic: formData.is_alcoholic,
@@ -204,16 +217,16 @@ export function ItemFormModal({
             </span>
             <div className="flex items-center gap-1 bg-[#161f30] p-1 rounded-xl border border-slate-800">
               {[
-                { code: 'en', label: '🇬🇧 English' },
-                { code: 'tr', label: '🇹🇷 Türkçe' },
-                { code: 'ru', label: '🇷🇺 Русский' },
-                { code: 'de', label: '🇩🇪 Deutsch' },
+                { code: 'en', label: 'EN' },
+                { code: 'tr', label: 'TR' },
+                { code: 'ru', label: 'RU' },
+                { code: 'de', label: 'DE' },
               ].map((tab) => (
                 <button
                   key={tab.code}
                   type="button"
                   onClick={() => setActiveLangTab(tab.code)}
-                  className={`px-3 py-1 text-xs font-semibold rounded-lg transition-colors ${
+                  className={`px-3 py-1 text-xs font-bold rounded-lg transition-colors ${
                     activeLangTab === tab.code
                       ? 'bg-amber-500 text-slate-950 shadow-sm'
                       : 'text-slate-400 hover:text-slate-200'
@@ -250,10 +263,10 @@ export function ItemFormModal({
           </div>
         </div>
 
-        {/* Pricing, Category & Specifications */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {/* Pricing (Dual Currency TRY & USD), Category & Specifications */}
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
           {/* Category */}
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-1.5 sm:col-span-1">
             <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
               {t('fieldCategory')}
             </label>
@@ -271,15 +284,26 @@ export function ItemFormModal({
             </select>
           </div>
 
-          {/* Price */}
+          {/* Price TRY ₺ */}
           <Input
-            label={t('fieldPrice')}
+            label={t('fieldPriceTRY')}
             type="number"
-            step="0.10"
+            step="1"
             min="0"
-            value={formData.price}
-            onChange={(e) => handleChange('price', e.target.value)}
-            icon={Euro}
+            value={formData.price_try}
+            onChange={(e) => handleChange('price_try', e.target.value)}
+            placeholder="650"
+            required
+          />
+
+          {/* Price USD $ */}
+          <Input
+            label={t('fieldPriceUSD')}
+            type="number"
+            step="0.50"
+            min="0"
+            value={formData.price_usd}
+            onChange={(e) => handleChange('price_usd', e.target.value)}
             placeholder="18.50"
             required
           />

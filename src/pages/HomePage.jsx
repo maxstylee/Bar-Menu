@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
+import logoSvg from "../assets/logo.svg";
 import { useMenu } from "../hooks/useMenu";
 import { useLanguage } from "../context/LanguageContext";
 import { useAuth } from "../context/AuthContext";
@@ -10,15 +11,10 @@ import { MenuCard } from "../components/menu/MenuCard";
 import { DrinkDetailModal } from "../components/menu/DrinkDetailModal";
 import { LanguageSwitcher } from "../components/common/LanguageSwitcher";
 import { SkeletonGrid } from "../components/common/SkeletonLoader";
-import { Badge } from "../components/common/Badge";
 import {
   Sparkles,
   ShieldCheck,
-  Wine,
-  GlassWater,
-  Flame,
   Search,
-  SlidersHorizontal,
 } from "lucide-react";
 
 export function HomePage() {
@@ -35,7 +31,7 @@ export function HomePage() {
     setDietaryFilter,
   } = useMenu();
 
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const { isAuthenticated } = useAuth();
   const [selectedDrink, setSelectedDrink] = useState(null);
 
@@ -57,7 +53,7 @@ export function HomePage() {
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[#131b2a] border border-amber-500/30 flex items-center justify-center p-1.5 shadow-amber-glow">
               <img
-                src="/src/assets/logo.svg"
+                src={logoSvg}
                 alt="TUI Blue Logo"
                 className="w-full h-full"
               />
@@ -220,7 +216,9 @@ export function HomePage() {
           </div>
 
           <div className="flex items-center gap-4 text-slate-500">
-            <span>4-Language Menu (TR / EN / RU / DE)</span>
+            <span>Dual-Currency (₺ TRY / $ USD)</span>
+            <span>•</span>
+            <span>4 Languages (TR / EN / RU / DE)</span>
             <span>•</span>
             <Link
               to="/admin"
