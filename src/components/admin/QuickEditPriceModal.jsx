@@ -12,14 +12,14 @@ export function QuickEditPriceModal({
 }) {
   const { getLocalizedField, t } = useLanguage();
   const [price, setPrice] = useState("");
-  const [currency, setCurrency] = useState("TRY");
+  const [currency, setCurrency] = useState("EUR");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
     if (item) {
       setPrice(item.price !== undefined && item.price !== null ? String(item.price) : "");
-      setCurrency(item.currency === "USD" ? "USD" : "TRY");
+      setCurrency(item.currency || "EUR");
       setError("");
     }
   }, [item, isOpen]);
@@ -81,6 +81,7 @@ export function QuickEditPriceModal({
               onChange={(e) => setCurrency(e.target.value)}
               className="w-full bg-[#131b2a] border border-slate-800 hover:border-slate-700 text-slate-100 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/80 font-bold"
             >
+              <option value="EUR" className="bg-[#161f30] text-slate-100">€ EUR</option>
               <option value="TRY" className="bg-[#161f30] text-slate-100">₺ TRY</option>
               <option value="USD" className="bg-[#161f30] text-slate-100">$ USD</option>
             </select>

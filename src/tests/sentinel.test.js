@@ -1,7 +1,7 @@
 /**
  * ============================================================================
  * SENTINEL TEST SUITE - TUI BLUE BEVERAGE MENU & ADMIN
- * Automated Verification: i18n, Dual-Image Engine, Single Currency Pricing, Filters
+ * Automated Verification: i18n, Dual-Image Engine, EUR Currency Priority, Category Management, Filters
  * ============================================================================
  */
 
@@ -50,7 +50,7 @@ testSection('Mock Data Schema & Required Fields Integrity', () => {
     assert(item.id && typeof item.id === 'string', `Item ${item.id} has valid ID`);
     assert(item.category_id, `Item ${item.id} is linked to a valid category`);
     assert(typeof item.price === 'number' && item.price >= 0, `Item ${item.id} has non-negative price (${item.price})`);
-    assert(['TRY', 'USD'].includes(item.currency), `Item ${item.id} has valid currency (${item.currency})`);
+    assert(['EUR', 'TRY', 'USD'].includes(item.currency), `Item ${item.id} has valid currency (${item.currency})`);
     assert(item.title_en && item.title_tr, `Item ${item.id} has English & Turkish titles`);
     assert(typeof item.is_available === 'boolean', `Item ${item.id} has boolean availability`);
     assert(typeof item.is_alcoholic === 'boolean', `Item ${item.id} has boolean alcoholic flag`);
@@ -79,6 +79,10 @@ testSection('4-Language Localization & Brand Integrity', () => {
     'available',
     'dashboardTitle',
     'addNewItem',
+    'manageCategories',
+    'addCategory',
+    'editCategory',
+    'deleteCategory',
     'quickEditPrice',
     'dualImageTitle',
     'restorePrevious',
@@ -97,12 +101,13 @@ testSection('4-Language Localization & Brand Integrity', () => {
   });
 });
 
-// 3. Price Formatting & Single Currency Logic Tests
-testSection('Single Currency Price Formatting Resolution', () => {
+// 3. Price Formatting & EUR Priority Currency Logic Tests
+testSection('EUR Priority Currency Price Formatting Resolution', () => {
+  assert(formatItemPrice(18.5, 'EUR') === '€18.50', 'Format 18.5 EUR -> €18.50');
   assert(formatItemPrice(250, 'TRY') === '₺250', 'Format 250 TRY -> ₺250');
   assert(formatItemPrice(16.5, 'USD') === '$16.50', 'Format 16.5 USD -> $16.50');
-  assert(formatItemPrice(0, 'TRY') === '₺0', 'Format 0 TRY -> ₺0');
-  assert(formatItemPrice(12, 'USD') === '$12.00', 'Format 12 USD -> $12.00');
+  assert(formatItemPrice(0) === '€0.00', 'Default format 0 without currency -> €0.00');
+  assert(formatItemPrice(12, 'EUR') === '€12.00', 'Format 12 EUR -> €12.00');
 });
 
 // 4. Dual-Image Slot Versioning & Rollback Pointer Logic Simulation

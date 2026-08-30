@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS categories (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- 3. Menu Items Table (Beverages with 4 Languages, Single Configurable Currency TRY or USD, and Dual-Image Slots)
+-- 3. Menu Items Table (Beverages with 4 Languages, Configurable Currency EUR/TRY/USD, and Dual-Image Slots)
 CREATE TABLE IF NOT EXISTS menu_items (
   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   category_id UUID REFERENCES categories(id) ON DELETE CASCADE,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS menu_items (
   description_ru TEXT,
   description_de TEXT,
   price NUMERIC(10, 2) NOT NULL DEFAULT 0.00,
-  currency TEXT NOT NULL DEFAULT 'TRY',
+  currency TEXT NOT NULL DEFAULT 'EUR',
   volume_ml INT,
   abv NUMERIC(4, 1) DEFAULT 0.0,
   is_alcoholic BOOLEAN DEFAULT TRUE,

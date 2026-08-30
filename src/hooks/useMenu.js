@@ -59,6 +59,95 @@ export function useMenu() {
   }, [fetchMenuData]);
 
   // ==========================================================================
+  // CATEGORY CRUD OPERATIONS
+  // ==========================================================================
+
+  const addCategory = async (categoryData) => {
+    const newCategoryPayload = {
+      name_tr: categoryData.name_tr || categoryData.name_en,
+      name_en: categoryData.name_en || categoryData.name_tr,
+      name_ru: categoryData.name_ru || categoryData.name_en,
+      name_de: categoryData.name_de || categoryData.name_en,
+      icon: categoryData.icon || 'Sparkles',
+      sort_order: parseInt(categoryData.sort_order, 10) || (categories.length + 1),
+    };
+
+    if (isSupabaseConfigured && supabase) {
+      const { data, error } = await supabase
+        .from('categories')
+        .insert([newCategoryPayload])
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      setCategories((prev) => [...prev, data].sort((a, b) => a.sort_order - b.sort_order));
+      return data;
+    }
+
+    const localNewCat = {
+      ...newCategoryPayload,
+      id: `cat-local-${Date.now()}`,
+    };
+
+    setCategories((prev) => {
+      const updated = [...prev, localNewCat].sort((a, b) => a.sort_order - b.sort_order);
+      saveLocalCategories(updated);
+      return updated;
+    });
+
+    return localNewCat;
+  };
+
+  const updateCategory = async (catId, categoryData) => {
+    const payload = {
+      name_tr: categoryData.name_tr,
+      name_en: categoryData.name_en,
+      name_ru: categoryData.name_ru,
+      name_de: categoryData.name_de,
+      icon: categoryData.icon,
+      sort_order: parseInt(categoryData.sort_order, 10) || 1,
+    };
+
+    if (isSupabaseConfigured && supabase) {
+      const { data, error } = await supabase
+        .from('categories')
+        .update(payload)
+        .eq('id', catId)
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      setCategories((prev) =>
+        prev.map((c) => (c.id === catId ? data : c)).sort((a, b) => a.sort_order - b.sort_order)
+      );
+      return data;
+    }
+
+    setCategories((prev) => {
+      const updated = prev
+        .map((c) => (c.id === catId ? { ...c, ...payload } : c))
+        .sort((a, b) => a.sort_order - b.sort_order);
+      saveLocalCategories(updated);
+      return updated;
+    });
+  };
+
+  const deleteCategory = async (catId) => {
+    if (isSupabaseConfigured && supabase) {
+      const { error } = await supabase.from('categories').delete().eq('id', catId);
+      if (error) throw error;
+    }
+
+    setCategories((prev) => {
+      const updated = prev.filter((c) => c.id !== catId);
+      saveLocalCategories(updated);
+      return updated;
+    });
+  };
+
+  // ==========================================================================
   // DUAL-IMAGE SLOT LIFECYCLE ENGINE
   // ==========================================================================
 
@@ -70,18 +159,13 @@ export function useMenu() {
    * - 3rd upload: delete old previous from storage, current -> previous, new -> current
    */
   const handleDualImageUpload = async (imageFile, existingCurrentUrl, existingPreviousUrl) => {
-    // 1. Compress client-side
     const compression = await compressImageToWebP(imageFile);
-    
-    // 2. Upload compressed file to storage
     const newPublicUrl = await uploadImageToStorage(compression.file);
 
-    // 3. Versioning Slot Logic
     let nextPreviousUrl = existingPreviousUrl || null;
     let nextCurrentUrl = newPublicUrl;
 
     if (existingCurrentUrl) {
-      // If there was already a previous image, delete the 3rd replaced image from storage
       if (existingPreviousUrl && existingPreviousUrl.startsWith('http') && !existingPreviousUrl.includes('unsplash.com')) {
         await deleteImageFromStorage(existingPreviousUrl);
       }
@@ -119,7 +203,6 @@ export function useMenu() {
       if (error) throw error;
     }
 
-    // Optimistic / Local update
     setItems((prev) => {
       const updated = prev.map((item) =>
         item.id === itemId
@@ -171,7 +254,6 @@ export function useMenu() {
       return data;
     }
 
-    // LocalStorage Fallback
     const localNewItem = {
       ...newItemPayload,
       id: `local-item-${Date.now()}`,
@@ -221,7 +303,6 @@ export function useMenu() {
       return data;
     }
 
-    // Local Storage Fallback
     setItems((prev) => {
       const updated = prev.map((i) => (i.id === itemId ? { ...i, ...payload } : i));
       saveLocalMenuItems(updated);
@@ -238,7 +319,6 @@ export function useMenu() {
       const { error } = await supabase.from('menu_items').delete().eq('id', itemId);
       if (error) throw error;
 
-      // Clean up storage images if uploaded
       if (target?.current_image_url) await deleteImageFromStorage(target.current_image_url);
       if (target?.previous_image_url) await deleteImageFromStorage(target.previous_image_url);
     }
@@ -280,12 +360,12 @@ export function useMenu() {
   /**
    * Fast inline price & currency adjustment
    */
-  const quickUpdatePrice = async (itemId, newPrice, newCurrency = 'TRY') => {
+  const quickUpdatePrice = async (itemId, newPrice, newCurrency = 'EUR') => {
     const parsedPrice = parseFloat(newPrice);
     if (isNaN(parsedPrice) || parsedPrice < 0) {
       throw new Error('Invalid price value');
     }
-    const currency = newCurrency === 'USD' ? 'USD' : 'TRY';
+    const currency = newCurrency || 'EUR';
 
     if (isSupabaseConfigured && supabase) {
       const { error } = await supabase
@@ -311,12 +391,10 @@ export function useMenu() {
 
   const filteredItems = useMemo(() => {
     return items.filter((item) => {
-      // 1. Category Filter
       if (selectedCategory !== 'all' && item.category_id !== selectedCategory) {
         return false;
       }
 
-      // 2. Dietary Filter
       if (dietaryFilter === 'alcoholic' && !item.is_alcoholic) {
         return false;
       }
@@ -324,7 +402,6 @@ export function useMenu() {
         return false;
       }
 
-      // 3. Multilingual Search Query Filter
       if (searchQuery.trim() !== '') {
         const q = searchQuery.toLowerCase().trim();
         const matchTitle =
@@ -364,6 +441,9 @@ export function useMenu() {
     setSearchQuery,
     dietaryFilter,
     setDietaryFilter,
+    addCategory,
+    updateCategory,
+    deleteCategory,
     addItem,
     updateItem,
     deleteItem,

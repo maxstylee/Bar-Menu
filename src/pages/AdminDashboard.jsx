@@ -9,6 +9,7 @@ import { AdminBeverageTable } from "../components/admin/AdminBeverageTable";
 import { ItemFormModal } from "../components/admin/ItemFormModal";
 import { DeleteConfirmModal } from "../components/admin/DeleteConfirmModal";
 import { QuickEditPriceModal } from "../components/admin/QuickEditPriceModal";
+import { CategoryManagerModal } from "../components/admin/CategoryManagerModal";
 import { LanguageSwitcher } from "../components/common/LanguageSwitcher";
 import { Button } from "../components/common/Button";
 import {
@@ -34,6 +35,9 @@ export function AdminDashboard() {
     addItem,
     updateItem,
     deleteItem,
+    addCategory,
+    updateCategory,
+    deleteCategory,
     toggleAvailability,
     quickUpdatePrice,
     rollbackImage,
@@ -45,6 +49,7 @@ export function AdminDashboard() {
 
   // Modals state
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+  const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
   const [editingItem, setEditingItem] = useState(null); // null for Add, item for Edit
   const [deletingItem, setDeletingItem] = useState(null);
   const [priceEditingItem, setPriceEditingItem] = useState(null);
@@ -85,7 +90,7 @@ export function AdminDashboard() {
     return { total, active, stopListed, catCount };
   }, [items, categories]);
 
-  // Handlers
+  // Handlers for Items
   const handleOpenAddModal = () => {
     setEditingItem(null);
     setIsFormModalOpen(true);
@@ -116,6 +121,37 @@ export function AdminDashboard() {
     try {
       await deleteItem(itemId);
       success(t("toastItemDeleted"));
+    } catch (err) {
+      toastError(err.message || t("toastError"));
+      throw err;
+    }
+  };
+
+  // Handlers for Categories
+  const handleAddCategory = async (payload) => {
+    try {
+      await addCategory(payload);
+      success(t("toastCategoryAdded"));
+    } catch (err) {
+      toastError(err.message || t("toastError"));
+      throw err;
+    }
+  };
+
+  const handleUpdateCategory = async (catId, payload) => {
+    try {
+      await updateCategory(catId, payload);
+      success(t("toastCategoryUpdated"));
+    } catch (err) {
+      toastError(err.message || t("toastError"));
+      throw err;
+    }
+  };
+
+  const handleDeleteCategory = async (catId) => {
+    try {
+      await deleteCategory(catId);
+      success(t("toastCategoryDeleted"));
     } catch (err) {
       toastError(err.message || t("toastError"));
       throw err;
@@ -182,7 +218,7 @@ export function AdminDashboard() {
             </div>
           </div>
 
-          {/* Action Controls: Compact and Overflow-Free */}
+          {/* Action Controls */}
           <div className="flex items-center gap-1.5 sm:gap-2.5 flex-shrink-0">
             <LanguageSwitcher variant="dropdown" />
 
@@ -209,7 +245,7 @@ export function AdminDashboard() {
 
       {/* Main Container */}
       <main className="flex-1 max-w-7xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-6 space-y-6 overflow-x-hidden">
-        {/* Page Title & Hero */}
+        {/* Page Title & Hero Actions */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h2 className="font-outfit font-extrabold text-xl sm:text-3xl text-white">
@@ -220,15 +256,26 @@ export function AdminDashboard() {
             </p>
           </div>
 
-          <Button
-            variant="primary"
-            size="md"
-            icon={PlusCircle}
-            onClick={handleOpenAddModal}
-            className="shadow-amber-glow self-start sm:self-auto"
-          >
-            {t("addNewItem")}
-          </Button>
+          <div className="flex items-center gap-2.5 flex-wrap sm:flex-nowrap">
+            <Button
+              variant="secondary"
+              size="md"
+              icon={Layers}
+              onClick={() => setIsCategoryModalOpen(true)}
+            >
+              {t("manageCategories")}
+            </Button>
+
+            <Button
+              variant="primary"
+              size="md"
+              icon={PlusCircle}
+              onClick={handleOpenAddModal}
+              className="shadow-amber-glow"
+            >
+              {t("addNewItem")}
+            </Button>
+          </div>
         </div>
 
         {/* 4-Card Stats Bar */}
@@ -279,7 +326,7 @@ export function AdminDashboard() {
           </div>
 
           {/* Categories */}
-          <div className="bg-[#161f30] border border-slate-800 rounded-2xl p-3.5 sm:p-4 flex items-center justify-between">
+          <div className="bg-[#161f30] border border-slate-800 rounded-2xl p-3.5 sm:p-4 flex items-center justify-between cursor-pointer hover:border-amber-500/40 transition-all" onClick={() => setIsCategoryModalOpen(true)}>
             <div>
               <p className="text-xs font-semibold text-slate-400">
                 {t("statCategories")}
@@ -351,7 +398,18 @@ export function AdminDashboard() {
         onRollbackImage={handleRollbackImage}
       />
 
-      {/* 2. Quick Edit Price Modal */}
+      {/* 2. Category Manager Modal (Add / Edit / Delete Category) */}
+      <CategoryManagerModal
+        isOpen={isCategoryModalOpen}
+        onClose={() => setIsCategoryModalOpen(false)}
+        categories={categories}
+        items={items}
+        onAddCategory={handleAddCategory}
+        onUpdateCategory={handleUpdateCategory}
+        onDeleteCategory={handleDeleteCategory}
+      />
+
+      {/* 3. Quick Edit Price Modal */}
       <QuickEditPriceModal
         isOpen={Boolean(priceEditingItem)}
         onClose={() => setPriceEditingItem(null)}
@@ -359,7 +417,7 @@ export function AdminDashboard() {
         onSave={handleQuickSavePrice}
       />
 
-      {/* 3. Delete Confirmation Modal */}
+      {/* 4. Delete Confirmation Modal */}
       <DeleteConfirmModal
         isOpen={Boolean(deletingItem)}
         onClose={() => setDeletingItem(null)}

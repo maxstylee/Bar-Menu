@@ -40,7 +40,7 @@ export function ItemFormModal({
     description_ru: '',
     description_de: '',
     price: '',
-    currency: 'TRY',
+    currency: 'EUR',
     volume_ml: '',
     abv: '',
     is_alcoholic: true,
@@ -63,9 +63,9 @@ export function ItemFormModal({
         description_ru: item.description_ru || '',
         description_de: item.description_de || '',
         price: item.price !== undefined && item.price !== null ? String(item.price) : '',
-        currency: item.currency === 'USD' ? 'USD' : 'TRY',
-        volume_ml: item.volume_ml !== undefined ? String(item.volume_ml) : '',
-        abv: item.abv !== undefined ? String(item.abv) : '0',
+        currency: item.currency || 'EUR',
+        volume_ml: item.volume_ml !== undefined && item.volume_ml !== null ? String(item.volume_ml) : '',
+        abv: item.abv !== undefined && item.abv !== null ? String(item.abv) : '',
         is_alcoholic: item.is_alcoholic ?? true,
         is_available: item.is_available ?? true,
         current_image_url: item.current_image_url || '',
@@ -73,6 +73,7 @@ export function ItemFormModal({
         tags: Array.isArray(item.tags) ? item.tags.join(', ') : '',
       });
     } else {
+      // Completely empty state for Add New Beverage
       setFormData({
         category_id: categories[0]?.id || '',
         title_tr: '',
@@ -83,15 +84,15 @@ export function ItemFormModal({
         description_en: '',
         description_ru: '',
         description_de: '',
-        price: '250',
-        currency: 'TRY',
-        volume_ml: '250',
-        abv: '12.0',
+        price: '',
+        currency: 'EUR', // Priority Currency EUR
+        volume_ml: '',
+        abv: '',
         is_alcoholic: true,
         is_available: true,
         current_image_url: '',
         previous_image_url: '',
-        tags: 'Signature, Cocktail',
+        tags: '',
       });
     }
     setSelectedImageFile(null);
@@ -154,7 +155,7 @@ export function ItemFormModal({
         description_ru: formData.description_ru,
         description_de: formData.description_de,
         price: numPrice,
-        currency: formData.currency === 'USD' ? 'USD' : 'TRY',
+        currency: formData.currency || 'EUR',
         volume_ml: formData.volume_ml ? parseInt(formData.volume_ml, 10) : null,
         abv: formData.is_alcoholic ? (formData.abv ? parseFloat(formData.abv) : 0) : 0,
         is_alcoholic: formData.is_alcoholic,
@@ -174,6 +175,25 @@ export function ItemFormModal({
   };
 
   const isEditing = Boolean(item);
+
+  // Helper placeholder generators
+  const getTitlePlaceholder = (lang) => {
+    switch (lang) {
+      case 'tr': return 'örn: Amber Sunset Kokteyl';
+      case 'ru': return 'напр: Коктейль Янтарный Закат';
+      case 'de': return 'z. B. Bernstein Sunset Cocktail';
+      default: return 'e.g. Amber Sunset Cocktail';
+    }
+  };
+
+  const getDescPlaceholder = (lang) => {
+    switch (lang) {
+      case 'tr': return 'örn: Mürver çiçeği likörü, taze çarkıfelek meyvesi püresi ve prosecco';
+      case 'ru': return 'напр: Ликер бузины, пюре из маракуйи и игристое просекко';
+      case 'de': return 'z. B. Holunderblütenlikör, frisches Maracujapüree und Prosecco';
+      default: return 'e.g. Elderflower liqueur, fresh passionfruit purée, and crisp prosecco';
+    }
+  };
 
   return (
     <Modal
@@ -229,13 +249,13 @@ export function ItemFormModal({
             </div>
           </div>
 
-          {/* Active Language Fields */}
+          {/* Active Language Fields with Clean Placeholders */}
           <div className="space-y-3">
             <Input
               label={`${t('titleLabel')} (${activeLangTab.toUpperCase()})`}
               value={formData[`title_${activeLangTab}`]}
               onChange={(e) => handleChange(`title_${activeLangTab}`, e.target.value)}
-              placeholder={`Enter beverage name in ${activeLangTab.toUpperCase()}`}
+              placeholder={getTitlePlaceholder(activeLangTab)}
               required={activeLangTab === 'en'}
             />
 
@@ -247,14 +267,14 @@ export function ItemFormModal({
                 rows={3}
                 value={formData[`description_${activeLangTab}`]}
                 onChange={(e) => handleChange(`description_${activeLangTab}`, e.target.value)}
-                placeholder={`Tasting notes, aroma, preparation details in ${activeLangTab.toUpperCase()}`}
+                placeholder={getDescPlaceholder(activeLangTab)}
                 className="w-full bg-[#161f30] border border-slate-800 hover:border-slate-700 text-slate-100 placeholder-slate-500 rounded-xl p-3 text-xs sm:text-sm transition-all focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/80 resize-none"
               />
             </div>
           </div>
         </div>
 
-        {/* Pricing (Single Price & Currency Selection), Category & Specifications */}
+        {/* Pricing (Single Price & EUR Priority Currency Selection), Category & Specifications */}
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
           {/* Category */}
           <div className="flex flex-col gap-1.5 sm:col-span-1">
@@ -275,7 +295,7 @@ export function ItemFormModal({
             </select>
           </div>
 
-          {/* Single Price Input */}
+          {/* Single Price Input (Empty by default) */}
           <Input
             label={t('fieldPrice')}
             type="number"
@@ -283,11 +303,11 @@ export function ItemFormModal({
             min="0"
             value={formData.price}
             onChange={(e) => handleChange('price', e.target.value)}
-            placeholder="250"
+            placeholder="e.g. 18.50"
             required
           />
 
-          {/* Currency Selection Dropdown (TRY or USD) */}
+          {/* Currency Selection Dropdown (EUR as Default Priority) */}
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
               {t('fieldCurrency')}
@@ -297,6 +317,7 @@ export function ItemFormModal({
               onChange={(e) => handleChange('currency', e.target.value)}
               className="w-full bg-[#131b2a] border border-slate-800 hover:border-slate-700 text-slate-100 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/80 font-bold"
             >
+              <option value="EUR" className="bg-[#161f30] text-slate-100">€ EUR (Euro)</option>
               <option value="TRY" className="bg-[#161f30] text-slate-100">₺ TRY (Turkish Lira)</option>
               <option value="USD" className="bg-[#161f30] text-slate-100">$ USD (US Dollars)</option>
             </select>
@@ -309,7 +330,7 @@ export function ItemFormModal({
             min="0"
             value={formData.volume_ml}
             onChange={(e) => handleChange('volume_ml', e.target.value)}
-            placeholder="250"
+            placeholder="e.g. 250"
           />
         </div>
 
@@ -360,7 +381,7 @@ export function ItemFormModal({
             value={formData.abv}
             onChange={(e) => handleChange('abv', e.target.value)}
             icon={Percent}
-            placeholder="14.5"
+            placeholder="e.g. 14.5"
           />
         )}
 
@@ -370,7 +391,7 @@ export function ItemFormModal({
           value={formData.tags}
           onChange={(e) => handleChange('tags', e.target.value)}
           icon={Tag}
-          placeholder="Signature, Smoky, Fruity, Gold"
+          placeholder="e.g. Signature, Smoky, Fruity, Gold"
         />
 
         {/* Modal Action Buttons */}

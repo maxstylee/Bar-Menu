@@ -10,12 +10,15 @@ export const supportedLanguages = [
   { code: 'de', name: 'Deutsch', label: 'DE' },
 ];
 
-export function formatItemPrice(price, currency = 'TRY') {
+export function formatItemPrice(price, currency = 'EUR') {
   const num = Number(price) || 0;
   if (currency === 'USD') {
     return `$${num.toFixed(2)}`;
   }
-  return `₺${num.toFixed(0)}`;
+  if (currency === 'TRY') {
+    return `₺${num.toFixed(0)}`;
+  }
+  return `€${num.toFixed(2)}`;
 }
 
 export const translations = {
@@ -49,16 +52,24 @@ export const translations = {
     close: 'Kapat',
     viewDetails: 'Detayları Gör',
 
-    // Admin Dashboard
+    // Admin Dashboard & Category Manager
     dashboardTitle: 'Bar İçecek Yönetim Merkezi',
-    dashboardSubtitle: 'Menüdeki içecekleri düzenleyin, anlık fiyat güncelleyin ve stok durumunu (Stop-List) yönetin.',
+    dashboardSubtitle: 'Menüdeki içecekleri düzenleyin, anlık fiyat güncelleyin ve kategorileri yönetin.',
     addNewItem: 'Yeni İçecek Ekle',
     editItem: 'İçeceği Düzenle',
     deleteItem: 'İçeceği Sil',
+    manageCategories: 'Kategorileri Yönet',
+    addCategory: 'Yeni Kategori Ekle',
+    editCategory: 'Kategoriyi Düzenle',
+    deleteCategory: 'Kategoriyi Sil',
+    categoryName: 'Kategori Adı',
+    categoryIcon: 'İkon',
+    sortOrder: 'Sıra No',
     saveChanges: 'Değişiklikleri Kaydet',
     cancel: 'İptal',
     confirmDelete: 'Silmeyi Onayla',
     deleteWarningText: 'Bu içeceği menüden kalıcı olarak silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.',
+    deleteCategoryWarning: 'Bu kategoriyi silmek istediğinizden emin misiniz? Kategorideki içecekler kategorisiz olarak işaretlenecektir.',
 
     // Stats Bar
     statTotalItems: 'Toplam İçecek',
@@ -127,6 +138,9 @@ export const translations = {
     toastPriceUpdated: 'Fiyat anında güncellendi.',
     toastStatusToggled: 'İçecek stok durumu güncellendi.',
     toastImageRestored: 'Önceki görsel başarıyla geri yüklendi.',
+    toastCategoryAdded: 'Kategori başarıyla eklendi.',
+    toastCategoryUpdated: 'Kategori bilgileri güncellendi.',
+    toastCategoryDeleted: 'Kategori başarıyla silindi.',
     toastError: 'Bir hata oluştu. Lütfen tekrar deneyin.',
   },
 
@@ -160,16 +174,24 @@ export const translations = {
     close: 'Close',
     viewDetails: 'View Details',
 
-    // Admin Dashboard
+    // Admin Dashboard & Category Manager
     dashboardTitle: 'Bar Beverage Management Suite',
-    dashboardSubtitle: 'Manage the live beverage catalog, perform inline quick price adjustments, and toggle instant stop-lists.',
+    dashboardSubtitle: 'Manage the live beverage catalog, perform inline quick price adjustments, and organize categories.',
     addNewItem: 'Add New Beverage',
     editItem: 'Edit Beverage',
     deleteItem: 'Delete Beverage',
+    manageCategories: 'Manage Categories',
+    addCategory: 'Add New Category',
+    editCategory: 'Edit Category',
+    deleteCategory: 'Delete Category',
+    categoryName: 'Category Name',
+    categoryIcon: 'Icon',
+    sortOrder: 'Sort Order',
     saveChanges: 'Save Changes',
     cancel: 'Cancel',
     confirmDelete: 'Confirm Deletion',
     deleteWarningText: 'Are you sure you want to permanently delete this beverage from the menu? This action cannot be undone.',
+    deleteCategoryWarning: 'Are you sure you want to delete this category? Beverages in this category will be unassigned.',
 
     // Stats Bar
     statTotalItems: 'Total Beverages',
@@ -238,6 +260,9 @@ export const translations = {
     toastPriceUpdated: 'Price updated instantly.',
     toastStatusToggled: 'Stop-list availability updated.',
     toastImageRestored: 'Previous image restored successfully.',
+    toastCategoryAdded: 'Category added successfully.',
+    toastCategoryUpdated: 'Category updated successfully.',
+    toastCategoryDeleted: 'Category deleted successfully.',
     toastError: 'An error occurred. Please try again.',
   },
 
@@ -271,16 +296,24 @@ export const translations = {
     close: 'Закрыть',
     viewDetails: 'Подробнее',
 
-    // Admin Dashboard
+    // Admin Dashboard & Category Manager
     dashboardTitle: 'Управление напитками бара',
-    dashboardSubtitle: 'Редактируйте каталог напитков, меняйте цены в один клик и управляйте стоп-листом.',
+    dashboardSubtitle: 'Редактируйте каталог напитков, меняйте цены в один клик и управляйте категориями.',
     addNewItem: 'Добавить напиток',
     editItem: 'Редактировать',
     deleteItem: 'Удалить',
+    manageCategories: 'Управление категориями',
+    addCategory: 'Добавить категорию',
+    editCategory: 'Редактировать категорию',
+    deleteCategory: 'Удалить категорию',
+    categoryName: 'Название категории',
+    categoryIcon: 'Иконка',
+    sortOrder: 'Порядок',
     saveChanges: 'Сохранить изменения',
     cancel: 'Отмена',
     confirmDelete: 'Подтвердите удаление',
     deleteWarningText: 'Вы уверены, что хотите навсегда удалить этот напиток из меню? Это действие необратимо.',
+    deleteCategoryWarning: 'Вы уверены, что хотите удалить эту категорию?',
 
     // Stats Bar
     statTotalItems: 'Всего напитков',
@@ -349,6 +382,9 @@ export const translations = {
     toastPriceUpdated: 'Цена обновлена.',
     toastStatusToggled: 'Статус стоп-листа обновлен.',
     toastImageRestored: 'Предыдущее фото успешно восстановлено.',
+    toastCategoryAdded: 'Категория успешно добавлена.',
+    toastCategoryUpdated: 'Категория успешно обновлена.',
+    toastCategoryDeleted: 'Категория успешно удалена.',
     toastError: 'Произошла ошибка. Попробуйте снова.',
   },
 
@@ -382,16 +418,24 @@ export const translations = {
     close: 'Schließen',
     viewDetails: 'Details ansehen',
 
-    // Admin Dashboard
+    // Admin Dashboard & Category Manager
     dashboardTitle: 'Bar-Getränkeverwaltung',
-    dashboardSubtitle: 'Verwalten Sie das Live-Menü, passen Sie Preise direkt an und steuern Sie die Stop-Liste in Echtzeit.',
+    dashboardSubtitle: 'Verwalten Sie das Live-Menü, passen Sie Preise direkt an und verwalten Sie Kategorien.',
     addNewItem: 'Neues Getränk hinzufügen',
     editItem: 'Getränk bearbeiten',
     deleteItem: 'Getränk löschen',
+    manageCategories: 'Kategorien verwalten',
+    addCategory: 'Neue Kategorie hinzufügen',
+    editCategory: 'Kategorie bearbeiten',
+    deleteCategory: 'Kategorie löschen',
+    categoryName: 'Kategoriename',
+    categoryIcon: 'Icon',
+    sortOrder: 'Sortierung',
     saveChanges: 'Änderungen speichern',
     cancel: 'Abbrechen',
     confirmDelete: 'Löschen bestätigen',
     deleteWarningText: 'Möchten Sie dieses Getränk wirklich dauerhaft aus der Karte entfernen? Diese Aktion kann nicht rückgängig gemacht werden.',
+    deleteCategoryWarning: 'Möchten Sie diese Kategorie wirklich löschen?',
 
     // Stats Bar
     statTotalItems: 'Gesamt Getränke',
@@ -460,6 +504,9 @@ export const translations = {
     toastPriceUpdated: 'Preis sofort aktualisiert.',
     toastStatusToggled: 'Verfügbarkeitsstatus aktualisiert.',
     toastImageRestored: 'Vorheriges Bild erfolgreich wiederhergestellt.',
+    toastCategoryAdded: 'Kategorie erfolgreich hinzugefügt.',
+    toastCategoryUpdated: 'Kategorie erfolgreich aktualisiert.',
+    toastCategoryDeleted: 'Kategorie erfolgreich gelöscht.',
     toastError: 'Ein Fehler ist aufgetreten. Bitte erneut versuchen.',
   },
 };
