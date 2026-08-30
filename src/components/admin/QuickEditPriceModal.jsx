@@ -8,35 +8,34 @@ export function QuickEditPriceModal({
   item,
   isOpen,
   onClose,
-  onSave, // (itemId, priceTry, priceUsd) => Promise<void>
+  onSave, // (itemId, newPrice, newCurrency) => Promise<void>
 }) {
   const { getLocalizedField, t } = useLanguage();
-  const [priceTry, setPriceTry] = useState("");
-  const [priceUsd, setPriceUsd] = useState("");
+  const [price, setPrice] = useState("");
+  const [currency, setCurrency] = useState("TRY");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
     if (item) {
-      setPriceTry(item.price_try !== undefined && item.price_try !== null ? String(item.price_try) : (item.price ? String(Math.round(item.price * 35)) : ""));
-      setPriceUsd(item.price_usd !== undefined && item.price_usd !== null ? String(item.price_usd) : (item.price ? String(item.price) : ""));
+      setPrice(item.price !== undefined && item.price !== null ? String(item.price) : "");
+      setCurrency(item.currency === "USD" ? "USD" : "TRY");
       setError("");
     }
   }, [item, isOpen]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const numTRY = parseFloat(priceTry);
-    const numUSD = parseFloat(priceUsd);
+    const numPrice = parseFloat(price);
 
-    if (isNaN(numTRY) || numTRY < 0 || isNaN(numUSD) || numUSD < 0) {
-      setError("Please enter valid prices for both Turkish Lira (₺) and US Dollars ($).");
+    if (isNaN(numPrice) || numPrice < 0) {
+      setError("Please enter a valid non-negative price.");
       return;
     }
 
     try {
       setLoading(true);
-      await onSave(item.id, numTRY, numUSD);
+      await onSave(item.id, numPrice, currency);
       onClose();
     } catch (err) {
       setError(err.message || "Failed to update price");
@@ -63,37 +62,29 @@ export function QuickEditPriceModal({
 
         <div className="grid grid-cols-2 gap-3">
           <Input
-            label={t("priceTRY")}
+            label={t("fieldPrice")}
             type="number"
-            step="1"
+            step="0.50"
             min="0"
-            value={priceTry}
-            onChange={(e) => {
-              const val = e.target.value;
-              setPriceTry(val);
-              if (val && !isNaN(parseFloat(val))) {
-                setPriceUsd((parseFloat(val) / 35).toFixed(2));
-              }
-            }}
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
             autoFocus
             required
           />
 
-          <Input
-            label={t("priceUSD")}
-            type="number"
-            step="0.50"
-            min="0"
-            value={priceUsd}
-            onChange={(e) => {
-              const val = e.target.value;
-              setPriceUsd(val);
-              if (val && !isNaN(parseFloat(val))) {
-                setPriceTry((parseFloat(val) * 35).toFixed(0));
-              }
-            }}
-            required
-          />
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+              {t("fieldCurrency")}
+            </label>
+            <select
+              value={currency}
+              onChange={(e) => setCurrency(e.target.value)}
+              className="w-full bg-[#131b2a] border border-slate-800 hover:border-slate-700 text-slate-100 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500/80 font-bold"
+            >
+              <option value="TRY" className="bg-[#161f30] text-slate-100">₺ TRY</option>
+              <option value="USD" className="bg-[#161f30] text-slate-100">$ USD</option>
+            </select>
+          </div>
         </div>
 
         <div className="flex justify-end gap-2.5 pt-3 border-t border-slate-800">

@@ -83,7 +83,7 @@ export function LoginPage() {
           {/* Brand Header */}
           <div className="text-center space-y-2">
             <div className="w-14 h-14 rounded-2xl bg-[#131b2a] border border-amber-500/30 flex items-center justify-center p-2.5 mx-auto shadow-amber-glow">
-              <img src={logoSvg} alt="TUI Blue Logo" className="w-full h-full" />
+              <img src={logoSvg} alt="TUI BLUE Logo" className="w-full h-full" />
             </div>
             <h2 className="font-outfit font-extrabold text-2xl text-white">
               {t('adminLoginTitle')}
@@ -162,7 +162,7 @@ export function LoginPage() {
 
       {/* Footer */}
       <footer className="p-4 text-center text-xs text-slate-500 z-10">
-        TUI BLUE Sensatori • Secure Admin Suite
+        TUI BLUE • Secure Admin Suite
       </footer>
     </div>
   );

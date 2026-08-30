@@ -131,9 +131,9 @@ export function AdminDashboard() {
     }
   };
 
-  const handleQuickSavePrice = async (itemId, newPriceTRY, newPriceUSD) => {
+  const handleQuickSavePrice = async (itemId, newPrice, newCurrency) => {
     try {
-      await quickUpdatePrice(itemId, newPriceTRY, newPriceUSD);
+      await quickUpdatePrice(itemId, newPrice, newCurrency);
       success(t("toastPriceUpdated"));
     } catch (err) {
       toastError(err.message || t("toastError"));
@@ -168,7 +168,7 @@ export function AdminDashboard() {
             <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#131b2a] border border-amber-500/30 flex items-center justify-center p-1.5 shadow-amber-glow flex-shrink-0">
               <img
                 src={logoSvg}
-                alt="TUI Blue Logo"
+                alt="TUI BLUE Logo"
                 className="w-full h-full"
               />
             </div>

@@ -1,12 +1,12 @@
 /**
  * ============================================================================
- * SENTINEL TEST SUITE - TUI BLUE SENSATORI DIGITAL BEVERAGE MENU & ADMIN
- * Automated Verification: i18n, Dual-Image Engine, State Consistency, Filters
+ * SENTINEL TEST SUITE - TUI BLUE BEVERAGE MENU & ADMIN
+ * Automated Verification: i18n, Dual-Image Engine, Single Currency Pricing, Filters
  * ============================================================================
  */
 
 import { mockCategories, mockMenuItems } from '../utils/mockData.js';
-import { translations, supportedLanguages } from '../utils/translations.js';
+import { translations, supportedLanguages, formatItemPrice } from '../utils/translations.js';
 
 let passedTests = 0;
 let failedTests = 0;
@@ -50,6 +50,7 @@ testSection('Mock Data Schema & Required Fields Integrity', () => {
     assert(item.id && typeof item.id === 'string', `Item ${item.id} has valid ID`);
     assert(item.category_id, `Item ${item.id} is linked to a valid category`);
     assert(typeof item.price === 'number' && item.price >= 0, `Item ${item.id} has non-negative price (${item.price})`);
+    assert(['TRY', 'USD'].includes(item.currency), `Item ${item.id} has valid currency (${item.currency})`);
     assert(item.title_en && item.title_tr, `Item ${item.id} has English & Turkish titles`);
     assert(typeof item.is_available === 'boolean', `Item ${item.id} has boolean availability`);
     assert(typeof item.is_alcoholic === 'boolean', `Item ${item.id} has boolean alcoholic flag`);
@@ -57,8 +58,8 @@ testSection('Mock Data Schema & Required Fields Integrity', () => {
   });
 });
 
-// 2. Multilingual Translations & Supported Languages Tests
-testSection('4-Language Localization & Translation Completeness', () => {
+// 2. Multilingual Translations & Brand Integrity Tests
+testSection('4-Language Localization & Brand Integrity', () => {
   const langCodes = supportedLanguages.map((l) => l.code);
   assert(langCodes.includes('tr'), 'Supports Turkish (TR)');
   assert(langCodes.includes('en'), 'Supports English (EN)');
@@ -88,15 +89,24 @@ testSection('4-Language Localization & Translation Completeness', () => {
   ['tr', 'en', 'ru', 'de'].forEach((lang) => {
     const dict = translations[lang];
     assert(Boolean(dict), `Translation dictionary exists for '${lang}'`);
+    assert(dict.brandTitle === 'TUI BLUE', `Brand title for '${lang}' is strictly 'TUI BLUE'`);
+    assert(!dict.brandSubtitle.includes('Digital') && !dict.brandSubtitle.includes('Dijital') && !dict.brandSubtitle.includes('Цифровое'), `Subtitle for '${lang}' does not contain 'Digital'`);
     requiredKeys.forEach((key) => {
       assert(Boolean(dict[key]), `Dictionary '${lang}' contains key '${key}'`);
     });
   });
 });
 
-// 3. Dual-Image Slot Versioning & Rollback Pointer Logic Simulation
+// 3. Price Formatting & Single Currency Logic Tests
+testSection('Single Currency Price Formatting Resolution', () => {
+  assert(formatItemPrice(250, 'TRY') === '₺250', 'Format 250 TRY -> ₺250');
+  assert(formatItemPrice(16.5, 'USD') === '$16.50', 'Format 16.5 USD -> $16.50');
+  assert(formatItemPrice(0, 'TRY') === '₺0', 'Format 0 TRY -> ₺0');
+  assert(formatItemPrice(12, 'USD') === '$12.00', 'Format 12 USD -> $12.00');
+});
+
+// 4. Dual-Image Slot Versioning & Rollback Pointer Logic Simulation
 testSection('Dual-Image Slot Versioning & Rollback Lifecycle', () => {
-  // Simulate an item with initial upload
   let item = {
     id: 'test-item-01',
     current_image_url: 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b',
@@ -106,7 +116,6 @@ testSection('Dual-Image Slot Versioning & Rollback Lifecycle', () => {
   assert(item.current_image_url !== null, 'Initial upload: current_image_url is populated');
   assert(item.previous_image_url === null, 'Initial upload: previous_image_url is null');
 
-  // Second Upload: New image arrives
   const secondUploadUrl = 'https://images.unsplash.com/photo-1551024709-8f23befc6f87';
   let shiftedPrevious = item.current_image_url;
   let newCurrent = secondUploadUrl;
@@ -119,7 +128,6 @@ testSection('Dual-Image Slot Versioning & Rollback Lifecycle', () => {
   assert(item.current_image_url === secondUploadUrl, 'Second upload: current_image_url points to new image');
   assert(item.previous_image_url === 'https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b', 'Second upload: previous_image_url holds 1st image as backup');
 
-  // Third Upload: Replacing again
   const thirdUploadUrl = 'https://images.unsplash.com/photo-1536935338788-846bb9981813';
   const oldBackupToBeDeleted = item.previous_image_url;
   shiftedPrevious = item.current_image_url;
@@ -134,7 +142,6 @@ testSection('Dual-Image Slot Versioning & Rollback Lifecycle', () => {
   assert(item.current_image_url === thirdUploadUrl, 'Third upload: current_image_url points to 3rd image');
   assert(item.previous_image_url === secondUploadUrl, 'Third upload: previous_image_url holds 2nd image');
 
-  // Instant Rollback Pointer Swap
   const rollbackCurrent = item.previous_image_url;
   const rollbackPrevious = item.current_image_url;
   item = {
@@ -147,35 +154,29 @@ testSection('Dual-Image Slot Versioning & Rollback Lifecycle', () => {
   assert(item.previous_image_url === thirdUploadUrl, 'Rollback: previous_image_url now holds 3rd image');
 });
 
-// 4. Menu Filtering, Multilingual Search & Stop-List Logic
+// 5. Menu Filtering, Multilingual Search & Stop-List Logic
 testSection('Menu Search & Filter Query Resolution', () => {
-  // Test Category filter
   const sigCocktails = mockMenuItems.filter((i) => i.category_id === 'cat-01-signature');
   assert(sigCocktails.length >= 3, `Category filter found ${sigCocktails.length} signature cocktails`);
 
-  // Test Alcoholic / Non-Alcoholic filter
   const nonAlcoholicItems = mockMenuItems.filter((i) => !i.is_alcoholic);
   assert(nonAlcoholicItems.length >= 4, `Dietary filter found ${nonAlcoholicItems.length} non-alcoholic beverages`);
 
-  // Test Multilingual search: English query
   const macallanSearch = mockMenuItems.filter((i) =>
     i.title_en.toLowerCase().includes('macallan') || i.title_tr.toLowerCase().includes('macallan')
   );
   assert(macallanSearch.length >= 1, `Search for 'macallan' returned ${macallanSearch.length} item(s)`);
 
-  // Test Multilingual search: Russian title match
   const russianSearch = mockMenuItems.filter((i) =>
     i.title_ru && i.title_ru.includes('Макаллан')
   );
   assert(russianSearch.length >= 1, `Russian search for 'Макаллан' returned ${russianSearch.length} item(s)`);
 
-  // Test Multilingual search: German title match
   const germanSearch = mockMenuItems.filter((i) =>
     i.title_de && i.title_de.includes('Bernstein')
   );
   assert(germanSearch.length >= 1, `German search for 'Bernstein' returned ${germanSearch.length} item(s)`);
 
-  // Test Stop-List toggle simulation
   const targetItem = { ...mockMenuItems[0], is_available: true };
   const toggledItem = { ...targetItem, is_available: !targetItem.is_available };
   assert(toggledItem.is_available === false, 'Stop-List toggle correctly flags item as unavailable');

@@ -1,5 +1,5 @@
 -- ============================================================================
--- TUI BLUE SENSATORI - HOTEL BAR DIGITAL BEVERAGE MENU & ADMIN CONTROL SUITE
+-- TUI BLUE - HOTEL BAR BEVERAGE MENU & ADMIN CONTROL SUITE
 -- SUPABASE POSTGRESQL MIGRATION & RLS POLICIES
 -- ============================================================================
 
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS categories (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
--- 3. Menu Items Table (Beverages with 4 Languages, Dual Currency TRY & USD, and Dual-Image Slots)
+-- 3. Menu Items Table (Beverages with 4 Languages, Single Configurable Currency TRY or USD, and Dual-Image Slots)
 CREATE TABLE IF NOT EXISTS menu_items (
   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   category_id UUID REFERENCES categories(id) ON DELETE CASCADE,
@@ -30,9 +30,8 @@ CREATE TABLE IF NOT EXISTS menu_items (
   description_en TEXT,
   description_ru TEXT,
   description_de TEXT,
-  price_try NUMERIC(10, 2) NOT NULL DEFAULT 0.00,
-  price_usd NUMERIC(10, 2) NOT NULL DEFAULT 0.00,
-  price NUMERIC(10, 2) DEFAULT 0.00, -- legacy fallback field
+  price NUMERIC(10, 2) NOT NULL DEFAULT 0.00,
+  currency TEXT NOT NULL DEFAULT 'TRY',
   volume_ml INT,
   abv NUMERIC(4, 1) DEFAULT 0.0,
   is_alcoholic BOOLEAN DEFAULT TRUE,

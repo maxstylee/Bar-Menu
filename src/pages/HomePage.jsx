@@ -54,7 +54,7 @@ export function HomePage() {
             <div className="w-10 h-10 rounded-xl bg-[#131b2a] border border-amber-500/30 flex items-center justify-center p-1.5 shadow-amber-glow">
               <img
                 src={logoSvg}
-                alt="TUI Blue Logo"
+                alt="TUI BLUE Logo"
                 className="w-full h-full"
               />
             </div>
@@ -96,16 +96,8 @@ export function HomePage() {
         <div className="max-w-4xl mx-auto text-center relative z-10 space-y-3">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/25 text-amber-300 text-xs font-semibold tracking-wide">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Sensatori Premium Collection</span>
+            <span>TUI BLUE Premium Collection</span>
           </div>
-
-          <h2 className="font-outfit font-extrabold text-2xl sm:text-4xl text-white tracking-tight leading-tight">
-            {t("heroHeadline")}
-          </h2>
-
-          <p className="text-xs sm:text-sm text-slate-400 max-w-2xl mx-auto leading-relaxed">
-            {t("heroTagline")}
-          </p>
 
           {/* Quick Highlights Bar */}
           <div className="pt-2 flex items-center justify-center gap-4 sm:gap-8 text-slate-400 text-xs font-medium flex-wrap">
@@ -212,11 +204,11 @@ export function HomePage() {
           <div className="flex items-center gap-2">
             <span className="font-bold text-slate-200">{t("brandTitle")}</span>
             <span>•</span>
-            <span>Sensatori Bar & Lounge</span>
+            <span>TUI BLUE Bar & Lounge</span>
           </div>
 
           <div className="flex items-center gap-4 text-slate-500">
-            <span>Dual-Currency (₺ TRY / $ USD)</span>
+            <span>Configurable Pricing (₺ TRY / $ USD)</span>
             <span>•</span>
             <span>4 Languages (TR / EN / RU / DE)</span>
             <span>•</span>

@@ -278,19 +278,19 @@ export function useMenu() {
   };
 
   /**
-   * Fast inline price adjustment for Dual Currency (TRY & USD)
+   * Fast inline price & currency adjustment
    */
-  const quickUpdatePrice = async (itemId, newPriceTRY, newPriceUSD) => {
-    const parsedTRY = parseFloat(newPriceTRY);
-    const parsedUSD = parseFloat(newPriceUSD);
-
-    const price_try = !isNaN(parsedTRY) && parsedTRY >= 0 ? parsedTRY : 0;
-    const price_usd = !isNaN(parsedUSD) && parsedUSD >= 0 ? parsedUSD : 0;
+  const quickUpdatePrice = async (itemId, newPrice, newCurrency = 'TRY') => {
+    const parsedPrice = parseFloat(newPrice);
+    if (isNaN(parsedPrice) || parsedPrice < 0) {
+      throw new Error('Invalid price value');
+    }
+    const currency = newCurrency === 'USD' ? 'USD' : 'TRY';
 
     if (isSupabaseConfigured && supabase) {
       const { error } = await supabase
         .from('menu_items')
-        .update({ price_try, price_usd, price: price_usd })
+        .update({ price: parsedPrice, currency })
         .eq('id', itemId);
 
       if (error) throw error;
@@ -298,7 +298,7 @@ export function useMenu() {
 
     setItems((prev) => {
       const updated = prev.map((i) =>
-        i.id === itemId ? { ...i, price_try, price_usd, price: price_usd } : i
+        i.id === itemId ? { ...i, price: parsedPrice, currency } : i
       );
       saveLocalMenuItems(updated);
       return updated;

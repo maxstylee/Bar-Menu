@@ -1,5 +1,6 @@
 import React from "react";
 import { useLanguage } from "../../context/LanguageContext";
+import { formatItemPrice } from "../../utils/translations";
 import { Badge, VolumeBadge } from "../common/Badge";
 import {
   Edit3,
@@ -61,9 +62,6 @@ export function AdminBeverageTable({
               const isAvailable = item.is_available !== false;
               const hasBackupImage = Boolean(item.previous_image_url);
 
-              const priceTry = item.price_try !== undefined && item.price_try !== null ? item.price_try : Math.round((item.price || 0) * 35);
-              const priceUsd = item.price_usd !== undefined && item.price_usd !== null ? item.price_usd : (item.price || 0);
-
               return (
                 <tr
                   key={item.id}
@@ -116,16 +114,14 @@ export function AdminBeverageTable({
                     </Badge>
                   </td>
 
-                  {/* Dual Price (TRY ₺ & USD $) with Quick Edit Trigger */}
+                  {/* Price with Quick Edit Trigger */}
                   <td className="py-3 px-4 whitespace-nowrap">
                     <button
                       onClick={() => onQuickEditPrice(item)}
-                      className="group/price flex items-center gap-2 px-2.5 py-1 rounded-lg bg-[#131b2a] hover:bg-amber-500/10 border border-slate-800 hover:border-amber-500/40 transition-all text-xs font-bold"
-                      title="Click to quick-edit prices"
+                      className="group/price flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-[#131b2a] hover:bg-amber-500/10 border border-slate-800 hover:border-amber-500/40 text-amber-400 font-extrabold text-sm transition-all"
+                      title="Click to quick-edit price and currency"
                     >
-                      <span className="text-amber-400">₺{Number(priceTry).toFixed(0)}</span>
-                      <span className="text-slate-600">/</span>
-                      <span className="text-emerald-400">${Number(priceUsd).toFixed(2)}</span>
+                      <span>{formatItemPrice(item.price, item.currency)}</span>
                       <Edit3 className="w-3 h-3 text-slate-500 group-hover/price:text-amber-400 opacity-0 group-hover/price:opacity-100 transition-opacity" />
                     </button>
                   </td>

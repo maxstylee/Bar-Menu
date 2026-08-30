@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLanguage } from "../../context/LanguageContext";
+import { formatItemPrice } from "../../utils/translations";
 import { VolumeBadge, Badge } from "../common/Badge";
 import { AlertCircle, Eye, Sparkles } from "lucide-react";
 
@@ -11,9 +12,6 @@ export function MenuCard({ item, onClick }) {
   const title = getLocalizedField(item, "title");
   const description = getLocalizedField(item, "description");
   const isAvailable = item.is_available !== false;
-
-  const priceTry = item.price_try !== undefined && item.price_try !== null ? item.price_try : Math.round((item.price || 0) * 35);
-  const priceUsd = item.price_usd !== undefined && item.price_usd !== null ? item.price_usd : (item.price || 0);
 
   // Fallback placeholder image if Unsplash fails
   const fallbackImage =
@@ -100,13 +98,11 @@ export function MenuCard({ item, onClick }) {
           )}
         </div>
 
-        {/* Bottom Dual Price (TRY & USD) & Tags Section */}
+        {/* Bottom Single Price & Tags Section */}
         <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
-          {/* Dual Currency Price Badge */}
-          <div className="flex items-baseline gap-1.5 font-outfit font-extrabold text-base sm:text-lg tracking-tight">
-            <span className="text-amber-400">₺{Number(priceTry).toFixed(0)}</span>
-            <span className="text-slate-600 font-normal text-xs">/</span>
-            <span className="text-emerald-400">${Number(priceUsd).toFixed(2)}</span>
+          {/* Single Price Badge configured by Admin */}
+          <div className="font-outfit font-extrabold text-lg sm:text-xl text-amber-400 tracking-tight">
+            {formatItemPrice(item.price, item.currency)}
           </div>
 
           {/* First tag or category hint */}

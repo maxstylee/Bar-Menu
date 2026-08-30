@@ -1,5 +1,5 @@
 /**
- * Multilingual Translation Dictionaries for TUI BLUE Sensatori Digital Bar Menu
+ * Multilingual Translation Dictionaries for TUI BLUE Bar Menu
  * Supported Languages: Turkish ('tr'), English ('en'), Russian ('ru'), German ('de')
  */
 
@@ -10,11 +10,19 @@ export const supportedLanguages = [
   { code: 'de', name: 'Deutsch', label: 'DE' },
 ];
 
+export function formatItemPrice(price, currency = 'TRY') {
+  const num = Number(price) || 0;
+  if (currency === 'USD') {
+    return `$${num.toFixed(2)}`;
+  }
+  return `₺${num.toFixed(0)}`;
+}
+
 export const translations = {
   tr: {
     // Branding & Header
-    brandTitle: 'TUI BLUE Sensatori',
-    brandSubtitle: 'Lounge & Bar Dijital Menü',
+    brandTitle: 'TUI BLUE',
+    brandSubtitle: 'Lounge & Bar Menü',
     adminPanel: 'Yönetim Paneli',
     guestMenu: 'Misafir Menüsü',
     login: 'Giriş Yap',
@@ -22,8 +30,6 @@ export const translations = {
     welcomeAdmin: 'Hoş Geldiniz, Yönetici',
 
     // Hero Section
-    heroHeadline: 'Seçkin İçecekler & Kusursuz Atmosfer',
-    heroTagline: 'Usta barmenlerimizin elinden çıkan imza kokteyller, yıllanmış viskiler ve seçkin şarap koleksiyonu.',
     allDrinks: 'Tüm İçecekler',
     alcoholic: 'Alkollü',
     nonAlcoholic: 'Alkolsüz & Mocktail',
@@ -39,8 +45,7 @@ export const translations = {
     tastingNotes: 'Tat Profili & İçerikler',
     ingredients: 'İçerik Detayları',
     price: 'Fiyat',
-    priceTRY: 'Fiyat (₺ TRY)',
-    priceUSD: 'Fiyat ($ USD)',
+    currency: 'Para Birimi',
     close: 'Kapat',
     viewDetails: 'Detayları Gör',
 
@@ -65,7 +70,7 @@ export const translations = {
     colImage: 'Görsel',
     colTitle: 'İçecek Adı',
     colCategory: 'Kategori',
-    colPrice: 'Fiyat (₺ / $)',
+    colPrice: 'Fiyat',
     colVolume: 'Hacim / Alkol',
     colStatus: 'Durum',
     colActions: 'İşlemler',
@@ -89,8 +94,8 @@ export const translations = {
 
     // Form Fields
     fieldCategory: 'Kategori Seçiniz',
-    fieldPriceTRY: 'Fiyat (₺ TRY)',
-    fieldPriceUSD: 'Fiyat ($ USD)',
+    fieldPrice: 'Fiyat',
+    fieldCurrency: 'Para Birimi',
     fieldVolume: 'Hacim (ml)',
     fieldAbv: 'Alkol Oranı (% ABV)',
     fieldIsAlcoholic: 'Alkollü İçecek',
@@ -105,7 +110,7 @@ export const translations = {
 
     // Auth & Login
     adminLoginTitle: 'Yönetici Girişi',
-    adminLoginSubtitle: 'TUI BLUE Sensatori Bar Yönetim Sistemine erişmek için kimliğinizi doğrulayın.',
+    adminLoginSubtitle: 'TUI BLUE Bar Yönetim Sistemine erişmek için kimliğinizi doğrulayın.',
     emailLabel: 'E-posta Adresi',
     passwordLabel: 'Şifre',
     signInButton: 'Giriş Yap',
@@ -127,8 +132,8 @@ export const translations = {
 
   en: {
     // Branding & Header
-    brandTitle: 'TUI BLUE Sensatori',
-    brandSubtitle: 'Lounge & Bar Digital Menu',
+    brandTitle: 'TUI BLUE',
+    brandSubtitle: 'Lounge & Bar Menu',
     adminPanel: 'Admin Control Panel',
     guestMenu: 'Guest Menu',
     login: 'Sign In',
@@ -136,8 +141,6 @@ export const translations = {
     welcomeAdmin: 'Welcome, Bar Manager',
 
     // Hero Section
-    heroHeadline: 'Exquisite Libations & Ambient Luxury',
-    heroTagline: 'Curated mixology, artisanal spirits, and aged cellar wines crafted for memorable evenings.',
     allDrinks: 'All Beverages',
     alcoholic: 'Alcoholic',
     nonAlcoholic: 'Non-Alcoholic & Mocktails',
@@ -153,8 +156,7 @@ export const translations = {
     tastingNotes: 'Tasting Notes & Profile',
     ingredients: 'Detailed Ingredients',
     price: 'Price',
-    priceTRY: 'Price (₺ TRY)',
-    priceUSD: 'Price ($ USD)',
+    currency: 'Currency',
     close: 'Close',
     viewDetails: 'View Details',
 
@@ -179,7 +181,7 @@ export const translations = {
     colImage: 'Image',
     colTitle: 'Beverage Name',
     colCategory: 'Category',
-    colPrice: 'Price (₺ / $)',
+    colPrice: 'Price',
     colVolume: 'Volume / ABV',
     colStatus: 'Status',
     colActions: 'Actions',
@@ -203,8 +205,8 @@ export const translations = {
 
     // Form Fields
     fieldCategory: 'Select Category',
-    fieldPriceTRY: 'Price (₺ TRY)',
-    fieldPriceUSD: 'Price ($ USD)',
+    fieldPrice: 'Price',
+    fieldCurrency: 'Currency',
     fieldVolume: 'Volume (ml)',
     fieldAbv: 'Alcohol Content (% ABV)',
     fieldIsAlcoholic: 'Contains Alcohol',
@@ -219,7 +221,7 @@ export const translations = {
 
     // Auth & Login
     adminLoginTitle: 'Admin Authentication',
-    adminLoginSubtitle: 'Verify your credentials to access the TUI BLUE Sensatori Beverage Management System.',
+    adminLoginSubtitle: 'Verify your credentials to access the TUI BLUE Beverage Management System.',
     emailLabel: 'Email Address',
     passwordLabel: 'Password',
     signInButton: 'Sign In to Dashboard',
@@ -241,8 +243,8 @@ export const translations = {
 
   ru: {
     // Branding & Header
-    brandTitle: 'TUI BLUE Sensatori',
-    brandSubtitle: 'Цифровое меню лаундж-бара',
+    brandTitle: 'TUI BLUE',
+    brandSubtitle: 'Меню лаундж-бара',
     adminPanel: 'Панель управления',
     guestMenu: 'Меню для гостей',
     login: 'Вход для персонала',
@@ -250,8 +252,6 @@ export const translations = {
     welcomeAdmin: 'Добро пожаловать, Управляющий баром',
 
     // Hero Section
-    heroHeadline: 'Изысканные напитки и атмосфера роскоши',
-    heroTagline: 'Авторские коктейли от наших миксологов, элитный выдержанный виски и винный погреб для незабываемых вечеров.',
     allDrinks: 'Все напитки',
     alcoholic: 'Алкогольные',
     nonAlcoholic: 'Безалкогольные и моктейли',
@@ -267,8 +267,7 @@ export const translations = {
     tastingNotes: 'Вкусовой профиль и ноты',
     ingredients: 'Подробный состав',
     price: 'Цена',
-    priceTRY: 'Цена (₺ TRY)',
-    priceUSD: 'Цена ($ USD)',
+    currency: 'Валюта',
     close: 'Закрыть',
     viewDetails: 'Подробнее',
 
@@ -293,7 +292,7 @@ export const translations = {
     colImage: 'Фото',
     colTitle: 'Название напитка',
     colCategory: 'Категория',
-    colPrice: 'Цена (₺ / $)',
+    colPrice: 'Цена',
     colVolume: 'Объем / Крепость',
     colStatus: 'Статус',
     colActions: 'Действия',
@@ -317,8 +316,8 @@ export const translations = {
 
     // Form Fields
     fieldCategory: 'Выберите категорию',
-    fieldPriceTRY: 'Цена (₺ TRY)',
-    fieldPriceUSD: 'Цена ($ USD)',
+    fieldPrice: 'Цена',
+    fieldCurrency: 'Валюта',
     fieldVolume: 'Объем (мл)',
     fieldAbv: 'Крепость (% ABV)',
     fieldIsAlcoholic: 'Содержит алкоголь',
@@ -333,7 +332,7 @@ export const translations = {
 
     // Auth & Login
     adminLoginTitle: 'Авторизация администратора',
-    adminLoginSubtitle: 'Войдите в систему управления баром TUI BLUE Sensatori.',
+    adminLoginSubtitle: 'Войдите в систему управления баром TUI BLUE.',
     emailLabel: 'Электронная почта',
     passwordLabel: 'Пароль',
     signInButton: 'Войти в панель',
@@ -355,8 +354,8 @@ export const translations = {
 
   de: {
     // Branding & Header
-    brandTitle: 'TUI BLUE Sensatori',
-    brandSubtitle: 'Lounge & Bar Digitale Getränkekarte',
+    brandTitle: 'TUI BLUE',
+    brandSubtitle: 'Lounge & Bar Getränkekarte',
     adminPanel: 'Admin-Verwaltung',
     guestMenu: 'Gästekarte',
     login: 'Anmelden',
@@ -364,8 +363,6 @@ export const translations = {
     welcomeAdmin: 'Willkommen, Bar-Manager',
 
     // Hero Section
-    heroHeadline: 'Erlesene Getränke & Luxuriöses Ambiente',
-    heroTagline: 'Meisterhafte Signature-Cocktails, edle Single Malts und erlesene Jahrgangsweine für unvergessliche Abende.',
     allDrinks: 'Alle Getränke',
     alcoholic: 'Alkoholisch',
     nonAlcoholic: 'Alkoholfrei & Mocktails',
@@ -381,8 +378,7 @@ export const translations = {
     tastingNotes: 'Geschmacksprofil & Noten',
     ingredients: 'Detaillierte Zutaten',
     price: 'Preis',
-    priceTRY: 'Preis (₺ TRY)',
-    priceUSD: 'Preis ($ USD)',
+    currency: 'Währung',
     close: 'Schließen',
     viewDetails: 'Details ansehen',
 
@@ -407,7 +403,7 @@ export const translations = {
     colImage: 'Bild',
     colTitle: 'Getränkename',
     colCategory: 'Kategorie',
-    colPrice: 'Preis (₺ / $)',
+    colPrice: 'Preis',
     colVolume: 'Volumen / Vol.-%',
     colStatus: 'Status',
     colActions: 'Aktionen',
@@ -431,8 +427,8 @@ export const translations = {
 
     // Form Fields
     fieldCategory: 'Kategorie auswählen',
-    fieldPriceTRY: 'Preis (₺ TRY)',
-    fieldPriceUSD: 'Preis ($ USD)',
+    fieldPrice: 'Preis',
+    fieldCurrency: 'Währung',
     fieldVolume: 'Volumen (ml)',
     fieldAbv: 'Alkoholgehalt (% Vol.)',
     fieldIsAlcoholic: 'Enthält Alkohol',
@@ -447,7 +443,7 @@ export const translations = {
 
     // Auth & Login
     adminLoginTitle: 'Admin-Authentifizierung',
-    adminLoginSubtitle: 'Melden Sie sich an, um Zugriff auf das TUI BLUE Sensatori Barsystem zu erhalten.',
+    adminLoginSubtitle: 'Melden Sie sich an, um Zugriff auf das TUI BLUE Barsystem zu erhalten.',
     emailLabel: 'E-Mail-Adresse',
     passwordLabel: 'Passwort',
     signInButton: 'Anmelden',

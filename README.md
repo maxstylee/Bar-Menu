@@ -1,4 +1,4 @@
-# 🍸 TUI BLUE Sensatori — Luxury Digital Bar Menu & Admin Control Suite
+# 🍸 TUI BLUE — Luxury Bar Menu & Admin Control Suite
 
 [![React 18](https://img.shields.io/badge/React-18.3.1-blue.svg?logo=react)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-5.4.14-646CFF.svg?logo=vite)](https://vitejs.dev/)
@@ -6,7 +6,7 @@
 [![Supabase](https://img.shields.io/badge/Supabase-BaaS-3ECF8E.svg?logo=supabase)](https://supabase.com/)
 [![License](https://img.shields.io/badge/License-MIT-amber.svg)](#license)
 
-A state-of-the-art, responsive digital beverage menu and real-time administration portal designed specifically for luxury hotel bars and lounges (**TUI BLUE Sensatori**). Crafted with a dark lounge aesthetic, zero-latency client-side optimizations, 4-language i18n support, and dual-currency management (Turkish Lira ₺ & US Dollars $).
+A state-of-the-art, responsive beverage menu and real-time administration portal designed specifically for hotel bars and lounges (**TUI BLUE**). Crafted with a dark lounge aesthetic, zero-latency client-side optimizations, 4-language i18n support, and flexible item-level single currency pricing (Turkish Lira ₺ or US Dollars $).
 
 ---
 
@@ -14,14 +14,14 @@ A state-of-the-art, responsive digital beverage menu and real-time administratio
 
 ### 🍹 Guest Lounge Experience
 * **Dark Luxury Aesthetic:** Immersive `#0c1017` dark lounge theme with warm amber accents, glassmorphic card containers, and smooth micro-interactions.
-* **Dual Currency Display (TRY ₺ & USD $):** Displays real-time dual prices on drink cards and detail modals (`₺650 / $18.50`) for international hotel guests.
+* **Configurable Item Currency (TRY ₺ / USD $):** Displays the exact single price and currency configured by the Admin for each item (e.g., `₺250` or `$16.00`).
 * **4-Language i18n Engine:** Native instant switching between **Turkish (TR)**, **English (EN)**, **Russian (RU)**, and **German (DE)** without page reloads.
 * **Instant Multilingual Search & Filtering:** Filter by Category (*Signature Cocktails, Single Malts, Craft Beers, Mocktails, Hot Teas/Coffees*), Alcoholic vs. Non-Alcoholic, or instant search across titles, tasting notes, and tags in all 4 languages.
 * **Interactive Beverage Detail Modals:** Displays ABV content, liquid volume (ml), tasting profile notes, and dietary tags.
 * **Zero CLS & Optimized Layout:** Pre-computed 4:3 aspect ratio image containers prevent layout shifts during image loading.
 
 ### 🛡️ Admin Management Suite
-* **Inline Quick Price Adjuster:** Single-click price updates for both Turkish Lira (₺) and US Dollars ($) directly from the table.
+* **Inline Quick Price & Currency Adjuster:** Single-click price and currency (`TRY` or `USD`) updates directly from the table.
 * **Instant Stop-List (Availability Toggle):** Mark any beverage out of stock with 1-click; updates the guest menu immediately.
 * **Dual-Slot Image Management & Rollback:**
   * **Automatic Client-Side Compression:** Images uploaded by staff are compressed to ultra-fast `<200KB` payloads before storage.
@@ -61,8 +61,8 @@ Tui Blue/
 │   │   │   ├── AdminBeverageTable.jsx   # Interactive management table
 │   │   │   ├── DeleteConfirmModal.jsx   # Deletion safety modal
 │   │   │   ├── DualImageUploader.jsx    # Dual-slot image engine & uploader
-│   │   │   ├── ItemFormModal.jsx        # Dual-currency & 4-language add/edit modal
-│   │   │   └── QuickEditPriceModal.jsx  # Inline dual-price editor
+│   │   │   ├── ItemFormModal.jsx        # Single-currency & 4-language add/edit modal
+│   │   │   └── QuickEditPriceModal.jsx  # Inline price & currency editor
 │   │   ├── common/
 │   │   │   ├── Badge.jsx                # Volume & status badges
 │   │   │   ├── Button.jsx               # Reusable styled buttons
@@ -74,7 +74,7 @@ Tui Blue/
 │   │       ├── CategoryTabs.jsx         # Horizontal category tab navigation
 │   │       ├── DrinkDetailModal.jsx     # Detailed tasting note modal
 │   │       ├── FilterPills.jsx          # Alcoholic / Non-Alcoholic pills
-│   │       ├── MenuCard.jsx             # Dual-currency beverage card
+│   │       ├── MenuCard.jsx             # Beverage card
 │   │       └── SearchBar.jsx            # Real-time search input
 │   ├── context/
 │   │   ├── AuthContext.jsx          # Admin authentication & demo admin mode
@@ -84,7 +84,7 @@ Tui Blue/
 │   │   └── useMenu.js               # Menu CRUD, filtering & image versioning hook
 │   ├── pages/
 │   │   ├── AdminDashboard.jsx       # Main admin management suite
-│   │   ├── HomePage.jsx             # Public guest digital bar menu
+│   │   ├── HomePage.jsx             # Public guest bar menu
 │   │   └── LoginPage.jsx            # Admin sign-in screen
 │   ├── routes/
 │   │   └── ProtectedRoute.jsx       # Auth route guard
@@ -93,7 +93,7 @@ Tui Blue/
 │   ├── utils/
 │   │   ├── imageCompressor.js       # Client-side image canvas compressor
 │   │   ├── mockData.js              # Initial realistic hotel bar dataset
-│   │   └── translations.js          # 4-Language dictionaries & metadata
+│   │   └── translations.js          # 4-Language dictionaries & price formatter
 │   ├── App.jsx                      # App router configuration
 │   ├── index.css                    # Tailwind CSS base styles & scrollbar setup
 │   └── main.jsx                     # React DOM root entry
