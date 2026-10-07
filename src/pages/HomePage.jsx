@@ -1,34 +1,34 @@
-import React, { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useMemo, useEffect } from "react";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { TuiLogo } from "../components/common/TuiLogo";
 import { useMenu } from "../hooks/useMenu";
 import { useLanguage } from "../context/LanguageContext";
 import { useAuth } from "../context/AuthContext";
-import { FilterPills } from "../components/menu/FilterPills";
 import { MenuCard } from "../components/menu/MenuCard";
 import { DrinkDetailModal } from "../components/menu/DrinkDetailModal";
 import { LanguageSwitcher } from "../components/common/LanguageSwitcher";
 import { WeatherHeaderWidget, WeatherBadge } from "../components/common/WeatherIndicator";
 import { CategoryIconRenderer } from "../components/common/CategoryIcons";
 import { resolveAssetUrl } from "../utils/assetHelper";
+import { CATEGORY_SUBCATEGORIES } from "../utils/mockData";
 import {
   Search,
   ArrowLeft,
+  ArrowUp,
   X,
   ShieldCheck,
-  Sparkles,
 } from "lucide-react";
 
 export function HomePage() {
+  const { categoryId: urlCategoryId } = useParams();
+  const navigate = useNavigate();
+
   const {
     categories,
     items,
-    filteredItems,
     loading,
     selectedCategory,
     setSelectedCategory,
-    subFilter,
-    setSubFilter,
     searchQuery,
     setSearchQuery,
   } = useMenu();
@@ -36,10 +36,10 @@ export function HomePage() {
   const { t, getLocalizedField } = useLanguage();
   const { isAuthenticated } = useAuth();
 
-  // Mobile navigation state: 'start' (Start Screen with arc & 4 circle categories) | 'list' (Menu List Screen)
-  const [mobileView, setMobileView] = useState("start");
+  // Mobile navigation view state: 'start' (Start Screen with arc & 4 circle categories) | 'list' (Category Detail continuous scroll)
+  const [mobileView, setMobileView] = useState(() => (urlCategoryId ? "list" : "start"));
 
-  // Selected beverage for modal inspection
+  // Selected beverage for detail modal inspection
   const [selectedDrink, setSelectedDrink] = useState(null);
 
   // Search bar expand state on mobile
@@ -47,6 +47,30 @@ export function HomePage() {
 
   // Active top navigation tab on desktop: 'beverages' | 'welcome'
   const [desktopNavTab, setDesktopNavTab] = useState("beverages");
+
+  // Floating Back to Top button visibility
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  // Listen for scroll to toggle Back to Top button
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 320);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Sync route param with selected category & mobile view
+  useEffect(() => {
+    if (urlCategoryId) {
+      if (categories.some((c) => c.id === urlCategoryId) && selectedCategory !== urlCategoryId) {
+        setSelectedCategory(urlCategoryId);
+      }
+      setMobileView("list");
+    } else {
+      setMobileView("start");
+    }
+  }, [urlCategoryId, categories, selectedCategory, setSelectedCategory]);
 
   // Find Featured Drink for the side widget & start screen (TUI Blue Special)
   const featuredItem = useMemo(() => {
@@ -60,22 +84,88 @@ export function HomePage() {
 
   // Active category object
   const activeCategoryObj = useMemo(() => {
-    return categories.find((c) => c.id === selectedCategory) || categories[0] || {
-      id: "cocktails",
-      name_en: "COCKTAILS",
-    };
+    return (
+      categories.find((c) => c.id === selectedCategory) ||
+      categories[0] || {
+        id: "tea-coffee",
+        name_en: "TEA and COFFEE",
+      }
+    );
   }, [categories, selectedCategory]);
 
   const activeCategoryTitle =
     getLocalizedField(activeCategoryObj, "name") ||
     activeCategoryObj.name_en ||
-    t("catCocktails");
+    t("catTeaCoffee") ||
+    "TEA and COFFEE";
 
-  // Handler for category selection
+  // Handlers for category selection
   const handleSelectCategory = (catId) => {
     setSelectedCategory(catId);
+    navigate(`/category/${catId}`);
     setMobileView("list");
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const handleBackToHome = () => {
+    navigate("/");
+    setMobileView("start");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // Determine subcategories for the active category in canonical order
+  const activeSubcategories = useMemo(() => {
+    if (!activeCategoryObj) return [];
+    const catId = activeCategoryObj.id;
+    const predefined = CATEGORY_SUBCATEGORIES[catId] || [];
+    const allInCat = items.filter((i) => i.category_id === catId);
+    const extra = [...new Set(allInCat.map((i) => i.subcategory))].filter(
+      (s) => s && !predefined.includes(s)
+    );
+    return [...predefined, ...extra];
+  }, [items, activeCategoryObj]);
+
+  // Group drinks belonging to the active category into distinct subcategory blocks
+  const subcategoryGroups = useMemo(() => {
+    if (!activeCategoryObj) return [];
+    const catId = activeCategoryObj.id;
+    const allInCat = items.filter((i) => i.category_id === catId);
+    const q = searchQuery.toLowerCase().trim();
+
+    return activeSubcategories
+      .map((subcatName) => {
+        let subcatDrinks = allInCat.filter((i) => i.subcategory === subcatName);
+
+        if (q) {
+          subcatDrinks = subcatDrinks.filter((item) => {
+            const matchTitle =
+              item.title_tr?.toLowerCase().includes(q) ||
+              item.title_en?.toLowerCase().includes(q) ||
+              item.title_ru?.toLowerCase().includes(q) ||
+              item.title_de?.toLowerCase().includes(q);
+            const matchDesc =
+              item.description_tr?.toLowerCase().includes(q) ||
+              item.description_en?.toLowerCase().includes(q) ||
+              item.description_ru?.toLowerCase().includes(q) ||
+              item.description_de?.toLowerCase().includes(q);
+            const matchTags =
+              Array.isArray(item.tags) && item.tags.some((tg) => tg.toLowerCase().includes(q));
+            return matchTitle || matchDesc || matchTags;
+          });
+        }
+
+        return {
+          name: subcatName,
+          items: subcatDrinks,
+        };
+      })
+      .filter((group) => group.items.length > 0 || !q);
+  }, [items, activeCategoryObj, activeSubcategories, searchQuery]);
+
+  // Total matching drinks across all subcategories in active category
+  const totalCategoryDrinks = useMemo(() => {
+    return subcategoryGroups.reduce((acc, g) => acc + g.items.length, 0);
+  }, [subcategoryGroups]);
 
   return (
     <div className="relative min-h-screen bg-[#070d16] text-slate-100 font-sans selection:bg-sky-500/30 selection:text-sky-200 overflow-x-hidden">
@@ -148,7 +238,7 @@ export function HomePage() {
                 )}
               </div>
 
-              {/* Multilingual Switcher: EN | DE | TR */}
+              {/* Multilingual Switcher: EN | DE | TR | RU */}
               <LanguageSwitcher variant="inline" />
 
               {/* Discreet Admin Suite Trigger */}
@@ -166,7 +256,7 @@ export function HomePage() {
         {/* Main Desktop Layout: Left Sidebar + Beverage Content */}
         <div className="relative z-10 max-w-7xl mx-auto w-full px-6 py-8 flex gap-10 flex-1">
           {/* 1. Left Sidebar: CATEGORIES & Featured Drink Card */}
-          <aside className="w-72 shrink-0 flex flex-col justify-between space-y-8">
+          <aside className="w-72 shrink-0 flex flex-col justify-between space-y-8 sticky top-24 self-start max-h-[calc(100vh-7rem)] overflow-y-auto no-scrollbar">
             <div className="space-y-4">
               <h2 className="text-[11px] font-extrabold tracking-widest text-slate-400 uppercase px-2 font-outfit">
                 {t("categories")}
@@ -181,7 +271,7 @@ export function HomePage() {
                   return (
                     <button
                       key={cat.id}
-                      onClick={() => setSelectedCategory(cat.id)}
+                      onClick={() => handleSelectCategory(cat.id)}
                       className={`w-full flex items-center gap-3.5 px-3 py-2.5 rounded-full transition-all text-left group cursor-pointer ${
                         isSelected
                           ? "bg-[#18283d]/80 border border-sky-400/50 shadow-[0_0_20px_rgba(56,189,248,0.22)] backdrop-blur-md"
@@ -253,11 +343,11 @@ export function HomePage() {
             )}
           </aside>
 
-          {/* 2. Main Content Area */}
+          {/* 2. Main Content Area: Continuous Scroll View with Subcategory Sections */}
           <main className="flex-1 min-w-0">
             {/* Header: Category Title + Subtitle */}
-            <div className="mb-6">
-              <h1 className="text-3xl lg:text-4xl font-black font-outfit uppercase tracking-tight text-white">
+            <div className="mb-8">
+              <h1 className="text-3xl lg:text-4xl font-black font-outfit uppercase tracking-tight text-white flex items-center gap-3">
                 {activeCategoryTitle}
               </h1>
               <p className="text-xs text-slate-400 mt-1 font-medium tracking-wide">
@@ -265,52 +355,84 @@ export function HomePage() {
               </p>
             </div>
 
-            {/* Filter Tabs: All | Included | Premium (Extra) | Signature */}
-            <div className="mb-6">
-              <FilterPills
-                currentFilter={subFilter}
-                onFilterChange={setSubFilter}
-              />
-            </div>
-
-            {/* Beverages Grid: 2 Columns matching Desktop Design */}
+            {/* Continuous Scroll View: Distinct Subcategory Blocks */}
             {loading ? (
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-                {[...Array(6)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="h-28 rounded-2xl bg-slate-800/40 border border-slate-700/30 animate-pulse"
-                  />
+              <div className="space-y-8">
+                {[...Array(3)].map((_, idx) => (
+                  <div key={idx} className="space-y-4">
+                    <div className="h-10 w-48 rounded-xl bg-slate-800/40 border border-slate-700/30 animate-pulse" />
+                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                      {[...Array(4)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="h-28 rounded-2xl bg-slate-800/40 border border-slate-700/30 animate-pulse"
+                        />
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
-            ) : filteredItems.length === 0 ? (
+            ) : totalCategoryDrinks === 0 ? (
               <div className="glass rounded-3xl p-12 text-center max-w-md mx-auto my-12 border border-slate-700/50">
                 <Search className="w-10 h-10 text-slate-500 mx-auto mb-3" />
                 <h3 className="text-base font-bold text-white font-outfit">
                   {t("noResultsFound")}
                 </h3>
                 <p className="text-xs text-slate-400 mt-1">
-                  Try clearing your search query or switching filters.
+                  Try clearing your search query.
                 </p>
                 <button
-                  onClick={() => {
-                    setSearchQuery("");
-                    setSubFilter("all");
-                  }}
+                  onClick={() => setSearchQuery("")}
                   className="mt-4 px-4 py-1.5 rounded-full bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs transition-colors"
                 >
                   {t("clearSearch")}
                 </button>
               </div>
             ) : (
-              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 animate-fade-in">
-                {filteredItems.map((item) => (
-                  <MenuCard
-                    key={item.id}
-                    item={item}
-                    onClick={(drink) => setSelectedDrink(drink)}
-                  />
-                ))}
+              <div className="space-y-10 animate-fade-in">
+                {subcategoryGroups.map((group) => {
+                  if (group.items.length === 0) return null;
+
+                  return (
+                    <section
+                      key={group.name}
+                      id={`subcat-${group.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+                      className="relative scroll-mt-24"
+                    >
+                      {/* Elegant Prominent Section Header with Subtle Divider Line */}
+                      <div className="sticky top-[72px] z-30 -mx-3 px-3 py-3 backdrop-blur-xl bg-[#070d16]/90 border-y border-slate-700/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] mb-4 transition-all">
+                        <div className="flex items-center justify-between gap-3">
+                          <div className="flex items-center gap-3 min-w-0">
+                            {/* Glowing Cyan/Sky Accent Indicator */}
+                            <span className="w-1.5 h-6 rounded-full bg-gradient-to-b from-sky-400 to-sky-600 shadow-[0_0_12px_rgba(56,189,248,0.7)] shrink-0" />
+                            
+                            {/* Subcategory Title */}
+                            <h2 className="font-outfit font-black text-lg xl:text-xl tracking-wider text-white uppercase drop-shadow-sm truncate">
+                              {group.name}
+                            </h2>
+                          </div>
+
+                          {/* Item Count Badge */}
+                          <span className="text-[11px] font-bold tracking-wider font-outfit uppercase px-2.5 py-0.5 rounded-full bg-[#101b2a] text-sky-300 border border-sky-400/30 shadow-[0_0_8px_rgba(56,189,248,0.2)] shrink-0">
+                            {group.items.length}{" "}
+                            {group.items.length === 1 ? (t("drink") || "Drink") : (t("drinks") || "Drinks")}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Drinks Grid: 2 Columns matching Desktop Design */}
+                      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 pb-2">
+                        {group.items.map((item) => (
+                          <MenuCard
+                            key={item.id}
+                            item={item}
+                            onClick={(drink) => setSelectedDrink(drink)}
+                          />
+                        ))}
+                      </div>
+                    </section>
+                  );
+                })}
               </div>
             )}
           </main>
@@ -414,7 +536,7 @@ export function HomePage() {
         )}
 
         {/* ================================================================== */}
-        {/* VIEW B: MOBILE MENU LIST SCREEN                                    */}
+        {/* VIEW B: MOBILE DEDICATED CATEGORY DETAIL CONTINUOUS SCROLL SCREEN  */}
         {/* ================================================================== */}
         {mobileView === "list" && (
           <div className="relative min-h-screen flex flex-col bg-[#070d16]">
@@ -425,20 +547,20 @@ export function HomePage() {
             />
             <div className="fixed inset-0 bg-gradient-to-b from-[#070d16]/90 via-[#070d16]/85 to-[#070d16] pointer-events-none" />
 
-            {/* Sticky Mobile Header (matching tuiblue list design for mobile devices.png) */}
-            <header className="sticky top-0 z-40 backdrop-blur-xl bg-[#09111c]/85 border-b border-slate-800/80">
+            {/* Sticky Mobile Header (Back Button, Title, Search, TUI Logo Badge) */}
+            <header className="sticky top-0 z-40 backdrop-blur-xl bg-[#09111c]/90 border-b border-slate-800/80">
               <div className="px-4 h-16 flex items-center justify-between gap-3">
                 {/* Left: Back Button + Title */}
                 <div className="flex items-center gap-3 min-w-0">
                   <button
                     type="button"
-                    onClick={() => setMobileView("start")}
+                    onClick={handleBackToHome}
                     className="p-1.5 -ml-1 text-white hover:text-sky-300 transition-colors"
                     aria-label="Back to categories"
                   >
                     <ArrowLeft className="w-6 h-6" />
                   </button>
-                  <h1 className="font-outfit font-black text-xl uppercase tracking-wide text-white truncate">
+                  <h1 className="font-outfit font-black text-lg sm:text-xl uppercase tracking-wide text-white truncate">
                     {activeCategoryTitle}
                   </h1>
                 </div>
@@ -482,56 +604,100 @@ export function HomePage() {
                   </div>
                 </div>
               )}
-
-              {/* Filter Pills: All | Included | Premium (Extra) | Signature */}
-              <div className="px-4 pb-3">
-                <FilterPills
-                  currentFilter={subFilter}
-                  onFilterChange={setSubFilter}
-                />
-              </div>
             </header>
 
-            {/* Mobile Drinks List: 1-column scrollable list matching mobile mockup */}
-            <main className="relative z-10 flex-1 px-4 py-4 space-y-3.5">
+            {/* Mobile Dedicated Continuous Scroll Flow with Visual Subcategory Sections */}
+            <main className="relative z-10 flex-1 px-4 py-4">
               {loading ? (
-                <div className="space-y-3">
-                  {[...Array(5)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="h-24 rounded-2xl bg-slate-800/40 border border-slate-700/30 animate-pulse"
-                    />
+                <div className="space-y-6">
+                  {[...Array(3)].map((_, idx) => (
+                    <div key={idx} className="space-y-3">
+                      <div className="h-8 w-40 rounded-xl bg-slate-800/40 border border-slate-700/30 animate-pulse" />
+                      {[...Array(3)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="h-24 rounded-2xl bg-slate-800/40 border border-slate-700/30 animate-pulse"
+                        />
+                      ))}
+                    </div>
                   ))}
                 </div>
-              ) : filteredItems.length === 0 ? (
+              ) : totalCategoryDrinks === 0 ? (
                 <div className="glass rounded-3xl p-8 text-center my-8 border border-slate-700/50">
                   <Search className="w-8 h-8 text-slate-500 mx-auto mb-2" />
                   <h3 className="text-sm font-bold text-white font-outfit">
                     {t("noResultsFound")}
                   </h3>
                   <button
-                    onClick={() => {
-                      setSearchQuery("");
-                      setSubFilter("all");
-                    }}
+                    onClick={() => setSearchQuery("")}
                     className="mt-3 px-4 py-1.5 rounded-full bg-sky-500 text-slate-950 font-bold text-xs"
                   >
                     {t("clearSearch")}
                   </button>
                 </div>
               ) : (
-                filteredItems.map((item) => (
-                  <MenuCard
-                    key={item.id}
-                    item={item}
-                    onClick={(drink) => setSelectedDrink(drink)}
-                  />
-                ))
+                <div className="space-y-8 animate-fade-in">
+                  {subcategoryGroups.map((group) => {
+                    if (group.items.length === 0) return null;
+
+                    return (
+                      <section
+                        key={group.name}
+                        id={`subcat-mobile-${group.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+                        className="relative scroll-mt-20"
+                      >
+                        {/* Prominent Sticky Subcategory Section Header with Divider Line */}
+                        <div className="sticky top-16 z-30 -mx-4 px-4 py-2.5 backdrop-blur-xl bg-[#09111c]/92 border-y border-slate-800/90 shadow-[0_4px_16px_rgba(0,0,0,0.5)] mb-3">
+                          <div className="flex items-center justify-between gap-2.5">
+                            <div className="flex items-center gap-2.5 min-w-0">
+                              {/* Glowing Accent Pip */}
+                              <span className="w-1.5 h-5 rounded-full bg-gradient-to-b from-sky-400 to-sky-600 shadow-[0_0_10px_rgba(56,189,248,0.7)] shrink-0" />
+                              
+                              {/* Subcategory Name */}
+                              <h2 className="font-outfit font-black text-sm sm:text-base tracking-wider text-white uppercase truncate">
+                                {group.name}
+                              </h2>
+                            </div>
+
+                            {/* Item Count Badge */}
+                            <span className="text-[10px] font-bold tracking-wider font-outfit uppercase px-2 py-0.5 rounded-full bg-[#101b2a] text-sky-300 border border-sky-400/30 shrink-0">
+                              {group.items.length}{" "}
+                              {group.items.length === 1 ? (t("drink") || "Drink") : (t("drinks") || "Drinks")}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* 1-Column Mobile Drinks List */}
+                        <div className="space-y-3 pb-2">
+                          {group.items.map((item) => (
+                            <MenuCard
+                              key={item.id}
+                              item={item}
+                              onClick={(drink) => setSelectedDrink(drink)}
+                            />
+                          ))}
+                        </div>
+                      </section>
+                    );
+                  })}
+                </div>
               )}
             </main>
           </div>
         )}
       </div>
+
+      {/* Floating Back to Top Button */}
+      {showBackToTop && (
+        <button
+          type="button"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-[#0e1726]/90 hover:bg-sky-500 text-sky-300 hover:text-slate-950 border border-sky-400/40 shadow-[0_4px_20px_rgba(0,0,0,0.6)] backdrop-blur-md transition-all active:scale-90"
+          aria-label="Back to top"
+        >
+          <ArrowUp className="w-5 h-5" />
+        </button>
+      )}
 
       {/* Drink Detail Modal (Shared across Desktop & Mobile) */}
       <DrinkDetailModal

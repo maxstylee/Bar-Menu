@@ -12,7 +12,7 @@
       "_origin": "ast",
       "id": "src_components_admin_adminbeveragetable_adminbeveragetable",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "adminbeveragetable()"
     },
     {
@@ -24,7 +24,7 @@
       "_origin": "ast",
       "id": "src_components_common_badge_badge",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "badge()"
     },
     {
@@ -36,8 +36,32 @@
       "_origin": "ast",
       "id": "src_components_common_badge_volumebadge",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "volumebadge()"
+    },
+    {
+      "label": "TuiBlueIcon()",
+      "file_type": "code",
+      "source_file": "src/components/common/TuiLogo.jsx",
+      "source_location": "L3",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_common_tuilogo_tuiblueicon",
+      "community": 0,
+      "community_name": "HomePage.jsx",
+      "norm_label": "tuiblueicon()"
+    },
+    {
+      "label": "TuiLogo()",
+      "file_type": "code",
+      "source_file": "src/components/common/TuiLogo.jsx",
+      "source_location": "L31",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_common_tuilogo_tuilogo",
+      "community": 0,
+      "community_name": "HomePage.jsx",
+      "norm_label": "tuilogo()"
     },
     {
       "label": "DrinkDetailModal()",
@@ -48,8 +72,20 @@
       "_origin": "ast",
       "id": "src_components_menu_drinkdetailmodal_drinkdetailmodal",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "drinkdetailmodal()"
+    },
+    {
+      "label": "FilterPills()",
+      "file_type": "code",
+      "source_file": "src/components/menu/FilterPills.jsx",
+      "source_location": "L4",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_menu_filterpills_filterpills",
+      "community": 0,
+      "community_name": "HomePage.jsx",
+      "norm_label": "filterpills()"
     },
     {
       "label": "CategoryFallbackIcon()",
@@ -60,7 +96,7 @@
       "_origin": "ast",
       "id": "src_components_menu_menucard_categoryfallbackicon",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "categoryfallbackicon()"
     },
     {
@@ -72,7 +108,7 @@
       "_origin": "ast",
       "id": "src_components_menu_menucard_drinkbadge",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "drinkbadge()"
     },
     {
@@ -84,32 +120,20 @@
       "_origin": "ast",
       "id": "src_components_menu_menucard_menucard",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "menucard()"
     },
     {
-      "label": "assert()",
+      "label": "HomePage()",
       "file_type": "code",
-      "source_file": "src/tests/sentinel.test.js",
-      "source_location": "L15",
+      "source_file": "src/pages/HomePage.jsx",
+      "source_location": "L22",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_tests_sentinel_test_assert",
+      "id": "src_pages_homepage_homepage",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
-      "norm_label": "assert()"
-    },
-    {
-      "label": "testSection()",
-      "file_type": "code",
-      "source_file": "src/tests/sentinel.test.js",
-      "source_location": "L25",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_tests_sentinel_test_testsection",
-      "community": 0,
-      "community_name": "LanguageContext.jsx",
-      "norm_label": "testsection()"
+      "community_name": "HomePage.jsx",
+      "norm_label": "homepage()"
     },
     {
       "label": "resolveAssetUrl()",
@@ -120,7 +144,7 @@
       "_origin": "ast",
       "id": "src_utils_assethelper_resolveasseturl",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "resolveasseturl()"
     },
     {
@@ -132,8 +156,68 @@
       "_origin": "ast",
       "id": "src_utils_translations_formatitemprice",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "formatitemprice()"
+    },
+    {
+      "label": "CategoryIconRenderer()",
+      "file_type": "code",
+      "source_file": "src/components/common/CategoryIcons.jsx",
+      "source_location": "L112",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_common_categoryicons_categoryiconrenderer",
+      "community": 10,
+      "community_name": "CategoryIcons.jsx",
+      "norm_label": "categoryiconrenderer()"
+    },
+    {
+      "label": "CocktailIcon()",
+      "file_type": "code",
+      "source_file": "src/components/common/CategoryIcons.jsx",
+      "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_common_categoryicons_cocktailicon",
+      "community": 10,
+      "community_name": "CategoryIcons.jsx",
+      "norm_label": "cocktailicon()"
+    },
+    {
+      "label": "ColdDrinkIcon()",
+      "file_type": "code",
+      "source_file": "src/components/common/CategoryIcons.jsx",
+      "source_location": "L61",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_common_categoryicons_colddrinkicon",
+      "community": 10,
+      "community_name": "CategoryIcons.jsx",
+      "norm_label": "colddrinkicon()"
+    },
+    {
+      "label": "LiquorBottleIcon()",
+      "file_type": "code",
+      "source_file": "src/components/common/CategoryIcons.jsx",
+      "source_location": "L34",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_common_categoryicons_liquorbottleicon",
+      "community": 10,
+      "community_name": "CategoryIcons.jsx",
+      "norm_label": "liquorbottleicon()"
+    },
+    {
+      "label": "SteamingCupIcon()",
+      "file_type": "code",
+      "source_file": "src/components/common/CategoryIcons.jsx",
+      "source_location": "L86",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_common_categoryicons_steamingcupicon",
+      "community": 10,
+      "community_name": "CategoryIcons.jsx",
+      "norm_label": "steamingcupicon()"
     },
     {
       "label": "SkeletonCard()",
@@ -256,18 +340,6 @@
       "norm_label": "categorytabs()"
     },
     {
-      "label": "FilterPills()",
-      "file_type": "code",
-      "source_file": "src/components/menu/FilterPills.jsx",
-      "source_location": "L4",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_menu_filterpills_filterpills",
-      "community": 2,
-      "community_name": "useLanguage",
-      "norm_label": "filterpills()"
-    },
-    {
       "label": "SearchBar()",
       "file_type": "code",
       "source_file": "src/components/menu/SearchBar.jsx",
@@ -292,42 +364,6 @@
       "norm_label": "uselanguage()"
     },
     {
-      "label": "useToast()",
-      "file_type": "code",
-      "source_file": "src/context/ToastContext.jsx",
-      "source_location": "L68",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_toastcontext_usetoast",
-      "community": 2,
-      "community_name": "useLanguage",
-      "norm_label": "usetoast()"
-    },
-    {
-      "label": "AdminDashboard()",
-      "file_type": "code",
-      "source_file": "src/pages/AdminDashboard.jsx",
-      "source_location": "L25",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_pages_admindashboard_admindashboard",
-      "community": 2,
-      "community_name": "useLanguage",
-      "norm_label": "admindashboard()"
-    },
-    {
-      "label": "LoginPage()",
-      "file_type": "code",
-      "source_file": "src/pages/LoginPage.jsx",
-      "source_location": "L19",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_pages_loginpage_loginpage",
-      "community": 2,
-      "community_name": "useLanguage",
-      "norm_label": "loginpage()"
-    },
-    {
       "label": "arr()",
       "file_type": "code",
       "source_file": "scripts/generate-seed.mjs",
@@ -336,7 +372,7 @@
       "_origin": "ast",
       "id": "scripts_generate_seed_arr",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "arr()"
     },
     {
@@ -348,20 +384,32 @@
       "_origin": "ast",
       "id": "scripts_generate_seed_q",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "q()"
     },
     {
       "label": "assert()",
       "file_type": "code",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L16",
+      "source_file": "src/tests/sentinel.test.js",
+      "source_location": "L15",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_tests_category_scroll_test_assert",
+      "id": "src_tests_sentinel_test_assert",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "assert()"
+    },
+    {
+      "label": "testSection()",
+      "file_type": "code",
+      "source_file": "src/tests/sentinel.test.js",
+      "source_location": "L25",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_tests_sentinel_test_testsection",
+      "community": 3,
+      "community_name": "generate-seed.mjs",
+      "norm_label": "testsection()"
     },
     {
       "label": "deleteImageFromStorage()",
@@ -544,16 +592,40 @@
       "norm_label": "toastprovider()"
     },
     {
-      "label": "HomePage()",
+      "label": "useToast()",
       "file_type": "code",
-      "source_file": "src/pages/HomePage.jsx",
-      "source_location": "L22",
+      "source_file": "src/context/ToastContext.jsx",
+      "source_location": "L68",
       "_callable": true,
       "_origin": "ast",
-      "id": "src_pages_homepage_homepage",
+      "id": "src_context_toastcontext_usetoast",
       "community": 8,
       "community_name": "App.jsx",
-      "norm_label": "homepage()"
+      "norm_label": "usetoast()"
+    },
+    {
+      "label": "AdminDashboard()",
+      "file_type": "code",
+      "source_file": "src/pages/AdminDashboard.jsx",
+      "source_location": "L25",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_admindashboard_admindashboard",
+      "community": 8,
+      "community_name": "App.jsx",
+      "norm_label": "admindashboard()"
+    },
+    {
+      "label": "LoginPage()",
+      "file_type": "code",
+      "source_file": "src/pages/LoginPage.jsx",
+      "source_location": "L19",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_loginpage_loginpage",
+      "community": 8,
+      "community_name": "App.jsx",
+      "norm_label": "loginpage()"
     },
     {
       "label": "ProtectedRoute()",
@@ -568,90 +640,6 @@
       "norm_label": "protectedroute()"
     },
     {
-      "label": "CategoryIconRenderer()",
-      "file_type": "code",
-      "source_file": "src/components/common/CategoryIcons.jsx",
-      "source_location": "L112",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_common_categoryicons_categoryiconrenderer",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "categoryiconrenderer()"
-    },
-    {
-      "label": "CocktailIcon()",
-      "file_type": "code",
-      "source_file": "src/components/common/CategoryIcons.jsx",
-      "source_location": "L11",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_common_categoryicons_cocktailicon",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "cocktailicon()"
-    },
-    {
-      "label": "ColdDrinkIcon()",
-      "file_type": "code",
-      "source_file": "src/components/common/CategoryIcons.jsx",
-      "source_location": "L61",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_common_categoryicons_colddrinkicon",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "colddrinkicon()"
-    },
-    {
-      "label": "LiquorBottleIcon()",
-      "file_type": "code",
-      "source_file": "src/components/common/CategoryIcons.jsx",
-      "source_location": "L34",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_common_categoryicons_liquorbottleicon",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "liquorbottleicon()"
-    },
-    {
-      "label": "SteamingCupIcon()",
-      "file_type": "code",
-      "source_file": "src/components/common/CategoryIcons.jsx",
-      "source_location": "L86",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_common_categoryicons_steamingcupicon",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "steamingcupicon()"
-    },
-    {
-      "label": "TuiBlueIcon()",
-      "file_type": "code",
-      "source_file": "src/components/common/TuiLogo.jsx",
-      "source_location": "L3",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_common_tuilogo_tuiblueicon",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "tuiblueicon()"
-    },
-    {
-      "label": "TuiLogo()",
-      "file_type": "code",
-      "source_file": "src/components/common/TuiLogo.jsx",
-      "source_location": "L31",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_common_tuilogo_tuilogo",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "tuilogo()"
-    },
-    {
       "label": "WeatherBadge()",
       "file_type": "code",
       "source_file": "src/components/common/WeatherIndicator.jsx",
@@ -660,7 +648,7 @@
       "_origin": "ast",
       "id": "src_components_common_weatherindicator_weatherbadge",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "weatherbadge()"
     },
     {
@@ -672,7 +660,7 @@
       "_origin": "ast",
       "id": "src_components_common_weatherindicator_weatherheaderwidget",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "weatherheaderwidget()"
     },
     {
@@ -684,7 +672,7 @@
       "_origin": "ast",
       "id": "src_components_common_weatherindicator_weathericon",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "weathericon()"
     },
     {
@@ -696,7 +684,7 @@
       "_origin": "ast",
       "id": "src_hooks_useweather_interpretweathercode",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "interpretweathercode()"
     },
     {
@@ -708,7 +696,7 @@
       "_origin": "ast",
       "id": "src_hooks_useweather_useweather",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "useweather()"
     },
     {
@@ -720,7 +708,7 @@
       "_origin": "ast",
       "id": "src_hooks_useweather_useweather_fetchantalyaweather",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "fetchantalyaweather()"
     },
     {
@@ -731,7 +719,7 @@
       "_origin": "ast",
       "id": "src_components_admin_adminbeveragetable",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "adminbeveragetable.jsx"
     },
     {
@@ -742,8 +730,19 @@
       "_origin": "ast",
       "id": "src_components_common_badge",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "badge.jsx"
+    },
+    {
+      "label": "TuiLogo.jsx",
+      "file_type": "code",
+      "source_file": "src/components/common/TuiLogo.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_components_common_tuilogo",
+      "community": 0,
+      "community_name": "HomePage.jsx",
+      "norm_label": "tuilogo.jsx"
     },
     {
       "label": "DrinkDetailModal.jsx",
@@ -753,8 +752,19 @@
       "_origin": "ast",
       "id": "src_components_menu_drinkdetailmodal",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "drinkdetailmodal.jsx"
+    },
+    {
+      "label": "FilterPills.jsx",
+      "file_type": "code",
+      "source_file": "src/components/menu/FilterPills.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_components_menu_filterpills",
+      "community": 0,
+      "community_name": "HomePage.jsx",
+      "norm_label": "filterpills.jsx"
     },
     {
       "label": "MenuCard.jsx",
@@ -764,7 +774,7 @@
       "_origin": "ast",
       "id": "src_components_menu_menucard",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "menucard.jsx"
     },
     {
@@ -775,7 +785,7 @@
       "_origin": "ast",
       "id": "src_context_languagecontext",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "languagecontext.jsx"
     },
     {
@@ -786,19 +796,19 @@
       "_origin": "ast",
       "id": "src_context_languagecontext_languagecontext",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "languagecontext"
     },
     {
-      "label": "sentinel.test.js",
+      "label": "HomePage.jsx",
       "file_type": "code",
-      "source_file": "src/tests/sentinel.test.js",
+      "source_file": "src/pages/HomePage.jsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_tests_sentinel_test",
+      "id": "src_pages_homepage",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
-      "norm_label": "sentinel.test.js"
+      "community_name": "HomePage.jsx",
+      "norm_label": "homepage.jsx"
     },
     {
       "label": "assetHelper.js",
@@ -808,7 +818,7 @@
       "_origin": "ast",
       "id": "src_utils_assethelper",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "assethelper.js"
     },
     {
@@ -819,7 +829,7 @@
       "_origin": "ast",
       "id": "src_utils_translations",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "translations.js"
     },
     {
@@ -830,7 +840,7 @@
       "_origin": "ast",
       "id": "src_utils_translations_supportedlanguages",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "supportedlanguages"
     },
     {
@@ -841,7 +851,7 @@
       "_origin": "ast",
       "id": "src_utils_translations_translations",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "translations"
     },
     {
@@ -1120,6 +1130,17 @@
       "norm_label": "@vitejs/plugin-react"
     },
     {
+      "label": "CategoryIcons.jsx",
+      "file_type": "code",
+      "source_file": "src/components/common/CategoryIcons.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_components_common_categoryicons",
+      "community": 10,
+      "community_name": "CategoryIcons.jsx",
+      "norm_label": "categoryicons.jsx"
+    },
+    {
       "label": "SkeletonLoader.jsx",
       "file_type": "code",
       "source_file": "src/components/common/SkeletonLoader.jsx",
@@ -1307,17 +1328,6 @@
       "norm_label": "iconmap"
     },
     {
-      "label": "FilterPills.jsx",
-      "file_type": "code",
-      "source_file": "src/components/menu/FilterPills.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_components_menu_filterpills",
-      "community": 2,
-      "community_name": "useLanguage",
-      "norm_label": "filterpills.jsx"
-    },
-    {
       "label": "SearchBar.jsx",
       "file_type": "code",
       "source_file": "src/components/menu/SearchBar.jsx",
@@ -1358,7 +1368,7 @@
       "_origin": "ast",
       "id": "scripts_generate_seed",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "generate-seed.mjs"
     },
     {
@@ -1369,7 +1379,7 @@
       "_origin": "ast",
       "id": "scripts_generate_seed_dirname",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "__dirname"
     },
     {
@@ -1380,7 +1390,7 @@
       "_origin": "ast",
       "id": "scripts_generate_seed_lines",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "lines"
     },
     {
@@ -1391,7 +1401,7 @@
       "_origin": "ast",
       "id": "scripts_generate_seed_outdir",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "outdir"
     },
     {
@@ -1402,7 +1412,7 @@
       "_origin": "ast",
       "id": "scripts_generate_seed_outfile",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "outfile"
     },
     {
@@ -1413,7 +1423,7 @@
       "_origin": "ast",
       "id": "scripts_update_mock_images",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "update-mock-images.mjs"
     },
     {
@@ -1424,7 +1434,7 @@
       "_origin": "ast",
       "id": "scripts_update_mock_images_dirname",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "__dirname"
     },
     {
@@ -1435,7 +1445,7 @@
       "_origin": "ast",
       "id": "scripts_update_mock_images_image_map",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "image_map"
     },
     {
@@ -1446,7 +1456,7 @@
       "_origin": "ast",
       "id": "scripts_update_mock_images_target",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "target"
     },
     {
@@ -1457,74 +1467,19 @@
       "_origin": "ast",
       "id": "scripts_update_mock_images_updated",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "updated"
     },
     {
-      "label": "category_scroll.test.js",
+      "label": "sentinel.test.js",
       "file_type": "code",
-      "source_file": "src/tests/category_scroll.test.js",
+      "source_file": "src/tests/sentinel.test.js",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_tests_category_scroll_test",
+      "id": "src_tests_sentinel_test",
       "community": 3,
-      "community_name": "category_scroll.test.js",
-      "norm_label": "category_scroll.test.js"
-    },
-    {
-      "label": "appSrc",
-      "file_type": "code",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L74",
-      "_origin": "ast",
-      "id": "src_tests_category_scroll_test_appsrc",
-      "community": 3,
-      "community_name": "category_scroll.test.js",
-      "norm_label": "appsrc"
-    },
-    {
-      "label": "__dirname",
-      "file_type": "code",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "src_tests_category_scroll_test_dirname",
-      "community": 3,
-      "community_name": "category_scroll.test.js",
-      "norm_label": "__dirname"
-    },
-    {
-      "label": "expectedHierarchy",
-      "file_type": "code",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L36",
-      "_origin": "ast",
-      "id": "src_tests_category_scroll_test_expectedhierarchy",
-      "community": 3,
-      "community_name": "category_scroll.test.js",
-      "norm_label": "expectedhierarchy"
-    },
-    {
-      "label": "__filename",
-      "file_type": "code",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L6",
-      "_origin": "ast",
-      "id": "src_tests_category_scroll_test_filename",
-      "community": 3,
-      "community_name": "category_scroll.test.js",
-      "norm_label": "__filename"
-    },
-    {
-      "label": "homePageSrc",
-      "file_type": "code",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L69",
-      "_origin": "ast",
-      "id": "src_tests_category_scroll_test_homepagesrc",
-      "community": 3,
-      "community_name": "category_scroll.test.js",
-      "norm_label": "homepagesrc"
+      "community_name": "generate-seed.mjs",
+      "norm_label": "sentinel.test.js"
     },
     {
       "label": "mockData.js",
@@ -1534,40 +1489,29 @@
       "_origin": "ast",
       "id": "src_utils_mockdata",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "mockdata.js"
-    },
-    {
-      "label": "CATEGORY_SUBCATEGORIES",
-      "file_type": "code",
-      "source_file": "src/utils/mockData.js",
-      "source_location": "L7",
-      "_origin": "ast",
-      "id": "src_utils_mockdata_category_subcategories",
-      "community": 3,
-      "community_name": "category_scroll.test.js",
-      "norm_label": "category_subcategories"
     },
     {
       "label": "mockCategories",
       "file_type": "code",
       "source_file": "src/utils/mockData.js",
-      "source_location": "L42",
+      "source_location": "L7",
       "_origin": "ast",
       "id": "src_utils_mockdata_mockcategories",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "mockcategories"
     },
     {
       "label": "mockMenuItems",
       "file_type": "code",
       "source_file": "src/utils/mockData.js",
-      "source_location": "L81",
+      "source_location": "L46",
       "_origin": "ast",
       "id": "src_utils_mockdata_mockmenuitems",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "generate-seed.mjs",
       "norm_label": "mockmenuitems"
     },
     {
@@ -2209,28 +2153,6 @@
       "norm_label": "protectedroute.jsx"
     },
     {
-      "label": "CategoryIcons.jsx",
-      "file_type": "code",
-      "source_file": "src/components/common/CategoryIcons.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_components_common_categoryicons",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "categoryicons.jsx"
-    },
-    {
-      "label": "TuiLogo.jsx",
-      "file_type": "code",
-      "source_file": "src/components/common/TuiLogo.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_components_common_tuilogo",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "tuilogo.jsx"
-    },
-    {
       "label": "WeatherIndicator.jsx",
       "file_type": "code",
       "source_file": "src/components/common/WeatherIndicator.jsx",
@@ -2238,7 +2160,7 @@
       "_origin": "ast",
       "id": "src_components_common_weatherindicator",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "weatherindicator.jsx"
     },
     {
@@ -2249,7 +2171,7 @@
       "_origin": "ast",
       "id": "src_hooks_useweather",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "useweather.js"
     },
     {
@@ -2260,7 +2182,7 @@
       "_origin": "ast",
       "id": "src_hooks_useweather_antalya",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "antalya"
     },
     {
@@ -2271,19 +2193,8 @@
       "_origin": "ast",
       "id": "src_hooks_useweather_fallback",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "fallback"
-    },
-    {
-      "label": "HomePage.jsx",
-      "file_type": "code",
-      "source_file": "src/pages/HomePage.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_pages_homepage",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "homepage.jsx"
     }
   ],
   "links": [
@@ -2701,18 +2612,6 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/HomePage.jsx",
-      "source_location": "L179",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_homepage_homepage",
-      "target": "src_utils_assethelper_resolveasseturl"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/pages/HomePage.jsx",
       "source_location": "L34",
       "weight": 1.0,
       "_origin": "ast",
@@ -2742,6 +2641,18 @@
       "_origin": "ast",
       "source": "src_pages_homepage_homepage",
       "target": "src_context_authcontext_useauth"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/HomePage.jsx",
+      "source_location": "L89",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_homepage_homepage",
+      "target": "src_utils_assethelper_resolveasseturl"
     },
     {
       "relation": "calls",
@@ -3928,19 +3839,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_homepage",
-      "target": "src_components_common_weatherindicator_weatherbadge",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/HomePage.jsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_pages_homepage",
-      "target": "src_components_common_weatherindicator_weatherheaderwidget",
+      "target": "src_components_common_languageswitcher_languageswitcher",
       "confidence_score": 1.0
     },
     {
@@ -3952,7 +3851,19 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_homepage",
-      "target": "src_components_common_categoryicons_categoryiconrenderer",
+      "target": "src_components_common_weatherindicator_weatherbadge",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/HomePage.jsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_pages_homepage",
+      "target": "src_components_common_weatherindicator_weatherheaderwidget",
       "confidence_score": 1.0
     },
     {
@@ -3964,7 +3875,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_homepage",
-      "target": "src_utils_assethelper_resolveasseturl",
+      "target": "src_components_common_categoryicons_categoryiconrenderer",
       "confidence_score": 1.0
     },
     {
@@ -3976,7 +3887,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_homepage",
-      "target": "src_utils_mockdata_category_subcategories",
+      "target": "src_utils_assethelper_resolveasseturl",
       "confidence_score": 1.0
     },
     {
@@ -4036,7 +3947,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_homepage",
-      "target": "src_components_menu_menucard_menucard",
+      "target": "src_components_menu_filterpills_filterpills",
       "confidence_score": 1.0
     },
     {
@@ -4048,7 +3959,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_homepage",
-      "target": "src_components_menu_drinkdetailmodal_drinkdetailmodal",
+      "target": "src_components_menu_menucard_menucard",
       "confidence_score": 1.0
     },
     {
@@ -4060,7 +3971,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_homepage",
-      "target": "src_components_common_languageswitcher_languageswitcher",
+      "target": "src_components_menu_drinkdetailmodal_drinkdetailmodal",
       "confidence_score": 1.0
     },
     {
@@ -4157,42 +4068,6 @@
       "_origin": "ast",
       "source": "src_routes_protectedroute",
       "target": "src_context_authcontext_useauth",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_tests_category_scroll_test",
-      "target": "src_utils_mockdata_category_subcategories",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_tests_category_scroll_test",
-      "target": "src_utils_mockdata_mockcategories",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_tests_category_scroll_test",
-      "target": "src_utils_mockdata_mockmenuitems",
       "confidence_score": 1.0
     },
     {
@@ -5032,7 +4907,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_homepage",
-      "target": "src_components_common_weatherindicator",
+      "target": "src_components_common_languageswitcher",
       "confidence_score": 1.0
     },
     {
@@ -5044,7 +4919,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_homepage",
-      "target": "src_components_common_categoryicons",
+      "target": "src_components_common_weatherindicator",
       "confidence_score": 1.0
     },
     {
@@ -5056,7 +4931,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_homepage",
-      "target": "src_utils_assethelper",
+      "target": "src_components_common_categoryicons",
       "confidence_score": 1.0
     },
     {
@@ -5068,7 +4943,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_homepage",
-      "target": "src_utils_mockdata",
+      "target": "src_utils_assethelper",
       "confidence_score": 1.0
     },
     {
@@ -5128,7 +5003,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_homepage",
-      "target": "src_components_menu_menucard",
+      "target": "src_components_menu_filterpills",
       "confidence_score": 1.0
     },
     {
@@ -5140,7 +5015,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_homepage",
-      "target": "src_components_menu_drinkdetailmodal",
+      "target": "src_components_menu_menucard",
       "confidence_score": 1.0
     },
     {
@@ -5152,7 +5027,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_pages_homepage",
-      "target": "src_components_common_languageswitcher",
+      "target": "src_components_menu_drinkdetailmodal",
       "confidence_score": 1.0
     },
     {
@@ -5249,18 +5124,6 @@
       "_origin": "ast",
       "source": "src_routes_protectedroute",
       "target": "src_context_authcontext",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L1",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_tests_category_scroll_test",
-      "target": "src_utils_mockdata",
       "confidence_score": 1.0
     },
     {
@@ -6643,72 +6506,6 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L16",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_tests_category_scroll_test",
-      "target": "src_tests_category_scroll_test_assert",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L36",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_tests_category_scroll_test",
-      "target": "src_tests_category_scroll_test_expectedhierarchy",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L6",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_tests_category_scroll_test",
-      "target": "src_tests_category_scroll_test_filename",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L69",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_tests_category_scroll_test",
-      "target": "src_tests_category_scroll_test_homepagesrc",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L7",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_tests_category_scroll_test",
-      "target": "src_tests_category_scroll_test_dirname",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/tests/category_scroll.test.js",
-      "source_location": "L74",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_tests_category_scroll_test",
-      "target": "src_tests_category_scroll_test_appsrc",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
       "source_file": "src/tests/sentinel.test.js",
       "source_location": "L15",
       "weight": 1.0,
@@ -6765,11 +6562,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/utils/mockData.js",
-      "source_location": "L42",
+      "source_location": "L46",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_utils_mockdata",
-      "target": "src_utils_mockdata_mockcategories",
+      "target": "src_utils_mockdata_mockmenuitems",
       "confidence_score": 1.0
     },
     {
@@ -6780,18 +6577,7 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_utils_mockdata",
-      "target": "src_utils_mockdata_category_subcategories",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/utils/mockData.js",
-      "source_location": "L81",
-      "weight": 1.0,
-      "_origin": "ast",
-      "source": "src_utils_mockdata",
-      "target": "src_utils_mockdata_mockmenuitems",
+      "target": "src_utils_mockdata_mockcategories",
       "confidence_score": 1.0
     },
     {
@@ -6841,5 +6627,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "dc6255732a1df6feb5ace159f9d6c5d613470914"
+  "built_at_commit": "af1d52b94a24ed2d2a6504d57d9e05a2cb478695"
 }

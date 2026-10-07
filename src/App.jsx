@@ -16,8 +16,9 @@ export function App() {
         <AuthProvider>
           <ToastProvider>
             <Routes>
-              {/* Public Guest Bar Menu */}
+              {/* Public Guest Bar Menu: Home & Dedicated Category Detail Continuous Scroll */}
               <Route path="/" element={<HomePage />} />
+              <Route path="/category/:categoryId" element={<HomePage />} />
 
               {/* Admin Sign In */}
               <Route path="/login" element={<LoginPage />} />

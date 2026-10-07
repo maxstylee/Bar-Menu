@@ -18,7 +18,7 @@ export function useMenu() {
   const [error, setError] = useState(null);
 
   // Active filters
-  const [selectedCategory, setSelectedCategory] = useState('cocktails');
+  const [selectedCategory, setSelectedCategory] = useState('tea-coffee');
   const [subFilter, setSubFilter] = useState('all'); // 'all' | 'included' | 'premium' | 'signature'
   const [selectedSubcategory, setSelectedSubcategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');

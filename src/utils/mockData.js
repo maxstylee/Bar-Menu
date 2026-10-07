@@ -4,24 +4,50 @@
  * Used as offline fallback and as the source for supabase/seed.sql.
  */
 
+export const CATEGORY_SUBCATEGORIES = {
+  'tea-coffee': [
+    'TEA',
+    'COFFEE',
+    'COFFEE WITH ALCOHOL',
+  ],
+  'cold-drinks': [
+    'COLD DRINKS',
+    'JUICE',
+    'WELLNESS',
+  ],
+  'alcoholic-drinks': [
+    'BEER',
+    'LIQUEURS',
+    'IMPORTED LIQUOR',
+    'VERMOUTH',
+    'COGNAC',
+    'RUM',
+    'TEQUILA',
+    'VODKA',
+    'GINS',
+    'RAKI',
+    'WHISKEYS',
+    'BOURBON WHISKEY',
+    'IRISH WHISKEY',
+    'WINE',
+    'CHAMPAGNE',
+  ],
+  'cocktails': [
+    'COCKTAIL SELECTION WITH PREMIUM LIQUEURS',
+    'COCKTAILS WITH ALCOHOL',
+    'NON ALCOHOLIC COCKTAILS',
+  ],
+};
+
 export const mockCategories = [
   {
-    "id": "cocktails",
-    "name_en": "COCKTAILS",
-    "name_tr": "KOKTEYLLER",
-    "name_de": "COCKTAILS",
-    "name_ru": "КОКТЕЙЛИ",
-    "icon": "Martini",
+    "id": "tea-coffee",
+    "name_en": "TEA and COFFEE",
+    "name_tr": "ÇAY ve KAHVE",
+    "name_de": "TEE und KAFFEE",
+    "name_ru": "ЧАЙ И КОФЕ",
+    "icon": "Coffee",
     "sort_order": 1
-  },
-  {
-    "id": "alcoholic-drinks",
-    "name_en": "ALCOHOLIC DRINKS",
-    "name_tr": "ALKOLLÜ İÇECEKLER",
-    "name_de": "ALKOHOLISCHE GETRÄNKE",
-    "name_ru": "АЛКОГОЛЬНЫЕ НАПИТКИ",
-    "icon": "Wine",
-    "sort_order": 2
   },
   {
     "id": "cold-drinks",
@@ -30,15 +56,24 @@ export const mockCategories = [
     "name_de": "KALTE GETRÄNKE",
     "name_ru": "ХОЛОДНЫЕ НАПИТКИ",
     "icon": "GlassWater",
+    "sort_order": 2
+  },
+  {
+    "id": "alcoholic-drinks",
+    "name_en": "ALCOHOLIC DRINKS",
+    "name_tr": "ALKOLLÜ İÇECEKLER",
+    "name_de": "ALKOHOLISCHE GETRÄNKE",
+    "name_ru": "АЛКОГОЛЬНЫЕ НАПИТКИ",
+    "icon": "Wine",
     "sort_order": 3
   },
   {
-    "id": "tea-coffee",
-    "name_en": "TEA & COFFEE",
-    "name_tr": "ÇAY & KAHVE",
-    "name_de": "TEE & KAFFEE",
-    "name_ru": "ЧАЙ И КОФЕ",
-    "icon": "Coffee",
+    "id": "cocktails",
+    "name_en": "COCKTAILS",
+    "name_tr": "KOKTEYLLER",
+    "name_de": "COCKTAILS",
+    "name_ru": "КОКТЕЙЛИ",
+    "icon": "Martini",
     "sort_order": 4
   }
 ];

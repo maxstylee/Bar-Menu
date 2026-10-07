@@ -21,9 +21,9 @@ export const supabase = isSupabaseConfigured
 // RESILIENT LOCAL STORAGE DATA LAYER (Active in Demo / Fallback Mode)
 // ============================================================================
 
-// v2: dataset refreshed with dedicated cocktail photos + sort_order
-const STORAGE_KEY_CATEGORIES = 'tui_blue_categories_v2';
-const STORAGE_KEY_ITEMS = 'tui_blue_menu_items_v2';
+// v3: dataset refreshed with Category 1-4 ordering & subcategory hierarchy
+const STORAGE_KEY_CATEGORIES = 'tui_blue_categories_v3';
+const STORAGE_KEY_ITEMS = 'tui_blue_menu_items_v3';
 
 export function getLocalCategories() {
   try {

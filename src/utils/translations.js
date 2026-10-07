@@ -55,7 +55,9 @@ export const translations = {
     catCocktails: 'COCKTAILS',
     catAlcoholicDrinks: 'ALCOHOLIC DRINKS',
     catColdDrinks: 'COLD DRINKS',
-    catTeaCoffee: 'TEA & COFFEE',
+    catTeaCoffee: 'TEA and COFFEE',
+    drink: 'Drink',
+    drinks: 'Drinks',
 
     // Menu Card & Detail Modal
     outOfStock: 'Out of Stock',
@@ -142,6 +144,8 @@ export const translations = {
     catAlcoholicDrinks: 'ALKOHOLISCHE GETRÄNKE',
     catColdDrinks: 'KALTE GETRÄNKE',
     catTeaCoffee: 'TEE & KAFFEE',
+    drink: 'Getränk',
+    drinks: 'Getränke',
 
     // Menu Card & Detail Modal
     outOfStock: 'Ausverkauft',
@@ -228,6 +232,8 @@ export const translations = {
     catAlcoholicDrinks: 'ALKOLLÜ İÇECEKLER',
     catColdDrinks: 'SOĞUK İÇECEKLER',
     catTeaCoffee: 'ÇAY & KAHVE',
+    drink: 'İçecek',
+    drinks: 'İçecek',
 
     // Menu Card & Detail Modal
     outOfStock: 'Tükendi (Stop-List)',
@@ -314,6 +320,8 @@ export const translations = {
     catAlcoholicDrinks: 'АЛКОГОЛЬНЫЕ НАПИТКИ',
     catColdDrinks: 'ХОЛОДНЫЕ НАПИТКИ',
     catTeaCoffee: 'ЧАЙ И КОФЕ',
+    drink: 'Напиток',
+    drinks: 'Напитков',
 
     // Menu Card & Detail Modal
     outOfStock: 'Нет в наличии',
