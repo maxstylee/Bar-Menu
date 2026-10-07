@@ -1,31 +1,30 @@
 # Graph Report - Tui Blue  (2026-10-07)
 
 ## Corpus Check
-- 47 files · ~68,393 words
+- 48 files · ~69,537 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 194 nodes · 380 edges · 16 communities (15 shown, 1 thin omitted)
+- 202 nodes · 391 edges · 15 communities
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.5)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `af1d52b9`
+- Built from commit: `dc625573`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- HomePage.jsx
+- LanguageContext.jsx
 - devDependencies
 - useLanguage
-- generate-seed.mjs
+- category_scroll.test.js
 - useMenu.js
 - dependencies
 - prompt.md
 - 🍸 TUI BLUE — Luxury Bar Menu & Admin Control Suite
 - App.jsx
-- WeatherIndicator.jsx
-- CategoryIcons.jsx
+- HomePage.jsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `useLanguage()` - 31 edges
@@ -54,23 +53,23 @@
 ## Import Cycles
 - None detected.
 
-## Communities (16 total, 1 thin omitted)
+## Communities (15 total, 0 thin omitted)
 
-### Community 0 - "HomePage.jsx"
-Cohesion: 0.18
-Nodes (14): AdminBeverageTable(), Badge(), VolumeBadge(), TuiLogo(), DrinkDetailModal(), FilterPills(), DrinkBadge(), MenuCard() (+6 more)
+### Community 0 - "LanguageContext.jsx"
+Cohesion: 0.21
+Nodes (11): AdminBeverageTable(), Badge(), VolumeBadge(), DrinkDetailModal(), DrinkBadge(), MenuCard(), LanguageContext, resolveAssetUrl() (+3 more)
 
 ### Community 1 - "devDependencies"
 Cohesion: 0.08
 Nodes (24): autoprefixer, devDependencies, autoprefixer, postcss, tailwindcss, @types/react, @types/react-dom, vite (+16 more)
 
 ### Community 2 - "useLanguage"
-Cohesion: 0.23
-Nodes (13): CategoryManagerModal(), ICON_OPTIONS, DeleteConfirmModal(), ItemFormModal(), QuickEditPriceModal(), Button(), Input, LanguageSwitcher() (+5 more)
+Cohesion: 0.18
+Nodes (17): CategoryManagerModal(), ICON_OPTIONS, DeleteConfirmModal(), ItemFormModal(), QuickEditPriceModal(), Button(), Input, LanguageSwitcher() (+9 more)
 
-### Community 3 - "generate-seed.mjs"
-Cohesion: 0.16
-Nodes (12): arr(), __dirname, lines, outDir, outFile, q(), __dirname, IMAGE_MAP (+4 more)
+### Community 3 - "category_scroll.test.js"
+Cohesion: 0.12
+Nodes (18): arr(), __dirname, lines, outDir, outFile, q(), __dirname, IMAGE_MAP (+10 more)
 
 ### Community 4 - "useMenu.js"
 Cohesion: 0.25
@@ -89,31 +88,30 @@ Cohesion: 0.13
 Nodes (14): 1. Prerequisites, 2. Installation, 3. Run Local Dev Server, 4. Run Automated Sentinel Test Suite, 5. Production Build, 🛡️ Admin Management Suite, 🛠️ Architecture & Tech Stack, 🗄️ Database Setup (Supabase Integration) (+6 more)
 
 ### Community 8 - "App.jsx"
-Cohesion: 0.23
-Nodes (10): App(), AuthProvider(), useAuth(), LanguageProvider(), ToastContext, ToastProvider(), useToast(), AdminDashboard() (+2 more)
+Cohesion: 0.24
+Nodes (8): App(), AuthProvider(), useAuth(), LanguageProvider(), ToastContext, ToastProvider(), HomePage(), ProtectedRoute()
 
-### Community 9 - "WeatherIndicator.jsx"
-Cohesion: 0.29
-Nodes (7): WeatherBadge(), WeatherHeaderWidget(), ANTALYA, FALLBACK, interpretWeatherCode(), useWeather(), fetchAntalyaWeather()
+### Community 9 - "HomePage.jsx"
+Cohesion: 0.14
+Nodes (9): CategoryIconRenderer(), TuiLogo(), WeatherBadge(), WeatherHeaderWidget(), ANTALYA, FALLBACK, interpretWeatherCode(), useWeather() (+1 more)
 
 ## Knowledge Gaps
-- **60 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+55 more)
+- **65 isolated node(s):** `name`, `private`, `version`, `type`, `dev` (+60 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `useLanguage()` connect `useLanguage` to `HomePage.jsx`, `App.jsx`, `useMenu.js`?**
-  _High betweenness centrality (0.053) - this node is a cross-community bridge._
-- **Why does `mockCategories` connect `generate-seed.mjs` to `useMenu.js`?**
-  _High betweenness centrality (0.024) - this node is a cross-community bridge._
-- **Why does `mockMenuItems` connect `generate-seed.mjs` to `useMenu.js`?**
-  _High betweenness centrality (0.024) - this node is a cross-community bridge._
+- **Why does `useLanguage()` connect `useLanguage` to `LanguageContext.jsx`, `HomePage.jsx`, `useMenu.js`, `App.jsx`?**
+  _High betweenness centrality (0.067) - this node is a cross-community bridge._
+- **Why does `dependencies` connect `dependencies` to `devDependencies`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _60 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _65 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+- **Should `category_scroll.test.js` be split into smaller, more focused modules?**
+  _Cohesion score 0.11857707509881422 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `prompt.md` be split into smaller, more focused modules?**

@@ -18,7 +18,7 @@ export function useMenu() {
   const [error, setError] = useState(null);
 
   // Active filters
-  const [selectedCategory, setSelectedCategory] = useState('tea-coffee');
+  const [selectedCategory, setSelectedCategory] = useState('cocktails');
   const [subFilter, setSubFilter] = useState('all'); // 'all' | 'included' | 'premium' | 'signature'
   const [selectedSubcategory, setSelectedSubcategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -51,7 +51,8 @@ export function useMenu() {
     // Fallback Local Storage / Mock
     const localCats = getLocalCategories();
     const localItems = getLocalMenuItems();
-    setCategories(localCats);
+    const sortedCats = [...localCats].sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
+    setCategories(sortedCats);
     setItems(localItems);
     setLoading(false);
   }, []);

@@ -4,18 +4,6 @@
   "graph": {},
   "nodes": [
     {
-      "label": "AdminBeverageTable()",
-      "file_type": "code",
-      "source_file": "src/components/admin/AdminBeverageTable.jsx",
-      "source_location": "L16",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_admin_adminbeveragetable_adminbeveragetable",
-      "community": 0,
-      "community_name": "LanguageContext.jsx",
-      "norm_label": "adminbeveragetable()"
-    },
-    {
       "label": "Badge()",
       "file_type": "code",
       "source_file": "src/components/common/Badge.jsx",
@@ -24,7 +12,7 @@
       "_origin": "ast",
       "id": "src_components_common_badge_badge",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "badge()"
     },
     {
@@ -36,56 +24,152 @@
       "_origin": "ast",
       "id": "src_components_common_badge_volumebadge",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "volumebadge()"
+    },
+    {
+      "label": "CategoryIconRenderer()",
+      "file_type": "code",
+      "source_file": "src/components/common/CategoryIcons.jsx",
+      "source_location": "L112",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_common_categoryicons_categoryiconrenderer",
+      "community": 0,
+      "community_name": "HomePage.jsx",
+      "norm_label": "categoryiconrenderer()"
+    },
+    {
+      "label": "CocktailIcon()",
+      "file_type": "code",
+      "source_file": "src/components/common/CategoryIcons.jsx",
+      "source_location": "L11",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_common_categoryicons_cocktailicon",
+      "community": 0,
+      "community_name": "HomePage.jsx",
+      "norm_label": "cocktailicon()"
+    },
+    {
+      "label": "ColdDrinkIcon()",
+      "file_type": "code",
+      "source_file": "src/components/common/CategoryIcons.jsx",
+      "source_location": "L61",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_common_categoryicons_colddrinkicon",
+      "community": 0,
+      "community_name": "HomePage.jsx",
+      "norm_label": "colddrinkicon()"
+    },
+    {
+      "label": "LiquorBottleIcon()",
+      "file_type": "code",
+      "source_file": "src/components/common/CategoryIcons.jsx",
+      "source_location": "L34",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_common_categoryicons_liquorbottleicon",
+      "community": 0,
+      "community_name": "HomePage.jsx",
+      "norm_label": "liquorbottleicon()"
+    },
+    {
+      "label": "SteamingCupIcon()",
+      "file_type": "code",
+      "source_file": "src/components/common/CategoryIcons.jsx",
+      "source_location": "L86",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_common_categoryicons_steamingcupicon",
+      "community": 0,
+      "community_name": "HomePage.jsx",
+      "norm_label": "steamingcupicon()"
+    },
+    {
+      "label": "TuiBlueIcon()",
+      "file_type": "code",
+      "source_file": "src/components/common/TuiLogo.jsx",
+      "source_location": "L3",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_common_tuilogo_tuiblueicon",
+      "community": 0,
+      "community_name": "HomePage.jsx",
+      "norm_label": "tuiblueicon()"
+    },
+    {
+      "label": "TuiLogo()",
+      "file_type": "code",
+      "source_file": "src/components/common/TuiLogo.jsx",
+      "source_location": "L31",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_common_tuilogo_tuilogo",
+      "community": 0,
+      "community_name": "HomePage.jsx",
+      "norm_label": "tuilogo()"
     },
     {
       "label": "DrinkDetailModal()",
       "file_type": "code",
       "source_file": "src/components/menu/DrinkDetailModal.jsx",
-      "source_location": "L10",
+      "source_location": "L11",
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_menu_drinkdetailmodal_drinkdetailmodal",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "drinkdetailmodal()"
     },
     {
       "label": "CategoryFallbackIcon()",
       "file_type": "code",
       "source_file": "src/components/menu/MenuCard.jsx",
-      "source_location": "L50",
+      "source_location": "L51",
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_menu_menucard_categoryfallbackicon",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "categoryfallbackicon()"
     },
     {
       "label": "DrinkBadge()",
       "file_type": "code",
       "source_file": "src/components/menu/MenuCard.jsx",
-      "source_location": "L14",
+      "source_location": "L15",
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_menu_menucard_drinkbadge",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "drinkbadge()"
     },
     {
       "label": "MenuCard()",
       "file_type": "code",
       "source_file": "src/components/menu/MenuCard.jsx",
-      "source_location": "L57",
+      "source_location": "L58",
       "_callable": true,
       "_origin": "ast",
       "id": "src_components_menu_menucard_menucard",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "menucard()"
+    },
+    {
+      "label": "HomePage()",
+      "file_type": "code",
+      "source_file": "src/pages/HomePage.jsx",
+      "source_location": "L22",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_pages_homepage_homepage",
+      "community": 0,
+      "community_name": "HomePage.jsx",
+      "norm_label": "homepage()"
     },
     {
       "label": "assert()",
@@ -96,7 +180,7 @@
       "_origin": "ast",
       "id": "src_tests_sentinel_test_assert",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "assert()"
     },
     {
@@ -108,7 +192,7 @@
       "_origin": "ast",
       "id": "src_tests_sentinel_test_testsection",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "testsection()"
     },
     {
@@ -120,7 +204,7 @@
       "_origin": "ast",
       "id": "src_utils_assethelper_resolveasseturl",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "resolveasseturl()"
     },
     {
@@ -132,7 +216,7 @@
       "_origin": "ast",
       "id": "src_utils_translations_formatitemprice",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "formatitemprice()"
     },
     {
@@ -158,6 +242,18 @@
       "community": 11,
       "community_name": "SkeletonLoader.jsx",
       "norm_label": "skeletongrid()"
+    },
+    {
+      "label": "AdminBeverageTable()",
+      "file_type": "code",
+      "source_file": "src/components/admin/AdminBeverageTable.jsx",
+      "source_location": "L16",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_components_admin_adminbeveragetable_adminbeveragetable",
+      "community": 2,
+      "community_name": "useLanguage",
+      "norm_label": "adminbeveragetable()"
     },
     {
       "label": "CategoryManagerModal()",
@@ -280,6 +376,18 @@
       "norm_label": "searchbar()"
     },
     {
+      "label": "useAuth()",
+      "file_type": "code",
+      "source_file": "src/context/AuthContext.jsx",
+      "source_location": "L125",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_context_authcontext_useauth",
+      "community": 2,
+      "community_name": "useLanguage",
+      "norm_label": "useauth()"
+    },
+    {
       "label": "useLanguage()",
       "file_type": "code",
       "source_file": "src/context/LanguageContext.jsx",
@@ -336,7 +444,7 @@
       "_origin": "ast",
       "id": "scripts_generate_seed_arr",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "arr()"
     },
     {
@@ -348,7 +456,7 @@
       "_origin": "ast",
       "id": "scripts_generate_seed_q",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "q()"
     },
     {
@@ -360,8 +468,20 @@
       "_origin": "ast",
       "id": "src_tests_category_scroll_test_assert",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "assert()"
+    },
+    {
+      "label": "getBeverageImageUrl()",
+      "file_type": "code",
+      "source_file": "src/utils/mockData.js",
+      "source_location": "L66",
+      "_callable": true,
+      "_origin": "ast",
+      "id": "src_utils_mockdata_getbeverageimageurl",
+      "community": 3,
+      "community_name": "mockData.js",
+      "norm_label": "getbeverageimageurl()"
     },
     {
       "label": "deleteImageFromStorage()",
@@ -508,18 +628,6 @@
       "norm_label": "authprovider()"
     },
     {
-      "label": "useAuth()",
-      "file_type": "code",
-      "source_file": "src/context/AuthContext.jsx",
-      "source_location": "L125",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_context_authcontext_useauth",
-      "community": 8,
-      "community_name": "App.jsx",
-      "norm_label": "useauth()"
-    },
-    {
       "label": "LanguageProvider()",
       "file_type": "code",
       "source_file": "src/context/LanguageContext.jsx",
@@ -544,18 +652,6 @@
       "norm_label": "toastprovider()"
     },
     {
-      "label": "HomePage()",
-      "file_type": "code",
-      "source_file": "src/pages/HomePage.jsx",
-      "source_location": "L22",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_pages_homepage_homepage",
-      "community": 8,
-      "community_name": "App.jsx",
-      "norm_label": "homepage()"
-    },
-    {
       "label": "ProtectedRoute()",
       "file_type": "code",
       "source_file": "src/routes/ProtectedRoute.jsx",
@@ -568,90 +664,6 @@
       "norm_label": "protectedroute()"
     },
     {
-      "label": "CategoryIconRenderer()",
-      "file_type": "code",
-      "source_file": "src/components/common/CategoryIcons.jsx",
-      "source_location": "L112",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_common_categoryicons_categoryiconrenderer",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "categoryiconrenderer()"
-    },
-    {
-      "label": "CocktailIcon()",
-      "file_type": "code",
-      "source_file": "src/components/common/CategoryIcons.jsx",
-      "source_location": "L11",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_common_categoryicons_cocktailicon",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "cocktailicon()"
-    },
-    {
-      "label": "ColdDrinkIcon()",
-      "file_type": "code",
-      "source_file": "src/components/common/CategoryIcons.jsx",
-      "source_location": "L61",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_common_categoryicons_colddrinkicon",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "colddrinkicon()"
-    },
-    {
-      "label": "LiquorBottleIcon()",
-      "file_type": "code",
-      "source_file": "src/components/common/CategoryIcons.jsx",
-      "source_location": "L34",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_common_categoryicons_liquorbottleicon",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "liquorbottleicon()"
-    },
-    {
-      "label": "SteamingCupIcon()",
-      "file_type": "code",
-      "source_file": "src/components/common/CategoryIcons.jsx",
-      "source_location": "L86",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_common_categoryicons_steamingcupicon",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "steamingcupicon()"
-    },
-    {
-      "label": "TuiBlueIcon()",
-      "file_type": "code",
-      "source_file": "src/components/common/TuiLogo.jsx",
-      "source_location": "L3",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_common_tuilogo_tuiblueicon",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "tuiblueicon()"
-    },
-    {
-      "label": "TuiLogo()",
-      "file_type": "code",
-      "source_file": "src/components/common/TuiLogo.jsx",
-      "source_location": "L31",
-      "_callable": true,
-      "_origin": "ast",
-      "id": "src_components_common_tuilogo_tuilogo",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "tuilogo()"
-    },
-    {
       "label": "WeatherBadge()",
       "file_type": "code",
       "source_file": "src/components/common/WeatherIndicator.jsx",
@@ -660,7 +672,7 @@
       "_origin": "ast",
       "id": "src_components_common_weatherindicator_weatherbadge",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "weatherbadge()"
     },
     {
@@ -672,7 +684,7 @@
       "_origin": "ast",
       "id": "src_components_common_weatherindicator_weatherheaderwidget",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "weatherheaderwidget()"
     },
     {
@@ -684,7 +696,7 @@
       "_origin": "ast",
       "id": "src_components_common_weatherindicator_weathericon",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "weathericon()"
     },
     {
@@ -696,7 +708,7 @@
       "_origin": "ast",
       "id": "src_hooks_useweather_interpretweathercode",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "interpretweathercode()"
     },
     {
@@ -708,7 +720,7 @@
       "_origin": "ast",
       "id": "src_hooks_useweather_useweather",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "useweather()"
     },
     {
@@ -720,7 +732,7 @@
       "_origin": "ast",
       "id": "src_hooks_useweather_useweather_fetchantalyaweather",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "fetchantalyaweather()"
     },
     {
@@ -731,7 +743,7 @@
       "_origin": "ast",
       "id": "src_components_admin_adminbeveragetable",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "adminbeveragetable.jsx"
     },
     {
@@ -742,8 +754,30 @@
       "_origin": "ast",
       "id": "src_components_common_badge",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "badge.jsx"
+    },
+    {
+      "label": "CategoryIcons.jsx",
+      "file_type": "code",
+      "source_file": "src/components/common/CategoryIcons.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_components_common_categoryicons",
+      "community": 0,
+      "community_name": "HomePage.jsx",
+      "norm_label": "categoryicons.jsx"
+    },
+    {
+      "label": "TuiLogo.jsx",
+      "file_type": "code",
+      "source_file": "src/components/common/TuiLogo.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_components_common_tuilogo",
+      "community": 0,
+      "community_name": "HomePage.jsx",
+      "norm_label": "tuilogo.jsx"
     },
     {
       "label": "DrinkDetailModal.jsx",
@@ -753,7 +787,7 @@
       "_origin": "ast",
       "id": "src_components_menu_drinkdetailmodal",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "drinkdetailmodal.jsx"
     },
     {
@@ -764,30 +798,19 @@
       "_origin": "ast",
       "id": "src_components_menu_menucard",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "menucard.jsx"
     },
     {
-      "label": "LanguageContext.jsx",
+      "label": "HomePage.jsx",
       "file_type": "code",
-      "source_file": "src/context/LanguageContext.jsx",
+      "source_file": "src/pages/HomePage.jsx",
       "source_location": "L1",
       "_origin": "ast",
-      "id": "src_context_languagecontext",
+      "id": "src_pages_homepage",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
-      "norm_label": "languagecontext.jsx"
-    },
-    {
-      "label": "LanguageContext",
-      "file_type": "code",
-      "source_file": "src/context/LanguageContext.jsx",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "src_context_languagecontext_languagecontext",
-      "community": 0,
-      "community_name": "LanguageContext.jsx",
-      "norm_label": "languagecontext"
+      "community_name": "HomePage.jsx",
+      "norm_label": "homepage.jsx"
     },
     {
       "label": "sentinel.test.js",
@@ -797,7 +820,7 @@
       "_origin": "ast",
       "id": "src_tests_sentinel_test",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "sentinel.test.js"
     },
     {
@@ -808,7 +831,7 @@
       "_origin": "ast",
       "id": "src_utils_assethelper",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "assethelper.js"
     },
     {
@@ -819,7 +842,7 @@
       "_origin": "ast",
       "id": "src_utils_translations",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "translations.js"
     },
     {
@@ -830,7 +853,7 @@
       "_origin": "ast",
       "id": "src_utils_translations_supportedlanguages",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "supportedlanguages"
     },
     {
@@ -841,7 +864,7 @@
       "_origin": "ast",
       "id": "src_utils_translations_translations",
       "community": 0,
-      "community_name": "LanguageContext.jsx",
+      "community_name": "HomePage.jsx",
       "norm_label": "translations"
     },
     {
@@ -1329,6 +1352,50 @@
       "norm_label": "searchbar.jsx"
     },
     {
+      "label": "LanguageContext.jsx",
+      "file_type": "code",
+      "source_file": "src/context/LanguageContext.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_context_languagecontext",
+      "community": 2,
+      "community_name": "useLanguage",
+      "norm_label": "languagecontext.jsx"
+    },
+    {
+      "label": "LanguageContext",
+      "file_type": "code",
+      "source_file": "src/context/LanguageContext.jsx",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "src_context_languagecontext_languagecontext",
+      "community": 2,
+      "community_name": "useLanguage",
+      "norm_label": "languagecontext"
+    },
+    {
+      "label": "ToastContext.jsx",
+      "file_type": "code",
+      "source_file": "src/context/ToastContext.jsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_context_toastcontext",
+      "community": 2,
+      "community_name": "useLanguage",
+      "norm_label": "toastcontext.jsx"
+    },
+    {
+      "label": "ToastContext",
+      "file_type": "code",
+      "source_file": "src/context/ToastContext.jsx",
+      "source_location": "L4",
+      "_origin": "ast",
+      "id": "src_context_toastcontext_toastcontext",
+      "community": 2,
+      "community_name": "useLanguage",
+      "norm_label": "toastcontext"
+    },
+    {
       "label": "AdminDashboard.jsx",
       "file_type": "code",
       "source_file": "src/pages/AdminDashboard.jsx",
@@ -1358,7 +1425,7 @@
       "_origin": "ast",
       "id": "scripts_generate_seed",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "generate-seed.mjs"
     },
     {
@@ -1369,7 +1436,7 @@
       "_origin": "ast",
       "id": "scripts_generate_seed_dirname",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "__dirname"
     },
     {
@@ -1380,7 +1447,7 @@
       "_origin": "ast",
       "id": "scripts_generate_seed_lines",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "lines"
     },
     {
@@ -1391,7 +1458,7 @@
       "_origin": "ast",
       "id": "scripts_generate_seed_outdir",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "outdir"
     },
     {
@@ -1402,8 +1469,74 @@
       "_origin": "ast",
       "id": "scripts_generate_seed_outfile",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "outfile"
+    },
+    {
+      "label": "update-mock-data.mjs",
+      "file_type": "code",
+      "source_file": "scripts/update-mock-data.mjs",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "scripts_update_mock_data",
+      "community": 3,
+      "community_name": "mockData.js",
+      "norm_label": "update-mock-data.mjs"
+    },
+    {
+      "label": "__dirname",
+      "file_type": "code",
+      "source_file": "scripts/update-mock-data.mjs",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "scripts_update_mock_data_dirname",
+      "community": 3,
+      "community_name": "mockData.js",
+      "norm_label": "__dirname"
+    },
+    {
+      "label": "orderedCategories",
+      "file_type": "code",
+      "source_file": "scripts/update-mock-data.mjs",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "scripts_update_mock_data_orderedcategories",
+      "community": 3,
+      "community_name": "mockData.js",
+      "norm_label": "orderedcategories"
+    },
+    {
+      "label": "SUBCATEGORY_DEFAULT_IMAGES",
+      "file_type": "code",
+      "source_file": "scripts/update-mock-data.mjs",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "scripts_update_mock_data_subcategory_default_images",
+      "community": 3,
+      "community_name": "mockData.js",
+      "norm_label": "subcategory_default_images"
+    },
+    {
+      "label": "target",
+      "file_type": "code",
+      "source_file": "scripts/update-mock-data.mjs",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "scripts_update_mock_data_target",
+      "community": 3,
+      "community_name": "mockData.js",
+      "norm_label": "target"
+    },
+    {
+      "label": "updatedItems",
+      "file_type": "code",
+      "source_file": "scripts/update-mock-data.mjs",
+      "source_location": "L77",
+      "_origin": "ast",
+      "id": "scripts_update_mock_data_updateditems",
+      "community": 3,
+      "community_name": "mockData.js",
+      "norm_label": "updateditems"
     },
     {
       "label": "update-mock-images.mjs",
@@ -1413,7 +1546,7 @@
       "_origin": "ast",
       "id": "scripts_update_mock_images",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "update-mock-images.mjs"
     },
     {
@@ -1424,7 +1557,7 @@
       "_origin": "ast",
       "id": "scripts_update_mock_images_dirname",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "__dirname"
     },
     {
@@ -1435,7 +1568,7 @@
       "_origin": "ast",
       "id": "scripts_update_mock_images_image_map",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "image_map"
     },
     {
@@ -1446,7 +1579,7 @@
       "_origin": "ast",
       "id": "scripts_update_mock_images_target",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "target"
     },
     {
@@ -1457,7 +1590,7 @@
       "_origin": "ast",
       "id": "scripts_update_mock_images_updated",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "updated"
     },
     {
@@ -1468,7 +1601,7 @@
       "_origin": "ast",
       "id": "src_tests_category_scroll_test",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "category_scroll.test.js"
     },
     {
@@ -1479,7 +1612,7 @@
       "_origin": "ast",
       "id": "src_tests_category_scroll_test_appsrc",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "appsrc"
     },
     {
@@ -1490,7 +1623,7 @@
       "_origin": "ast",
       "id": "src_tests_category_scroll_test_dirname",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "__dirname"
     },
     {
@@ -1501,7 +1634,7 @@
       "_origin": "ast",
       "id": "src_tests_category_scroll_test_expectedhierarchy",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "expectedhierarchy"
     },
     {
@@ -1512,7 +1645,7 @@
       "_origin": "ast",
       "id": "src_tests_category_scroll_test_filename",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "__filename"
     },
     {
@@ -1523,7 +1656,7 @@
       "_origin": "ast",
       "id": "src_tests_category_scroll_test_homepagesrc",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "homepagesrc"
     },
     {
@@ -1534,7 +1667,7 @@
       "_origin": "ast",
       "id": "src_utils_mockdata",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "mockdata.js"
     },
     {
@@ -1545,30 +1678,41 @@
       "_origin": "ast",
       "id": "src_utils_mockdata_category_subcategories",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "category_subcategories"
     },
     {
       "label": "mockCategories",
       "file_type": "code",
       "source_file": "src/utils/mockData.js",
-      "source_location": "L42",
+      "source_location": "L74",
       "_origin": "ast",
       "id": "src_utils_mockdata_mockcategories",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "mockcategories"
     },
     {
       "label": "mockMenuItems",
       "file_type": "code",
       "source_file": "src/utils/mockData.js",
-      "source_location": "L81",
+      "source_location": "L113",
       "_origin": "ast",
       "id": "src_utils_mockdata_mockmenuitems",
       "community": 3,
-      "community_name": "category_scroll.test.js",
+      "community_name": "mockData.js",
       "norm_label": "mockmenuitems"
+    },
+    {
+      "label": "SUBCATEGORY_DEFAULT_IMAGES",
+      "file_type": "code",
+      "source_file": "src/utils/mockData.js",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "src_utils_mockdata_subcategory_default_images",
+      "community": 3,
+      "community_name": "mockData.js",
+      "norm_label": "subcategory_default_images"
     },
     {
       "label": "supabase.js",
@@ -2165,28 +2309,6 @@
       "norm_label": "app.jsx"
     },
     {
-      "label": "ToastContext.jsx",
-      "file_type": "code",
-      "source_file": "src/context/ToastContext.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_context_toastcontext",
-      "community": 8,
-      "community_name": "App.jsx",
-      "norm_label": "toastcontext.jsx"
-    },
-    {
-      "label": "ToastContext",
-      "file_type": "code",
-      "source_file": "src/context/ToastContext.jsx",
-      "source_location": "L4",
-      "_origin": "ast",
-      "id": "src_context_toastcontext_toastcontext",
-      "community": 8,
-      "community_name": "App.jsx",
-      "norm_label": "toastcontext"
-    },
-    {
       "label": "main.jsx",
       "file_type": "code",
       "source_file": "src/main.jsx",
@@ -2209,28 +2331,6 @@
       "norm_label": "protectedroute.jsx"
     },
     {
-      "label": "CategoryIcons.jsx",
-      "file_type": "code",
-      "source_file": "src/components/common/CategoryIcons.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_components_common_categoryicons",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "categoryicons.jsx"
-    },
-    {
-      "label": "TuiLogo.jsx",
-      "file_type": "code",
-      "source_file": "src/components/common/TuiLogo.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_components_common_tuilogo",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "tuilogo.jsx"
-    },
-    {
       "label": "WeatherIndicator.jsx",
       "file_type": "code",
       "source_file": "src/components/common/WeatherIndicator.jsx",
@@ -2238,7 +2338,7 @@
       "_origin": "ast",
       "id": "src_components_common_weatherindicator",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "weatherindicator.jsx"
     },
     {
@@ -2249,7 +2349,7 @@
       "_origin": "ast",
       "id": "src_hooks_useweather",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "useweather.js"
     },
     {
@@ -2260,7 +2360,7 @@
       "_origin": "ast",
       "id": "src_hooks_useweather_antalya",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "antalya"
     },
     {
@@ -2271,19 +2371,8 @@
       "_origin": "ast",
       "id": "src_hooks_useweather_fallback",
       "community": 9,
-      "community_name": "HomePage.jsx",
+      "community_name": "WeatherIndicator.jsx",
       "norm_label": "fallback"
-    },
-    {
-      "label": "HomePage.jsx",
-      "file_type": "code",
-      "source_file": "src/pages/HomePage.jsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_pages_homepage",
-      "community": 9,
-      "community_name": "HomePage.jsx",
-      "norm_label": "homepage.jsx"
     }
   ],
   "links": [
@@ -2461,7 +2550,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/menu/DrinkDetailModal.jsx",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_menu_drinkdetailmodal_drinkdetailmodal",
@@ -2473,7 +2562,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/menu/DrinkDetailModal.jsx",
-      "source_location": "L18",
+      "source_location": "L23",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_menu_drinkdetailmodal_drinkdetailmodal",
@@ -2485,7 +2574,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/menu/DrinkDetailModal.jsx",
-      "source_location": "L40",
+      "source_location": "L45",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_menu_drinkdetailmodal_drinkdetailmodal",
@@ -2508,7 +2597,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/components/menu/MenuCard.jsx",
-      "source_location": "L35",
+      "source_location": "L36",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_menu_menucard_drinkbadge",
@@ -2521,7 +2610,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/menu/MenuCard.jsx",
-      "source_location": "L58",
+      "source_location": "L59",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_menu_menucard_menucard",
@@ -2533,7 +2622,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/components/menu/MenuCard.jsx",
-      "source_location": "L67",
+      "source_location": "L71",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_menu_menucard_menucard",
@@ -2557,7 +2646,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/hooks/useMenu.js",
-      "source_location": "L130",
+      "source_location": "L131",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_hooks_usemenu_usemenu",
@@ -2569,7 +2658,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/hooks/useMenu.js",
-      "source_location": "L197",
+      "source_location": "L198",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_hooks_usemenu_usemenu",
@@ -2581,7 +2670,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/hooks/useMenu.js",
-      "source_location": "L198",
+      "source_location": "L199",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_hooks_usemenu_usemenu",
@@ -2593,7 +2682,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/hooks/useMenu.js",
-      "source_location": "L205",
+      "source_location": "L206",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_hooks_usemenu_usemenu",
@@ -2605,7 +2694,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/hooks/useMenu.js",
-      "source_location": "L251",
+      "source_location": "L252",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_hooks_usemenu_usemenu",
@@ -2992,6 +3081,42 @@
       "weight": 1.0,
       "_origin": "ast",
       "source": "scripts_generate_seed",
+      "target": "src_utils_mockdata_mockmenuitems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/update-mock-data.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_update_mock_data",
+      "target": "src_utils_mockdata_category_subcategories",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/update-mock-data.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_update_mock_data",
+      "target": "src_utils_mockdata_mockcategories",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/update-mock-data.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_update_mock_data",
       "target": "src_utils_mockdata_mockmenuitems",
       "confidence_score": 1.0
     },
@@ -3563,6 +3688,18 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/components/menu/DrinkDetailModal.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_menu_drinkdetailmodal",
+      "target": "src_utils_mockdata_subcategory_default_images",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/components/menu/FilterPills.jsx",
       "source_location": "L2",
       "weight": 1.0,
@@ -3605,6 +3742,18 @@
       "_origin": "ast",
       "source": "src_components_menu_menucard",
       "target": "src_utils_assethelper_resolveasseturl",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/menu/MenuCard.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_menu_menucard",
+      "target": "src_utils_mockdata_subcategory_default_images",
       "confidence_score": 1.0
     },
     {
@@ -4271,6 +4420,18 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "scripts/update-mock-data.mjs",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_update_mock_data",
+      "target": "src_utils_mockdata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "scripts/update-mock-images.mjs",
       "source_location": "L9",
       "weight": 1.0,
@@ -4775,6 +4936,18 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/components/menu/DrinkDetailModal.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_menu_drinkdetailmodal",
+      "target": "src_utils_mockdata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/components/menu/FilterPills.jsx",
       "source_location": "L2",
       "weight": 1.0,
@@ -4817,6 +4990,18 @@
       "_origin": "ast",
       "source": "src_components_menu_menucard",
       "target": "src_utils_assethelper",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/menu/MenuCard.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_components_menu_menucard",
+      "target": "src_utils_mockdata",
       "confidence_score": 1.0
     },
     {
@@ -5939,6 +6124,61 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "scripts/update-mock-data.mjs",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_update_mock_data",
+      "target": "scripts_update_mock_data_orderedcategories",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/update-mock-data.mjs",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_update_mock_data",
+      "target": "scripts_update_mock_data_dirname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/update-mock-data.mjs",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_update_mock_data",
+      "target": "scripts_update_mock_data_target",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/update-mock-data.mjs",
+      "source_location": "L77",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_update_mock_data",
+      "target": "scripts_update_mock_data_updateditems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/update-mock-data.mjs",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "scripts_update_mock_data",
+      "target": "scripts_update_mock_data_subcategory_default_images",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "scripts/update-mock-images.mjs",
       "source_location": "L11",
       "weight": 1.0,
@@ -6380,7 +6620,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/menu/DrinkDetailModal.jsx",
-      "source_location": "L10",
+      "source_location": "L11",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_menu_drinkdetailmodal",
@@ -6402,7 +6642,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/menu/MenuCard.jsx",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_menu_menucard",
@@ -6413,7 +6653,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/menu/MenuCard.jsx",
-      "source_location": "L50",
+      "source_location": "L51",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_menu_menucard",
@@ -6424,7 +6664,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/menu/MenuCard.jsx",
-      "source_location": "L57",
+      "source_location": "L58",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_components_menu_menucard",
@@ -6765,11 +7005,33 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/utils/mockData.js",
+      "source_location": "L113",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_utils_mockdata",
+      "target": "src_utils_mockdata_mockmenuitems",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/mockData.js",
       "source_location": "L42",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_utils_mockdata",
-      "target": "src_utils_mockdata_mockcategories",
+      "target": "src_utils_mockdata_subcategory_default_images",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/utils/mockData.js",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_origin": "ast",
+      "source": "src_utils_mockdata",
+      "target": "src_utils_mockdata_getbeverageimageurl",
       "confidence_score": 1.0
     },
     {
@@ -6787,11 +7049,11 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/utils/mockData.js",
-      "source_location": "L81",
+      "source_location": "L74",
       "weight": 1.0,
       "_origin": "ast",
       "source": "src_utils_mockdata",
-      "target": "src_utils_mockdata_mockmenuitems",
+      "target": "src_utils_mockdata_mockcategories",
       "confidence_score": 1.0
     },
     {
@@ -6841,5 +7103,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "dc6255732a1df6feb5ace159f9d6c5d613470914"
+  "built_at_commit": "a6e70fc5876d87dfd0a1fb46890b9c4cf0a788d7"
 }

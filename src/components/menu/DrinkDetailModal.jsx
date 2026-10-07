@@ -6,6 +6,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import { formatItemPrice } from "../../utils/translations";
 import { Button } from "../common/Button";
 import { resolveAssetUrl } from "../../utils/assetHelper";
+import { SUBCATEGORY_DEFAULT_IMAGES } from "../../utils/mockData";
 
 export function DrinkDetailModal({ item, isOpen, onClose }) {
   const { getLocalizedField, t } = useLanguage();
@@ -15,7 +16,11 @@ export function DrinkDetailModal({ item, isOpen, onClose }) {
   const title = getLocalizedField(item, "title") || item.title_en;
   const description = getLocalizedField(item, "description") || item.description_en;
   const isAvailable = item.is_available !== false;
-  const imageUrl = item.current_image_url ? resolveAssetUrl(item.current_image_url) : null;
+  const rawImg =
+    item.current_image_url ||
+    (item.subcategory && SUBCATEGORY_DEFAULT_IMAGES[item.subcategory]) ||
+    null;
+  const imageUrl = rawImg ? resolveAssetUrl(rawImg) : null;
 
   return (
     <Modal

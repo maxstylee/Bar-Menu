@@ -87,8 +87,8 @@ export function HomePage() {
     return (
       categories.find((c) => c.id === selectedCategory) ||
       categories[0] || {
-        id: "tea-coffee",
-        name_en: "TEA and COFFEE",
+        id: "cocktails",
+        name_en: "COCKTAILS",
       }
     );
   }, [categories, selectedCategory]);
@@ -96,8 +96,8 @@ export function HomePage() {
   const activeCategoryTitle =
     getLocalizedField(activeCategoryObj, "name") ||
     activeCategoryObj.name_en ||
-    t("catTeaCoffee") ||
-    "TEA and COFFEE";
+    t("catCocktails") ||
+    "COCKTAILS";
 
   // Handlers for category selection
   const handleSelectCategory = (catId) => {
@@ -399,24 +399,26 @@ export function HomePage() {
                       id={`subcat-${group.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
                       className="relative scroll-mt-24"
                     >
-                      {/* Elegant Prominent Section Header with Subtle Divider Line */}
-                      <div className="sticky top-[72px] z-30 -mx-3 px-3 py-3 backdrop-blur-xl bg-[#070d16]/90 border-y border-slate-700/50 shadow-[0_4px_20px_rgba(0,0,0,0.5)] mb-4 transition-all">
-                        <div className="flex items-center justify-between gap-3">
-                          <div className="flex items-center gap-3 min-w-0">
-                            {/* Glowing Cyan/Sky Accent Indicator */}
-                            <span className="w-1.5 h-6 rounded-full bg-gradient-to-b from-sky-400 to-sky-600 shadow-[0_0_12px_rgba(56,189,248,0.7)] shrink-0" />
-                            
-                            {/* Subcategory Title */}
-                            <h2 className="font-outfit font-black text-lg xl:text-xl tracking-wider text-white uppercase drop-shadow-sm truncate">
+                      {/* Elegant Prominent Centered Section Header with Subtle Accent Lines */}
+                      <div className="sticky top-[72px] z-30 -mx-3 px-4 py-4 backdrop-blur-xl bg-[#070d16]/95 border-y border-slate-700/60 shadow-[0_4px_20px_rgba(0,0,0,0.6)] my-8 transition-all">
+                        <div className="flex items-center justify-center gap-4 w-full">
+                          {/* Left Subtle Accent Line */}
+                          <span className="h-px flex-1 bg-gradient-to-r from-transparent via-sky-500/30 to-sky-400/80" />
+
+                          {/* Centered Subcategory Header with Accent Pip & Drink Counter */}
+                          <div className="flex items-center justify-center gap-3 px-3 shrink-0">
+                            <span className="w-2 h-6 rounded-full bg-gradient-to-b from-sky-400 to-sky-600 shadow-[0_0_12px_rgba(56,189,248,0.7)] shrink-0" />
+                            <h2 className="font-outfit font-black text-xl xl:text-2xl tracking-widest text-white uppercase text-center drop-shadow-sm">
                               {group.name}
                             </h2>
+                            <span className="text-xs font-bold tracking-wider font-outfit uppercase px-3 py-1 rounded-full bg-[#101b2a] text-sky-300 border border-sky-400/40 shadow-[0_0_10px_rgba(56,189,248,0.25)] shrink-0">
+                              {group.items.length}{" "}
+                              {group.items.length === 1 ? (t("drink") || "Drink") : (t("drinks") || "Drinks")}
+                            </span>
                           </div>
 
-                          {/* Item Count Badge */}
-                          <span className="text-[11px] font-bold tracking-wider font-outfit uppercase px-2.5 py-0.5 rounded-full bg-[#101b2a] text-sky-300 border border-sky-400/30 shadow-[0_0_8px_rgba(56,189,248,0.2)] shrink-0">
-                            {group.items.length}{" "}
-                            {group.items.length === 1 ? (t("drink") || "Drink") : (t("drinks") || "Drinks")}
-                          </span>
+                          {/* Right Subtle Accent Line */}
+                          <span className="h-px flex-1 bg-gradient-to-l from-transparent via-sky-500/30 to-sky-400/80" />
                         </div>
                       </div>
 
@@ -503,7 +505,7 @@ export function HomePage() {
               </div>
 
               {/* Right Side: Vertical Stack of 4 Round Category Buttons */}
-              <div className="flex-1 flex flex-col items-start justify-center gap-4.5 pl-3 space-y-2 slide-in-right">
+              <div className="flex-1 flex flex-col items-start justify-center gap-3 pl-2.5 space-y-1.5 slide-in-right">
                 {categories.map((cat) => {
                   const localizedName = getLocalizedField(cat, "name") || cat.name_en;
 
@@ -511,15 +513,15 @@ export function HomePage() {
                     <button
                       key={cat.id}
                       onClick={() => handleSelectCategory(cat.id)}
-                      className="flex items-center gap-3 group text-left transition-transform active:scale-95 cursor-pointer"
+                      className="w-full flex items-center gap-3.5 group text-left transition-transform active:scale-95 cursor-pointer min-h-[48px] py-1.5"
                     >
                       {/* Outline Circle Icon */}
-                      <div className="w-13 h-13 rounded-full flex items-center justify-center border-2 border-white/80 bg-black/40 backdrop-blur-md text-white group-hover:border-sky-400 group-hover:text-sky-300 group-hover:shadow-[0_0_16px_rgba(56,189,248,0.5)] transition-all shrink-0">
+                      <div className="w-12 h-12 rounded-full flex items-center justify-center border-2 border-white/80 bg-black/40 backdrop-blur-md text-white group-hover:border-sky-400 group-hover:text-sky-300 group-hover:shadow-[0_0_16px_rgba(56,189,248,0.5)] transition-all shrink-0">
                         <CategoryIconRenderer categoryId={cat.id} className="w-6 h-6" />
                       </div>
 
                       {/* Category Label */}
-                      <span className="font-outfit font-extrabold text-xs sm:text-sm uppercase tracking-wider text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] group-hover:text-sky-300 transition-colors leading-tight">
+                      <span className="font-outfit font-extrabold text-sm sm:text-base uppercase tracking-wider text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] group-hover:text-sky-300 transition-colors leading-tight">
                         {localizedName}
                       </span>
                     </button>
@@ -551,11 +553,11 @@ export function HomePage() {
             <header className="sticky top-0 z-40 backdrop-blur-xl bg-[#09111c]/90 border-b border-slate-800/80">
               <div className="px-4 h-16 flex items-center justify-between gap-3">
                 {/* Left: Back Button + Title */}
-                <div className="flex items-center gap-3 min-w-0">
+                <div className="flex items-center gap-2.5 min-w-0">
                   <button
                     type="button"
                     onClick={handleBackToHome}
-                    className="p-1.5 -ml-1 text-white hover:text-sky-300 transition-colors"
+                    className="min-h-[44px] min-w-[44px] flex items-center justify-center -ml-2 text-white hover:text-sky-300 active:scale-90 transition-all cursor-pointer"
                     aria-label="Back to categories"
                   >
                     <ArrowLeft className="w-6 h-6" />
@@ -566,11 +568,11 @@ export function HomePage() {
                 </div>
 
                 {/* Right: Search Toggle Button + Compact TUI Logo Badge */}
-                <div className="flex items-center gap-3 shrink-0">
+                <div className="flex items-center gap-2 shrink-0">
                   <button
                     type="button"
                     onClick={() => setMobileSearchOpen(!mobileSearchOpen)}
-                    className="p-2 text-white hover:text-sky-300 transition-colors"
+                    className="min-h-[44px] min-w-[44px] flex items-center justify-center text-white hover:text-sky-300 active:scale-90 transition-all cursor-pointer"
                     aria-label="Search drinks"
                   >
                     <Search className="w-5 h-5" />
@@ -646,24 +648,25 @@ export function HomePage() {
                         id={`subcat-mobile-${group.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
                         className="relative scroll-mt-20"
                       >
-                        {/* Prominent Sticky Subcategory Section Header with Divider Line */}
-                        <div className="sticky top-16 z-30 -mx-4 px-4 py-2.5 backdrop-blur-xl bg-[#09111c]/92 border-y border-slate-800/90 shadow-[0_4px_16px_rgba(0,0,0,0.5)] mb-3">
-                          <div className="flex items-center justify-between gap-2.5">
-                            <div className="flex items-center gap-2.5 min-w-0">
-                              {/* Glowing Accent Pip */}
+                        {/* Prominent Centered Sticky Subcategory Section Header with Elegant Accent Lines */}
+                        <div className="sticky top-16 z-30 -mx-4 px-4 py-3.5 backdrop-blur-xl bg-[#09111c]/95 border-y border-slate-800/90 shadow-[0_4px_16px_rgba(0,0,0,0.6)] my-6">
+                          <div className="flex items-center justify-center gap-3 w-full">
+                            {/* Left Accent Gradient Line */}
+                            <span className="h-px flex-1 bg-gradient-to-r from-transparent via-sky-500/30 to-sky-400/80" />
+
+                            {/* Centered Subcategory Header with Glowing Pip & Counter Badge */}
+                            <div className="flex items-center justify-center gap-2.5 px-2 shrink-0 max-w-[85%]">
                               <span className="w-1.5 h-5 rounded-full bg-gradient-to-b from-sky-400 to-sky-600 shadow-[0_0_10px_rgba(56,189,248,0.7)] shrink-0" />
-                              
-                              {/* Subcategory Name */}
-                              <h2 className="font-outfit font-black text-sm sm:text-base tracking-wider text-white uppercase truncate">
+                              <h2 className="font-outfit font-black text-base sm:text-lg tracking-wider text-white uppercase text-center drop-shadow truncate">
                                 {group.name}
                               </h2>
+                              <span className="text-[11px] font-bold tracking-wider font-outfit uppercase px-2 py-0.5 rounded-full bg-[#101b2a] text-sky-300 border border-sky-400/35 shadow-[0_0_8px_rgba(56,189,248,0.2)] shrink-0">
+                                {group.items.length}
+                              </span>
                             </div>
 
-                            {/* Item Count Badge */}
-                            <span className="text-[10px] font-bold tracking-wider font-outfit uppercase px-2 py-0.5 rounded-full bg-[#101b2a] text-sky-300 border border-sky-400/30 shrink-0">
-                              {group.items.length}{" "}
-                              {group.items.length === 1 ? (t("drink") || "Drink") : (t("drinks") || "Drinks")}
-                            </span>
+                            {/* Right Accent Gradient Line */}
+                            <span className="h-px flex-1 bg-gradient-to-l from-transparent via-sky-500/30 to-sky-400/80" />
                           </div>
                         </div>
 
@@ -692,7 +695,7 @@ export function HomePage() {
         <button
           type="button"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 z-40 p-3 rounded-full bg-[#0e1726]/90 hover:bg-sky-500 text-sky-300 hover:text-slate-950 border border-sky-400/40 shadow-[0_4px_20px_rgba(0,0,0,0.6)] backdrop-blur-md transition-all active:scale-90"
+          className="fixed bottom-6 right-6 z-40 min-h-[48px] min-w-[48px] flex items-center justify-center rounded-full bg-[#0e1726]/90 hover:bg-sky-500 text-sky-300 hover:text-slate-950 border border-sky-400/40 shadow-[0_4px_20px_rgba(0,0,0,0.6)] backdrop-blur-md transition-all active:scale-90 cursor-pointer"
           aria-label="Back to top"
         >
           <ArrowUp className="w-5 h-5" />

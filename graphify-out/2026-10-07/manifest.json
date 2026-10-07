@@ -1,428 +1,434 @@
 {
   "package.json": {
-    "mtime": 1787874556.1392279,
-    "seen": 1791368738.9251485,
-    "ast_hash": "72aae44ce0211c66612c8e4afbd5517a",
+    "mtime": 1791371313.1800973,
+    "seen": 1791371352.4956083,
+    "ast_hash": "00662920e3da807ba368e3498199c820",
     "semantic_hash": ""
   },
   "postcss.config.js": {
     "mtime": 1787874556.1392279,
-    "seen": 1791368738.925153,
+    "seen": 1791371352.4956143,
     "ast_hash": "33fad9c02cb0ec6d6030369ef6347d57",
     "semantic_hash": ""
   },
   "scripts/generate-seed.mjs": {
     "mtime": 1791367042.0279477,
-    "seen": 1791368738.925155,
+    "seen": 1791371352.4956167,
     "ast_hash": "0e77e96130de531a065d654b60ffe3b4",
     "semantic_hash": ""
   },
   "scripts/update-mock-images.mjs": {
     "mtime": 1791366998.3601673,
-    "seen": 1791368738.9251559,
+    "seen": 1791371352.495618,
     "ast_hash": "280ca29e08b417c46c6d9c6536a541db",
     "semantic_hash": ""
   },
   "src/App.jsx": {
-    "mtime": 1791332533.9879289,
-    "seen": 1791368738.9251568,
-    "ast_hash": "8220cb27b714959fc112075b1c2a81a1",
+    "mtime": 1791370822.889266,
+    "seen": 1791371352.4956198,
+    "ast_hash": "3e2418f44d3378739d56aee93804b120",
     "semantic_hash": ""
   },
   "src/api/supabase.js": {
-    "mtime": 1791367214.9218495,
-    "seen": 1791368738.9251575,
-    "ast_hash": "46335cbad4b5e1c12ce8f3dda6778c8c",
+    "mtime": 1791370799.2445252,
+    "seen": 1791371352.495621,
+    "ast_hash": "82d175147f0be3c4c41ca4b7e86b76d3",
     "semantic_hash": ""
   },
   "src/components/admin/AdminBeverageTable.jsx": {
     "mtime": 1791333899.9559734,
-    "seen": 1791368738.9251585,
+    "seen": 1791371352.495622,
     "ast_hash": "04b3a3411d7e9c50ff19369ad24ba383",
     "semantic_hash": ""
   },
   "src/components/admin/CategoryManagerModal.jsx": {
     "mtime": 1788112246.9705155,
-    "seen": 1791368738.9251592,
+    "seen": 1791371352.4956229,
     "ast_hash": "bc3a337f977b58a7ab11a7b3ca63ba7d",
     "semantic_hash": ""
   },
   "src/components/admin/DeleteConfirmModal.jsx": {
     "mtime": 1787874556.1524332,
-    "seen": 1791368738.9251597,
+    "seen": 1791371352.4956243,
     "ast_hash": "9d1ac11cb32371d12deb2aeb1fb2c44f",
     "semantic_hash": ""
   },
   "src/components/admin/DualImageUploader.jsx": {
     "mtime": 1787934961.629478,
-    "seen": 1791368738.9251604,
+    "seen": 1791371352.4956253,
     "ast_hash": "0805e22a50336cb57cfe08ea79e040ec",
     "semantic_hash": ""
   },
   "src/components/admin/ItemFormModal.jsx": {
     "mtime": 1791334243.0753725,
-    "seen": 1791368738.925161,
+    "seen": 1791371352.4956264,
     "ast_hash": "49e77a0ecd57e9dfa5f85c70cb51deb4",
     "semantic_hash": ""
   },
   "src/components/admin/QuickEditPriceModal.jsx": {
     "mtime": 1788112276.927846,
-    "seen": 1791368738.925162,
+    "seen": 1791371352.4956274,
     "ast_hash": "4d7f812d4ed318606f867d9325ed4a15",
     "semantic_hash": ""
   },
   "src/components/common/Badge.jsx": {
     "mtime": 1787874556.157535,
-    "seen": 1791368738.9251628,
+    "seen": 1791371352.4956288,
     "ast_hash": "e56cba16052a8726c0d1d99d15ff9469",
     "semantic_hash": ""
   },
   "src/components/common/Button.jsx": {
     "mtime": 1787874556.157535,
-    "seen": 1791368738.9251635,
+    "seen": 1791371352.4956298,
     "ast_hash": "120775f60c57ba5ba2cffe54f30aa8a2",
     "semantic_hash": ""
   },
   "src/components/common/CategoryIcons.jsx": {
     "mtime": 1791368005.0598984,
-    "seen": 1791368738.9251642,
+    "seen": 1791371352.4956312,
     "ast_hash": "55296fa89f285d249ab0bf5760120094",
     "semantic_hash": ""
   },
   "src/components/common/Input.jsx": {
     "mtime": 1787874556.1585436,
-    "seen": 1791368738.9251647,
+    "seen": 1791371352.495632,
     "ast_hash": "bc1da1dbd2c4c6ad2bdcf379f82b74fd",
     "semantic_hash": ""
   },
   "src/components/common/LanguageSwitcher.jsx": {
     "mtime": 1791333728.1632514,
-    "seen": 1791368738.9251657,
+    "seen": 1791371352.4956334,
     "ast_hash": "d509c4b7e08d984c549d35aa4da8d429",
     "semantic_hash": ""
   },
   "src/components/common/Modal.jsx": {
     "mtime": 1787874556.1595478,
-    "seen": 1791368738.9251664,
+    "seen": 1791371352.4956348,
     "ast_hash": "74c3c8b1dd8dbedf47e326ee6382a7cd",
     "semantic_hash": ""
   },
   "src/components/common/SkeletonLoader.jsx": {
     "mtime": 1787874556.160487,
-    "seen": 1791368738.925167,
+    "seen": 1791371352.4956357,
     "ast_hash": "3873f14d5177f563c3c525f087d6b163",
     "semantic_hash": ""
   },
   "src/components/common/TuiLogo.jsx": {
     "mtime": 1791330340.6585724,
-    "seen": 1791368738.9251678,
+    "seen": 1791371352.4956365,
     "ast_hash": "8c50e6eda68d9c14f2076115c2ce9db0",
     "semantic_hash": ""
   },
   "src/components/common/WeatherIndicator.jsx": {
     "mtime": 1791368033.4134755,
-    "seen": 1791368738.925169,
+    "seen": 1791371352.4956374,
     "ast_hash": "3fde162b905db25b2d46af3e990eeceb",
     "semantic_hash": ""
   },
   "src/components/menu/CategoryTabs.jsx": {
     "mtime": 1787874556.1617012,
-    "seen": 1791368738.9251704,
+    "seen": 1791371352.4956386,
     "ast_hash": "8538be1ae9c00826febbf3a40d1cd16b",
     "semantic_hash": ""
   },
   "src/components/menu/DrinkDetailModal.jsx": {
     "mtime": 1791364610.0055687,
-    "seen": 1791368738.9251714,
+    "seen": 1791371352.4956393,
     "ast_hash": "39c47f52f0b8d760acaa3de77219215c",
     "semantic_hash": ""
   },
   "src/components/menu/FilterPills.jsx": {
     "mtime": 1791333683.073138,
-    "seen": 1791368738.9251723,
+    "seen": 1791371352.4956403,
     "ast_hash": "1e254d6fba68913a42918bd2cfab5f20",
     "semantic_hash": ""
   },
   "src/components/menu/MenuCard.jsx": {
     "mtime": 1791333637.4799838,
-    "seen": 1791368738.925173,
+    "seen": 1791371352.495641,
     "ast_hash": "0fc8c2b0632744253a9f71eb2a01fcc4",
     "semantic_hash": ""
   },
   "src/components/menu/SearchBar.jsx": {
     "mtime": 1787874556.1627905,
-    "seen": 1791368738.9251738,
+    "seen": 1791371352.495642,
     "ast_hash": "acf20db2ec7bb7089a4724c329860469",
     "semantic_hash": ""
   },
   "src/context/AuthContext.jsx": {
     "mtime": 1787874556.1642027,
-    "seen": 1791368738.9251745,
+    "seen": 1791371352.495643,
     "ast_hash": "f645e0c106bc8db01ba87333f86ea15a",
     "semantic_hash": ""
   },
   "src/context/LanguageContext.jsx": {
     "mtime": 1787874556.1642027,
-    "seen": 1791368738.9251752,
+    "seen": 1791371352.495644,
     "ast_hash": "f405689c516d556a72dad382f0495ada",
     "semantic_hash": ""
   },
   "src/context/ToastContext.jsx": {
     "mtime": 1787874556.1642027,
-    "seen": 1791368738.9251764,
+    "seen": 1791371352.4956453,
     "ast_hash": "9a47c5e2e9590735e8fc7399dfa276b3",
     "semantic_hash": ""
   },
   "src/hooks/useMenu.js": {
-    "mtime": 1791367258.4366603,
-    "seen": 1791368738.925177,
-    "ast_hash": "5bf611356bc6a1dc905f8de046969df1",
+    "mtime": 1791370811.2434568,
+    "seen": 1791371352.4956462,
+    "ast_hash": "7c6f0273506e57dca7a9e901a4f53c0d",
     "semantic_hash": ""
   },
   "src/hooks/useWeather.js": {
     "mtime": 1791367260.4755442,
-    "seen": 1791368738.9251778,
+    "seen": 1791371352.4956474,
     "ast_hash": "9fce573c4a72ce1e95a9409673008637",
     "semantic_hash": ""
   },
   "src/main.jsx": {
     "mtime": 1787874556.167594,
-    "seen": 1791368738.9251785,
+    "seen": 1791371352.4956481,
     "ast_hash": "ed9b0d8c8d9c324ec0b5f65c1d60768a",
     "semantic_hash": ""
   },
   "src/pages/AdminDashboard.jsx": {
     "mtime": 1791334353.2960086,
-    "seen": 1791368738.9251797,
+    "seen": 1791371352.4956493,
     "ast_hash": "ab1097edb97ff866781b3f72f3acae81",
     "semantic_hash": ""
   },
   "src/pages/HomePage.jsx": {
-    "mtime": 1791368310.0027127,
-    "seen": 1791368738.9251804,
-    "ast_hash": "5bf5443ab13b8df4b2a4d9dfbef80c2f",
+    "mtime": 1791370972.3184936,
+    "seen": 1791371352.4956503,
+    "ast_hash": "114ec38d8afb6130c1074d5fff39655e",
     "semantic_hash": ""
   },
   "src/pages/LoginPage.jsx": {
     "mtime": 1791333426.39161,
-    "seen": 1791368738.9251812,
+    "seen": 1791371352.4956515,
     "ast_hash": "85b903f3917778c0c4c2da5d5046ed0e",
     "semantic_hash": ""
   },
   "src/routes/ProtectedRoute.jsx": {
     "mtime": 1787874556.1691065,
-    "seen": 1791368738.925182,
+    "seen": 1791371352.4956524,
     "ast_hash": "497e013fd556817731a3920160462365",
     "semantic_hash": ""
   },
   "src/tests/sentinel.test.js": {
     "mtime": 1791368476.0859516,
-    "seen": 1791368738.925183,
+    "seen": 1791371352.4956543,
     "ast_hash": "7abadacbf4bab4ead371d7558f670a65",
     "semantic_hash": ""
   },
   "src/utils/assetHelper.js": {
     "mtime": 1791330203.521515,
-    "seen": 1791368738.9251838,
+    "seen": 1791371352.4956555,
     "ast_hash": "18284aa662172fb577f90b403861ba4d",
     "semantic_hash": ""
   },
   "src/utils/imageCompressor.js": {
     "mtime": 1787874556.1691065,
-    "seen": 1791368738.9251845,
+    "seen": 1791371352.4956567,
     "ast_hash": "66e51931a3206f334d04ac69708550a4",
     "semantic_hash": ""
   },
   "src/utils/mockData.js": {
-    "mtime": 1791367175.499034,
-    "seen": 1791368738.9251852,
-    "ast_hash": "3895d346d5163359a205c528702a57d7",
+    "mtime": 1791370766.0596187,
+    "seen": 1791371352.4956577,
+    "ast_hash": "1bd233fa0c10007f740d2b7da1b913a1",
     "semantic_hash": ""
   },
   "src/utils/translations.js": {
-    "mtime": 1791368556.518446,
-    "seen": 1791368738.9251862,
-    "ast_hash": "dd18b935ee87ce86fd9f617a7b16dc48",
+    "mtime": 1791370885.8319473,
+    "seen": 1791371352.495659,
+    "ast_hash": "69e3aa7a5a0885c65bd393158fc24750",
     "semantic_hash": ""
   },
   "tailwind.config.js": {
     "mtime": 1787874556.1691065,
-    "seen": 1791368738.9251869,
+    "seen": 1791371352.4956598,
     "ast_hash": "11fdc790f40c701eec1c580d18ef8d41",
     "semantic_hash": ""
   },
   "vite.config.js": {
     "mtime": 1791332069.6506815,
-    "seen": 1791368738.9251876,
+    "seen": 1791371352.495661,
     "ast_hash": "6c4e27ca68861daa79c43f81d26c9bb2",
     "semantic_hash": ""
   },
   ".github/workflows/main.yml": {
     "mtime": 1787934961.5583193,
-    "seen": 1791368738.9251885,
+    "seen": 1791371352.495662,
     "ast_hash": "116cc88a295d047ea4579d13f53dfb7a",
     "semantic_hash": ""
   },
   "README.md": {
     "mtime": 1788111217.4979994,
-    "seen": 1791368738.9251895,
+    "seen": 1791371352.4956632,
     "ast_hash": "fb4820434b8817730b76906968baa1dd",
     "semantic_hash": ""
   },
   "index.html": {
     "mtime": 1791333522.1496112,
-    "seen": 1791368738.9251902,
+    "seen": 1791371352.4956641,
     "ast_hash": "d9be6e9cd92281a7a0f3bac981cb346e",
     "semantic_hash": ""
   },
   "prompt.md": {
     "mtime": 1787874556.1392279,
-    "seen": 1791368738.925191,
+    "seen": 1791371352.4956653,
     "ast_hash": "e4cbe98a93afcdd649ec71be08f8aea6",
     "semantic_hash": ""
   },
   "public/images/bg/bar-desktop.webp": {
     "mtime": 1791327484.928,
-    "seen": 1791368738.9251916,
+    "seen": 1791371352.4956663,
     "ast_hash": "8d24f5f4c68d145b5ac1ce8b881c697a",
     "semantic_hash": ""
   },
   "public/images/bg/start-mobile.webp": {
     "mtime": 1791327485.054,
-    "seen": 1791368738.925192,
+    "seen": 1791371352.4956672,
     "ast_hash": "bf9a3fb6408b30693ff7ed6b0f8e3426",
     "semantic_hash": ""
   },
   "public/images/drinks/aperol-spritz.webp": {
     "mtime": 1791327484.785,
-    "seen": 1791368738.9251933,
+    "seen": 1791371352.4956684,
     "ast_hash": "5be2b2026ebd79536de480fd4e4ee69a",
     "semantic_hash": ""
   },
   "public/images/drinks/bloody-mary.webp": {
     "mtime": 1791366917.337,
-    "seen": 1791368738.9251938,
+    "seen": 1791371352.4956694,
     "ast_hash": "2b6b6d961479e77ba4acd5e9735b378f",
     "semantic_hash": ""
   },
   "public/images/drinks/brandy-alexander.webp": {
     "mtime": 1791366917.257,
-    "seen": 1791368738.9251947,
+    "seen": 1791371352.49567,
     "ast_hash": "e58e0eddb9592dec7ecb3b6391fb6be8",
     "semantic_hash": ""
   },
   "public/images/drinks/caipirinha.webp": {
     "mtime": 1791366917.255,
-    "seen": 1791368738.9251955,
+    "seen": 1791371352.495671,
     "ast_hash": "01f37f732abb4c83d436e9baa719381d",
     "semantic_hash": ""
   },
   "public/images/drinks/cuba-libre.webp": {
     "mtime": 1791366917.302,
-    "seen": 1791368738.9251962,
+    "seen": 1791371352.4956722,
     "ast_hash": "125bda3e3f436578e498a9ec8dd22b5c",
     "semantic_hash": ""
   },
   "public/images/drinks/espresso-martini.webp": {
     "mtime": 1791327484.735,
-    "seen": 1791368738.9251974,
+    "seen": 1791371352.4956732,
     "ast_hash": "80c0641589482a4545f9d35c9b95ebf1",
     "semantic_hash": ""
   },
   "public/images/drinks/green-apple-martini.webp": {
     "mtime": 1791366917.212,
-    "seen": 1791368738.925198,
+    "seen": 1791371352.4956741,
     "ast_hash": "a94a7c864abc37026aacaf83265ee536",
     "semantic_hash": ""
   },
   "public/images/drinks/green-mile.webp": {
     "mtime": 1791366917.249,
-    "seen": 1791368738.925199,
+    "seen": 1791371352.4956758,
     "ast_hash": "f2f7fd96656623fea5d239d9cc4f2637",
     "semantic_hash": ""
   },
   "public/images/drinks/long-island.webp": {
     "mtime": 1791327484.516,
-    "seen": 1791368738.9252,
+    "seen": 1791371352.495677,
     "ast_hash": "c81bfbfdd7fe1866e485111941a13a51",
     "semantic_hash": ""
   },
   "public/images/drinks/margarita.webp": {
     "mtime": 1791327484.407,
-    "seen": 1791368738.9252007,
+    "seen": 1791371352.4956777,
     "ast_hash": "d95e610f0cb531c729245356105ea4c4",
     "semantic_hash": ""
   },
   "public/images/drinks/martini.webp": {
     "mtime": 1791366917.208,
-    "seen": 1791368738.9252014,
+    "seen": 1791371352.4956787,
     "ast_hash": "3eefc53431f86be242f6b7749dcb04c2",
     "semantic_hash": ""
   },
   "public/images/drinks/med-mule.webp": {
     "mtime": 1791366917.302,
-    "seen": 1791368738.9252021,
+    "seen": 1791371352.4956794,
     "ast_hash": "c29580b8fb1e59a34386b2f9759479b1",
     "semantic_hash": ""
   },
   "public/images/drinks/mocktail.webp": {
     "mtime": 1791327484.629,
-    "seen": 1791368738.9252028,
+    "seen": 1791371352.4956808,
     "ast_hash": "815aef4f01d5949d3e4cd95a0169c5f1",
     "semantic_hash": ""
   },
   "public/images/drinks/mojito.webp": {
     "mtime": 1791327484.461,
-    "seen": 1791368738.9252038,
+    "seen": 1791371352.4956818,
     "ast_hash": "dc52ba1d87d6e455aa425c88d9c7b8a2",
     "semantic_hash": ""
   },
   "public/images/drinks/moonlight.webp": {
     "mtime": 1791366917.256,
-    "seen": 1791368738.9252045,
+    "seen": 1791371352.495683,
     "ast_hash": "ec0fc91a760ec79b4c1586ee812c9156",
     "semantic_hash": ""
   },
   "public/images/drinks/pina-colada.webp": {
     "mtime": 1791327484.573,
-    "seen": 1791368738.9252052,
+    "seen": 1791371352.4956841,
     "ast_hash": "456b70f372ec6f12b3df9988f6431165",
     "semantic_hash": ""
   },
   "public/images/drinks/spartacus.webp": {
     "mtime": 1791366917.298,
-    "seen": 1791368738.925206,
+    "seen": 1791371352.4956849,
     "ast_hash": "547ce9aa4c52b97d6b4fe7facc662b4e",
     "semantic_hash": ""
   },
   "public/images/drinks/tequila-sunrise.webp": {
     "mtime": 1791327484.682,
-    "seen": 1791368738.9252064,
+    "seen": 1791371352.4956858,
     "ast_hash": "bf1aed3e041adcb35627935ddf14ea77",
     "semantic_hash": ""
   },
   "public/images/drinks/tropicana.webp": {
     "mtime": 1791366917.211,
-    "seen": 1791368738.9252074,
+    "seen": 1791371352.495687,
     "ast_hash": "5c0e9f63cee57c5a1f0a6773e27add15",
     "semantic_hash": ""
   },
   "public/images/drinks/tui-blue-special.webp": {
     "mtime": 1791327484.357,
-    "seen": 1791368738.925208,
+    "seen": 1791371352.4956877,
     "ast_hash": "23412066adf504bc87b0b9468f9a8b0d",
     "semantic_hash": ""
   },
   "public/images/drinks/very-berry.webp": {
     "mtime": 1791366917.298,
-    "seen": 1791368738.9252088,
+    "seen": 1791371352.4956887,
     "ast_hash": "86fab6d0aaca16d5ce2803eb21f38792",
     "semantic_hash": ""
   },
   "public/images/drinks/whiskey-sour.webp": {
     "mtime": 1791366917.206,
-    "seen": 1791368738.9252093,
+    "seen": 1791371352.4956894,
     "ast_hash": "a73af102efbce09436463615de66241e",
+    "semantic_hash": ""
+  },
+  "src/tests/category_scroll.test.js": {
+    "mtime": 1791371285.339218,
+    "seen": 1791371352.4956534,
+    "ast_hash": "709bdb2a2a275bcfa9375f6f103adb1d",
     "semantic_hash": ""
   }
 }

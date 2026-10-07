@@ -5,58 +5,81 @@
  */
 
 export const CATEGORY_SUBCATEGORIES = {
-  'tea-coffee': [
-    'TEA',
-    'COFFEE',
-    'COFFEE WITH ALCOHOL',
+  "tea-coffee": [
+    "TEA",
+    "COFFEE",
+    "COFFEE WITH ALCOHOL"
   ],
-  'cold-drinks': [
-    'COLD DRINKS',
-    'JUICE',
-    'WELLNESS',
+  "cold-drinks": [
+    "COLD DRINKS",
+    "JUICE",
+    "WELLNESS"
   ],
-  'alcoholic-drinks': [
-    'BEER',
-    'LIQUEURS',
-    'IMPORTED LIQUOR',
-    'VERMOUTH',
-    'COGNAC',
-    'RUM',
-    'TEQUILA',
-    'VODKA',
-    'GINS',
-    'RAKI',
-    'WHISKEYS',
-    'BOURBON WHISKEY',
-    'IRISH WHISKEY',
-    'WINE',
-    'CHAMPAGNE',
+  "alcoholic-drinks": [
+    "BEER",
+    "LIQUEURS",
+    "IMPORTED LIQUOR",
+    "VERMOUTH",
+    "COGNAC",
+    "RUM",
+    "TEQUILA",
+    "VODKA",
+    "GINS",
+    "RAKI",
+    "WHISKEYS",
+    "BOURBON WHISKEY",
+    "IRISH WHISKEY",
+    "WINE",
+    "CHAMPAGNE"
   ],
-  'cocktails': [
-    'COCKTAIL SELECTION WITH PREMIUM LIQUEURS',
-    'COCKTAILS WITH ALCOHOL',
-    'NON ALCOHOLIC COCKTAILS',
-  ],
+  "cocktails": [
+    "COCKTAIL SELECTION WITH PREMIUM LIQUEURS",
+    "COCKTAILS WITH ALCOHOL",
+    "NON ALCOHOLIC COCKTAILS"
+  ]
 };
+
+export const SUBCATEGORY_DEFAULT_IMAGES = {
+  "TEA": "/images/subcategories/tea.webp",
+  "COFFEE": "/images/subcategories/coffee.webp",
+  "COFFEE WITH ALCOHOL": "/images/subcategories/coffee-alcohol.webp",
+  "COLD DRINKS": "/images/subcategories/cold-drinks.webp",
+  "JUICE": "/images/subcategories/juice.webp",
+  "WELLNESS": "/images/subcategories/wellness.webp",
+  "BEER": "/images/subcategories/beer.webp",
+  "LIQUEURS": "/images/subcategories/liqueurs.webp",
+  "IMPORTED LIQUOR": "/images/subcategories/imported-liquor.webp",
+  "VERMOUTH": "/images/subcategories/vermouth.webp",
+  "COGNAC": "/images/subcategories/cognac.webp",
+  "RUM": "/images/subcategories/rum.webp",
+  "TEQUILA": "/images/subcategories/tequila.webp",
+  "VODKA": "/images/subcategories/vodka.webp",
+  "GINS": "/images/subcategories/gins.webp",
+  "RAKI": "/images/subcategories/raki.webp",
+  "WHISKEYS": "/images/subcategories/whiskeys.webp",
+  "BOURBON WHISKEY": "/images/subcategories/bourbon.webp",
+  "IRISH WHISKEY": "/images/subcategories/irish-whiskey.webp",
+  "WINE": "/images/subcategories/wine.webp",
+  "CHAMPAGNE": "/images/subcategories/champagne.webp"
+};
+
+export function getBeverageImageUrl(item) {
+  if (item?.current_image_url) return item.current_image_url;
+  if (item?.subcategory && SUBCATEGORY_DEFAULT_IMAGES[item.subcategory]) {
+    return SUBCATEGORY_DEFAULT_IMAGES[item.subcategory];
+  }
+  return "";
+}
 
 export const mockCategories = [
   {
-    "id": "tea-coffee",
-    "name_en": "TEA and COFFEE",
-    "name_tr": "ÇAY ve KAHVE",
-    "name_de": "TEE und KAFFEE",
-    "name_ru": "ЧАЙ И КОФЕ",
-    "icon": "Coffee",
+    "id": "cocktails",
+    "name_en": "COCKTAILS",
+    "name_tr": "KOKTEYLLER",
+    "name_de": "COCKTAILS",
+    "name_ru": "КОКТЕЙЛИ",
+    "icon": "Martini",
     "sort_order": 1
-  },
-  {
-    "id": "cold-drinks",
-    "name_en": "COLD DRINKS",
-    "name_tr": "SOĞUK İÇECEKLER",
-    "name_de": "KALTE GETRÄNKE",
-    "name_ru": "ХОЛОДНЫЕ НАПИТКИ",
-    "icon": "GlassWater",
-    "sort_order": 2
   },
   {
     "id": "alcoholic-drinks",
@@ -65,15 +88,24 @@ export const mockCategories = [
     "name_de": "ALKOHOLISCHE GETRÄNKE",
     "name_ru": "АЛКОГОЛЬНЫЕ НАПИТКИ",
     "icon": "Wine",
+    "sort_order": 2
+  },
+  {
+    "id": "cold-drinks",
+    "name_en": "COLD DRINKS",
+    "name_tr": "SOĞUK İÇECEKLER",
+    "name_de": "KALTE GETRÄNKE",
+    "name_ru": "ХОЛОДНЫЕ НАПИТКИ",
+    "icon": "GlassWater",
     "sort_order": 3
   },
   {
-    "id": "cocktails",
-    "name_en": "COCKTAILS",
-    "name_tr": "KOKTEYLLER",
-    "name_de": "COCKTAILS",
-    "name_ru": "КОКТЕЙЛИ",
-    "icon": "Martini",
+    "id": "tea-coffee",
+    "name_en": "TEA and COFFEE",
+    "name_tr": "ÇAY ve KAHVE",
+    "name_de": "TEE und KAFFEE",
+    "name_ru": "ЧАЙ И КОФЕ",
+    "icon": "Coffee",
     "sort_order": 4
   }
 ];
@@ -98,7 +130,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/tea.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -125,7 +157,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/tea.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -152,7 +184,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/tea.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -179,7 +211,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/tea.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -206,7 +238,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/tea.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -233,7 +265,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/tea.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -260,7 +292,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -287,7 +319,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -314,7 +346,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -341,7 +373,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -368,7 +400,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -395,7 +427,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -422,7 +454,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -449,7 +481,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -476,7 +508,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -503,7 +535,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -530,7 +562,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -557,7 +589,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -584,7 +616,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee-alcohol.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -611,7 +643,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee-alcohol.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -638,7 +670,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee-alcohol.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -665,7 +697,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee-alcohol.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -692,7 +724,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/coffee-alcohol.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -719,7 +751,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cold-drinks.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -746,7 +778,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cold-drinks.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -773,7 +805,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cold-drinks.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -800,7 +832,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cold-drinks.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -827,7 +859,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cold-drinks.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -854,7 +886,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cold-drinks.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -881,7 +913,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cold-drinks.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -908,7 +940,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cold-drinks.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -935,7 +967,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cold-drinks.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -962,7 +994,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cold-drinks.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -989,7 +1021,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cold-drinks.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1016,7 +1048,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cold-drinks.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1043,7 +1075,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cold-drinks.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1070,7 +1102,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/juice.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1097,7 +1129,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/juice.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1124,7 +1156,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/juice.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1151,7 +1183,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/juice.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1178,7 +1210,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/wellness.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1205,7 +1237,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/wellness.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1232,7 +1264,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/wellness.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -1259,7 +1291,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/wellness.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -1286,7 +1318,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/wellness.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -1313,7 +1345,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/beer.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1340,7 +1372,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/beer.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1367,7 +1399,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/beer.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1394,7 +1426,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/beer.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1421,7 +1453,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/beer.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1448,7 +1480,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/beer.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1475,7 +1507,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/liqueurs.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1502,7 +1534,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/liqueurs.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1529,7 +1561,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/liqueurs.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1556,7 +1588,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/liqueurs.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1583,7 +1615,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/imported-liquor.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -1610,7 +1642,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/imported-liquor.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1637,7 +1669,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/imported-liquor.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1664,7 +1696,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/imported-liquor.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1691,7 +1723,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/imported-liquor.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1718,7 +1750,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/imported-liquor.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1745,7 +1777,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/imported-liquor.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1772,7 +1804,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/imported-liquor.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1799,7 +1831,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/imported-liquor.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1826,7 +1858,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/imported-liquor.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1853,7 +1885,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/imported-liquor.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1880,7 +1912,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/imported-liquor.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1907,7 +1939,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/imported-liquor.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1934,7 +1966,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/imported-liquor.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1961,7 +1993,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/imported-liquor.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -1988,7 +2020,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/vermouth.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2015,7 +2047,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/vermouth.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2042,7 +2074,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/vermouth.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2069,7 +2101,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cognac.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2096,7 +2128,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cognac.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -2123,7 +2155,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cognac.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -2150,7 +2182,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cognac.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -2177,7 +2209,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cognac.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -2204,7 +2236,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cognac.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -2231,7 +2263,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cognac.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -2258,7 +2290,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cognac.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -2285,7 +2317,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cognac.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -2312,7 +2344,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cognac.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -2339,7 +2371,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/cognac.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -2366,7 +2398,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/rum.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2393,7 +2425,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/rum.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2420,7 +2452,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/rum.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2447,7 +2479,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/rum.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2474,7 +2506,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/rum.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2501,7 +2533,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/rum.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2528,7 +2560,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/rum.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2555,7 +2587,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/tequila.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2582,7 +2614,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/tequila.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2609,7 +2641,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/tequila.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2636,7 +2668,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/tequila.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -2663,7 +2695,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/vodka.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2690,7 +2722,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/vodka.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2717,7 +2749,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/vodka.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2744,7 +2776,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/vodka.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2771,7 +2803,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/vodka.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2798,7 +2830,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/vodka.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2825,7 +2857,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/vodka.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2852,7 +2884,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/vodka.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2879,7 +2911,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/vodka.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2906,7 +2938,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/vodka.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -2933,7 +2965,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/vodka.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -2960,7 +2992,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/vodka.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -2987,7 +3019,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/gins.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3014,7 +3046,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/gins.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3041,7 +3073,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/gins.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3068,7 +3100,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/gins.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3095,7 +3127,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/gins.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3122,7 +3154,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/gins.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -3149,7 +3181,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/gins.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3176,7 +3208,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/gins.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -3203,7 +3235,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/raki.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3230,7 +3262,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/raki.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3257,7 +3289,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/raki.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3284,7 +3316,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/raki.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3311,7 +3343,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/raki.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3338,7 +3370,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/raki.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3365,7 +3397,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/raki.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3392,7 +3424,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/raki.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -3419,7 +3451,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/raki.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3446,7 +3478,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/raki.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -3473,7 +3505,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/raki.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3500,7 +3532,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/raki.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3527,7 +3559,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/raki.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -3554,7 +3586,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/whiskeys.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3581,7 +3613,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/whiskeys.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3608,7 +3640,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/whiskeys.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3635,7 +3667,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/whiskeys.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3662,7 +3694,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/whiskeys.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3689,7 +3721,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/whiskeys.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -3716,7 +3748,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/whiskeys.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -3743,7 +3775,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/whiskeys.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -3770,7 +3802,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/whiskeys.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -3797,7 +3829,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/whiskeys.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -3824,7 +3856,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/bourbon.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3851,7 +3883,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/bourbon.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -3878,7 +3910,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/bourbon.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3905,7 +3937,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/bourbon.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -3932,7 +3964,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/bourbon.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -3959,7 +3991,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/irish-whiskey.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -3986,7 +4018,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/wine.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -4013,7 +4045,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/wine.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -4040,7 +4072,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/wine.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -4067,7 +4099,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": false,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/champagne.webp",
     "previous_image_url": null,
     "tags": [
       "INCLUDED"
@@ -4094,7 +4126,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/champagne.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -4121,7 +4153,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/champagne.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -4148,7 +4180,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/champagne.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -4175,7 +4207,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/champagne.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -4202,7 +4234,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/champagne.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"
@@ -4229,7 +4261,7 @@ export const mockMenuItems = [
     "is_signature": false,
     "is_extra": true,
     "is_available": true,
-    "current_image_url": "",
+    "current_image_url": "/images/subcategories/champagne.webp",
     "previous_image_url": null,
     "tags": [
       "EXTRA"

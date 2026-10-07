@@ -26,10 +26,10 @@ function assert(condition, message) {
 // 1. Verify Category 1 to 4 Ordering
 console.log('\n🔹 1. Four Primary Master Categories Hierarchy');
 assert(mockCategories.length === 4, 'Exactly 4 master categories defined');
-assert(mockCategories[0].id === 'tea-coffee' && mockCategories[0].sort_order === 1, 'Category 1 is TEA and COFFEE (sort_order 1)');
-assert(mockCategories[1].id === 'cold-drinks' && mockCategories[1].sort_order === 2, 'Category 2 is COLD DRINKS (sort_order 2)');
-assert(mockCategories[2].id === 'alcoholic-drinks' && mockCategories[2].sort_order === 3, 'Category 3 is ALCOHOLIC DRINKS (sort_order 3)');
-assert(mockCategories[3].id === 'cocktails' && mockCategories[3].sort_order === 4, 'Category 4 is COCKTAILS (sort_order 4)');
+assert(mockCategories[0].id === 'cocktails' && mockCategories[0].sort_order === 1, 'Category 1 is COCKTAILS (sort_order 1)');
+assert(mockCategories[1].id === 'alcoholic-drinks' && mockCategories[1].sort_order === 2, 'Category 2 is ALCOHOLIC DRINKS (sort_order 2)');
+assert(mockCategories[2].id === 'cold-drinks' && mockCategories[2].sort_order === 3, 'Category 3 is COLD DRINKS (sort_order 3)');
+assert(mockCategories[3].id === 'tea-coffee' && mockCategories[3].sort_order === 4, 'Category 4 is TEA and COFFEE (sort_order 4)');
 
 // 2. Verify Canonical Subcategories Mapping
 console.log('\n🔹 2. Subcategory Structure Mapping');

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLanguage } from "../../context/LanguageContext";
 import { formatItemPrice } from "../../utils/translations";
 import { resolveAssetUrl } from "../../utils/assetHelper";
+import { SUBCATEGORY_DEFAULT_IMAGES } from "../../utils/mockData";
 import { Sparkles, Wine, GlassWater, Coffee, Martini } from "lucide-react";
 
 /**
@@ -63,7 +64,10 @@ export function MenuCard({ item, onClick }) {
   const description = getLocalizedField(item, "description") || item.description_en || "";
   const isAvailable = item.is_available !== false;
 
-  const rawImg = item.current_image_url;
+  const rawImg =
+    item.current_image_url ||
+    (item.subcategory && SUBCATEGORY_DEFAULT_IMAGES[item.subcategory]) ||
+    null;
   const imageUrl = rawImg ? resolveAssetUrl(rawImg) : null;
   const showFallback = imageError || !imageUrl;
 
@@ -78,9 +82,9 @@ export function MenuCard({ item, onClick }) {
           onClick && onClick(item);
         }
       }}
-      className={`group relative flex items-center gap-4 sm:gap-5 p-3.5 sm:p-4 rounded-2xl sm:rounded-3xl border transition-all duration-300 cursor-pointer text-left select-none ${
+      className={`group relative flex items-center gap-3.5 sm:gap-5 p-3.5 sm:p-4 rounded-2xl sm:rounded-3xl border transition-all duration-300 cursor-pointer text-left select-none w-full min-h-[96px] ${
         isAvailable
-          ? "bg-[#0c1420]/75 hover:bg-[#111c2e]/90 border-slate-700/60 hover:border-sky-400/50 shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_30px_rgba(3,105,161,0.25)] hover:-translate-y-0.5"
+          ? "bg-[#0c1420]/75 hover:bg-[#111c2e]/90 border-slate-700/60 hover:border-sky-400/50 shadow-[0_4px_24px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_30px_rgba(3,105,161,0.25)] hover:-translate-y-0.5 active:scale-[0.99]"
           : "bg-[#090e17]/60 border-slate-800/50 opacity-60 grayscale-[40%]"
       } backdrop-blur-md`}
     >
@@ -115,21 +119,21 @@ export function MenuCard({ item, onClick }) {
       {/* Beverage Details & Badge */}
       <div className="flex-1 min-w-0 flex flex-col justify-center">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-outfit font-extrabold text-sm sm:text-base text-white tracking-wide uppercase line-clamp-1 group-hover:text-sky-300 transition-colors">
+          <h3 className="font-outfit font-extrabold text-[15px] sm:text-base text-white tracking-wide uppercase line-clamp-1 group-hover:text-sky-300 transition-colors">
             {title}
           </h3>
           <DrinkBadge item={item} t={t} />
         </div>
 
         {description && (
-          <p className="mt-1 text-xs text-slate-300/85 font-normal line-clamp-2 leading-relaxed">
+          <p className="mt-1 text-xs sm:text-[13px] text-slate-300/85 font-normal line-clamp-2 leading-relaxed">
             {description}
           </p>
         )}
 
         {item.subcategory && (
           <div className="mt-1.5 flex items-center gap-2">
-            <span className="text-[10px] font-semibold text-slate-400/90 tracking-wider uppercase">
+            <span className="text-[10px] sm:text-[11px] font-semibold text-slate-400/90 tracking-wider uppercase">
               {item.subcategory}
             </span>
           </div>
