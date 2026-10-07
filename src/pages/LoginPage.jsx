@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import logoSvg from '../assets/logo.svg';
+import { TuiLogo } from '../components/common/TuiLogo';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
 import { useToast } from '../context/ToastContext';
@@ -81,9 +81,9 @@ export function LoginPage() {
       <main className="flex-1 flex items-center justify-center p-4 z-10">
         <div className="w-full max-w-md bg-[#161f30]/95 border border-slate-800/90 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-black/80 backdrop-blur-md animate-scale-up space-y-6">
           {/* Brand Header */}
-          <div className="text-center space-y-2">
-            <div className="w-14 h-14 rounded-2xl bg-[#131b2a] border border-amber-500/30 flex items-center justify-center p-2.5 mx-auto shadow-amber-glow">
-              <img src={logoSvg} alt="TUI BLUE Logo" className="w-full h-full" />
+          <div className="text-center space-y-3">
+            <div className="flex justify-center mx-auto">
+              <TuiLogo variant="badge" className="p-3 scale-125" />
             </div>
             <h2 className="font-outfit font-extrabold text-2xl text-white">
               {t('adminLoginTitle')}

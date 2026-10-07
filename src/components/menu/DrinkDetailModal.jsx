@@ -1,19 +1,21 @@
 import React from "react";
+import { CheckCircle2, AlertCircle, Sparkles } from "lucide-react";
 import { Modal } from "../common/Modal";
 import { VolumeBadge, Badge } from "../common/Badge";
 import { useLanguage } from "../../context/LanguageContext";
 import { formatItemPrice } from "../../utils/translations";
 import { Button } from "../common/Button";
-import { Sparkles, AlertCircle, CheckCircle2 } from "lucide-react";
+import { resolveAssetUrl } from "../../utils/assetHelper";
 
 export function DrinkDetailModal({ item, isOpen, onClose }) {
   const { getLocalizedField, t } = useLanguage();
 
   if (!item) return null;
 
-  const title = getLocalizedField(item, "title");
-  const description = getLocalizedField(item, "description");
+  const title = getLocalizedField(item, "title") || item.title_en;
+  const description = getLocalizedField(item, "description") || item.description_en;
   const isAvailable = item.is_available !== false;
+  const imageUrl = item.current_image_url ? resolveAssetUrl(item.current_image_url) : null;
 
   return (
     <Modal
@@ -24,16 +26,14 @@ export function DrinkDetailModal({ item, isOpen, onClose }) {
     >
       <div className="flex flex-col gap-5">
         {/* Full Header Image */}
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-slate-900 -mt-1">
-          <img
-            src={
-              item.current_image_url ||
-              "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80"
-            }
-            alt={title}
-            className="w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#161f30] via-transparent to-black/40" />
+        {imageUrl && (
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-slate-900 -mt-1">
+            <img
+              src={imageUrl}
+              alt={title}
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#161f30] via-transparent to-black/40" />
 
           {/* Floating Price Tag */}
           <div className="absolute bottom-3 right-3 bg-gradient-to-r from-amber-600 to-amber-500 text-slate-950 font-outfit font-extrabold text-xl px-4 py-1.5 rounded-xl shadow-amber-glow">
@@ -63,6 +63,7 @@ export function DrinkDetailModal({ item, isOpen, onClose }) {
             )}
           </div>
         </div>
+        )}
 
         {/* Details & Tasting Notes */}
         <div className="space-y-4">

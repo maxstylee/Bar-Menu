@@ -1,37 +1,42 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
-import { Wine, Sparkles, Ban } from 'lucide-react';
 
-export function FilterPills({ currentFilter, onFilterChange, className = '' }) {
+export function FilterPills({ currentFilter = 'all', onFilterChange, className = '' }) {
   const { t } = useLanguage();
 
   const filters = [
-    { id: 'all', label: t('allDrinks'), icon: Sparkles },
-    { id: 'alcoholic', label: t('alcoholic'), icon: Wine },
-    { id: 'non_alcoholic', label: t('nonAlcoholic'), icon: Ban },
+    { id: 'all', label: t('filterAll') },
+    { id: 'included', label: t('filterIncluded') },
+    { id: 'premium', label: t('filterPremium') },
+    { id: 'signature', label: t('filterSignature') },
   ];
 
   return (
-    <div className={`flex items-center gap-1.5 flex-wrap ${className}`}>
+    <div
+      role="tablist"
+      className={`flex items-center gap-2 sm:gap-3 overflow-x-auto no-scrollbar py-1 ${className}`}
+    >
       {filters.map((f) => {
         const isSelected = currentFilter === f.id;
-        const Icon = f.icon;
 
         return (
           <button
             key={f.id}
+            role="tab"
+            aria-selected={isSelected}
             onClick={() => onFilterChange(f.id)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
+            className={`whitespace-nowrap px-4 py-1.5 sm:px-5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-200 select-none ${
               isSelected
-                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/50 shadow-sm'
-                : 'bg-[#131b2a] text-slate-400 hover:text-slate-200 border border-slate-800 hover:border-slate-700'
+                ? 'bg-sky-500/25 text-white border border-sky-400/70 shadow-[0_0_14px_rgba(56,189,248,0.35)]'
+                : 'bg-[#101827]/70 hover:bg-[#152238]/80 text-slate-300 hover:text-white border border-slate-700/60 hover:border-slate-600'
             }`}
           >
-            <Icon className="w-3.5 h-3.5" />
-            <span>{f.label}</span>
+            {f.label}
           </button>
         );
       })}
     </div>
   );
 }
+
+export default FilterPills;

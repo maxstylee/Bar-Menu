@@ -31,6 +31,7 @@ export function ItemFormModal({
   // Form State
   const [formData, setFormData] = useState({
     category_id: '',
+    subcategory: '',
     title_tr: '',
     title_en: '',
     title_ru: '',
@@ -54,6 +55,7 @@ export function ItemFormModal({
     if (item) {
       setFormData({
         category_id: item.category_id || (categories[0]?.id || ''),
+        subcategory: item.subcategory || '',
         title_tr: item.title_tr || '',
         title_en: item.title_en || '',
         title_ru: item.title_ru || '',
@@ -76,6 +78,7 @@ export function ItemFormModal({
       // Completely empty state for Add New Beverage
       setFormData({
         category_id: categories[0]?.id || '',
+        subcategory: '',
         title_tr: '',
         title_en: '',
         title_ru: '',
@@ -146,6 +149,7 @@ export function ItemFormModal({
 
       const payload = {
         category_id: formData.category_id,
+        subcategory: formData.subcategory ? formData.subcategory.trim() : '',
         title_tr: formData.title_tr || formData.title_en,
         title_en: formData.title_en || formData.title_tr,
         title_ru: formData.title_ru || formData.title_en,
@@ -293,6 +297,16 @@ export function ItemFormModal({
                 </option>
               ))}
             </select>
+          </div>
+
+          {/* Subcategory */}
+          <div className="flex flex-col gap-1.5 sm:col-span-1">
+            <Input
+              label="Subcategory"
+              value={formData.subcategory}
+              onChange={(e) => handleChange('subcategory', e.target.value)}
+              placeholder="e.g. TEA, COFFEE, BEER, RUM..."
+            />
           </div>
 
           {/* Single Price Input (Empty by default) */}

@@ -18,7 +18,9 @@ export function useMenu() {
   const [error, setError] = useState(null);
 
   // Active filters
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('cocktails');
+  const [subFilter, setSubFilter] = useState('all'); // 'all' | 'included' | 'premium' | 'signature'
+  const [selectedSubcategory, setSelectedSubcategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [dietaryFilter, setDietaryFilter] = useState('all'); // 'all' | 'alcoholic' | 'non_alcoholic'
 
@@ -31,7 +33,7 @@ export function useMenu() {
       try {
         const [catRes, itemRes] = await Promise.all([
           supabase.from('categories').select('*').order('sort_order', { ascending: true }),
-          supabase.from('menu_items').select('*').order('created_at', { ascending: false }),
+          supabase.from('menu_items').select('*').order('sort_order', { ascending: true }),
         ]);
 
         if (catRes.error) throw catRes.error;
@@ -57,6 +59,39 @@ export function useMenu() {
   useEffect(() => {
     fetchMenuData();
   }, [fetchMenuData]);
+
+  // Realtime sync: any admin change in the database is pushed to every open device
+  useEffect(() => {
+    if (!isSupabaseConfigured || !supabase) return undefined;
+
+    const upsertSorted = (list, row) => {
+      const exists = list.some((x) => x.id === row.id);
+      const next = exists ? list.map((x) => (x.id === row.id ? row : x)) : [...list, row];
+      return next.sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
+    };
+
+    const channel = supabase
+      .channel(`menu-live-sync-${Math.random().toString(36).slice(2, 8)}`)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'menu_items' }, (payload) => {
+        setItems((prev) =>
+          payload.eventType === 'DELETE'
+            ? prev.filter((i) => i.id !== payload.old.id)
+            : upsertSorted(prev, payload.new)
+        );
+      })
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'categories' }, (payload) => {
+        setCategories((prev) =>
+          payload.eventType === 'DELETE'
+            ? prev.filter((c) => c.id !== payload.old.id)
+            : upsertSorted(prev, payload.new)
+        );
+      })
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
 
   // ==========================================================================
   // CATEGORY CRUD OPERATIONS
@@ -238,6 +273,7 @@ export function useMenu() {
       ...itemData,
       current_image_url,
       previous_image_url,
+      sort_order: itemData.sort_order ?? items.length + 1,
       created_at: new Date().toISOString(),
     };
 
@@ -250,7 +286,7 @@ export function useMenu() {
 
       if (error) throw error;
 
-      setItems((prev) => [data, ...prev]);
+      setItems((prev) => (prev.some((i) => i.id === data.id) ? prev : [data, ...prev]));
       return data;
     }
 
@@ -395,6 +431,19 @@ export function useMenu() {
         return false;
       }
 
+      if (selectedSubcategory !== 'all' && item.subcategory !== selectedSubcategory) {
+        return false;
+      }
+
+      if (subFilter === 'included') {
+        if (item.is_extra || Number(item.price) > 0) return false;
+      } else if (subFilter === 'premium') {
+        if (!item.is_extra && Number(item.price) === 0) return false;
+      } else if (subFilter === 'signature') {
+        const isSig = item.is_signature || item.is_featured || item.tags?.includes('SIGNATURE') || item.tags?.includes('FEATURED');
+        if (!isSig) return false;
+      }
+
       if (dietaryFilter === 'alcoholic' && !item.is_alcoholic) {
         return false;
       }
@@ -416,18 +465,20 @@ export function useMenu() {
           item.description_ru?.toLowerCase().includes(q) ||
           item.description_de?.toLowerCase().includes(q);
 
+        const matchSubcat = item.subcategory?.toLowerCase().includes(q);
+
         const matchTags = Array.isArray(item.tags)
           ? item.tags.some((t) => t.toLowerCase().includes(q))
           : false;
 
-        if (!matchTitle && !matchDesc && !matchTags) {
+        if (!matchTitle && !matchDesc && !matchSubcat && !matchTags) {
           return false;
         }
       }
 
       return true;
     });
-  }, [items, selectedCategory, dietaryFilter, searchQuery]);
+  }, [items, selectedCategory, selectedSubcategory, subFilter, dietaryFilter, searchQuery]);
 
   return {
     categories,
@@ -436,7 +487,14 @@ export function useMenu() {
     loading,
     error,
     selectedCategory,
-    setSelectedCategory,
+    setSelectedCategory: (cat) => {
+      setSelectedCategory(cat);
+      setSelectedSubcategory('all');
+    },
+    subFilter,
+    setSubFilter,
+    selectedSubcategory,
+    setSelectedSubcategory,
     searchQuery,
     setSearchQuery,
     dietaryFilter,

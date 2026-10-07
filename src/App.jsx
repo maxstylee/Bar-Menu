@@ -9,8 +9,9 @@ import { LoginPage } from "./pages/LoginPage";
 import { AdminDashboard } from "./pages/AdminDashboard";
 
 export function App() {
+  const baseName = import.meta.env.BASE_URL || "/";
   return (
-    <BrowserRouter basename="/Bar-Menu">
+    <BrowserRouter basename={baseName}>
       <LanguageProvider>
         <AuthProvider>
           <ToastProvider>

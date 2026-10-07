@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logoSvg from "../assets/logo.svg";
 import { useMenu } from "../hooks/useMenu";
 import { useAuth } from "../context/AuthContext";
 import { useLanguage } from "../context/LanguageContext";
@@ -46,6 +45,16 @@ export function AdminDashboard() {
   // Local Table Search & Category Filter
   const [adminSearch, setAdminSearch] = useState("");
   const [adminCategoryFilter, setAdminCategoryFilter] = useState("all");
+  const [adminSubcategoryFilter, setAdminSubcategoryFilter] = useState("all");
+
+  // Available Subcategories based on selected Category
+  const availableSubcategories = useMemo(() => {
+    const list = items
+      .filter((i) => adminCategoryFilter === "all" || i.category_id === adminCategoryFilter)
+      .map((i) => i.subcategory)
+      .filter(Boolean);
+    return Array.from(new Set(list)).sort();
+  }, [items, adminCategoryFilter]);
 
   // Modals state
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
@@ -63,6 +72,12 @@ export function AdminDashboard() {
       ) {
         return false;
       }
+      if (
+        adminSubcategoryFilter !== "all" &&
+        item.subcategory !== adminSubcategoryFilter
+      ) {
+        return false;
+      }
       if (adminSearch.trim() !== "") {
         const q = adminSearch.toLowerCase().trim();
         const matchTitle =
@@ -71,15 +86,17 @@ export function AdminDashboard() {
           item.title_ru?.toLowerCase().includes(q) ||
           item.title_de?.toLowerCase().includes(q);
 
+        const matchSubcat = item.subcategory?.toLowerCase().includes(q);
+
         const matchTags = Array.isArray(item.tags)
           ? item.tags.some((tag) => tag.toLowerCase().includes(q))
           : false;
 
-        if (!matchTitle && !matchTags) return false;
+        if (!matchTitle && !matchSubcat && !matchTags) return false;
       }
       return true;
     });
-  }, [items, adminCategoryFilter, adminSearch]);
+  }, [items, adminCategoryFilter, adminSubcategoryFilter, adminSearch]);
 
   // Statistics calculation
   const stats = useMemo(() => {
@@ -201,13 +218,7 @@ export function AdminDashboard() {
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between gap-2">
           {/* Brand & User Info */}
           <div className="flex items-center gap-2.5 min-w-0 flex-1">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#131b2a] border border-amber-500/30 flex items-center justify-center p-1.5 shadow-amber-glow flex-shrink-0">
-              <img
-                src={logoSvg}
-                alt="TUI BLUE Logo"
-                className="w-full h-full"
-              />
-            </div>
+           
             <div className="min-w-0 flex-1">
               <h1 className="font-outfit font-extrabold text-sm sm:text-base text-white truncate">
                 {t("brandTitle")}
@@ -355,23 +366,48 @@ export function AdminDashboard() {
             />
           </div>
 
-          {/* Category Filter Dropdown */}
-          <div className="flex items-center gap-2 w-full sm:w-auto">
-            <span className="text-xs text-slate-400 whitespace-nowrap">
-              Filter Category:
-            </span>
-            <select
-              value={adminCategoryFilter}
-              onChange={(e) => setAdminCategoryFilter(e.target.value)}
-              className="bg-[#131b2a] border border-slate-800 text-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-amber-500 w-full sm:w-auto"
-            >
-              <option value="all">All Categories ({items.length})</option>
-              {categories.map((cat) => (
-                <option key={cat.id} value={cat.id}>
-                  {getLocalizedField(cat, "name")}
-                </option>
-              ))}
-            </select>
+          {/* Category & Subcategory Filter Dropdowns */}
+          <div className="flex flex-wrap items-center gap-2.5 w-full sm:w-auto">
+            <div className="flex items-center gap-1.5 w-full sm:w-auto">
+              <span className="text-xs text-slate-400 whitespace-nowrap">
+                Category:
+              </span>
+              <select
+                value={adminCategoryFilter}
+                onChange={(e) => {
+                  setAdminCategoryFilter(e.target.value);
+                  setAdminSubcategoryFilter("all");
+                }}
+                className="bg-[#131b2a] border border-slate-800 text-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-amber-500 w-full sm:w-auto font-medium"
+              >
+                <option value="all">All Categories ({items.length})</option>
+                {categories.map((cat) => (
+                  <option key={cat.id} value={cat.id}>
+                    {getLocalizedField(cat, "name")}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {availableSubcategories.length > 0 && (
+              <div className="flex items-center gap-1.5 w-full sm:w-auto">
+                <span className="text-xs text-slate-400 whitespace-nowrap">
+                  Subcategory:
+                </span>
+                <select
+                  value={adminSubcategoryFilter}
+                  onChange={(e) => setAdminSubcategoryFilter(e.target.value)}
+                  className="bg-[#131b2a] border border-slate-800 text-slate-200 rounded-xl px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-amber-500 w-full sm:w-auto font-medium"
+                >
+                  <option value="all">All Subcategories</option>
+                  {availableSubcategories.map((subcat) => (
+                    <option key={subcat} value={subcat}>
+                      {subcat}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
           </div>
         </div>
 

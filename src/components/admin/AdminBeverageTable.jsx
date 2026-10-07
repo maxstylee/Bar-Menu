@@ -11,6 +11,8 @@ import {
   Image as ImageIcon,
 } from "lucide-react";
 
+import { resolveAssetUrl } from "../../utils/assetHelper";
+
 export function AdminBeverageTable({
   items = [],
   categories = [],
@@ -50,6 +52,7 @@ export function AdminBeverageTable({
               <th className="py-3.5 px-4">{t("colImage")}</th>
               <th className="py-3.5 px-4">{t("colTitle")}</th>
               <th className="py-3.5 px-4">{t("colCategory")}</th>
+              <th className="py-3.5 px-4">{t("colSubcategory") || "Subcategory"}</th>
               <th className="py-3.5 px-4">{t("colPrice")}</th>
               <th className="py-3.5 px-4">{t("colVolume")}</th>
               <th className="py-3.5 px-4">{t("colStatus")}</th>
@@ -58,9 +61,10 @@ export function AdminBeverageTable({
           </thead>
           <tbody className="divide-y divide-slate-800/60 text-xs text-slate-200 font-medium">
             {items.map((item) => {
-              const title = getLocalizedField(item, "title");
+              const title = getLocalizedField(item, "title") || item.title_en;
               const isAvailable = item.is_available !== false;
               const hasBackupImage = Boolean(item.previous_image_url);
+              const imgSrc = item.current_image_url ? resolveAssetUrl(item.current_image_url) : "";
 
               return (
                 <tr
@@ -69,16 +73,17 @@ export function AdminBeverageTable({
                 >
                   {/* Thumbnail */}
                   <td className="py-3 px-4">
-                    <div className="relative w-14 h-11 rounded-lg overflow-hidden bg-slate-900 border border-slate-800 flex-shrink-0">
-                      <img
-                        src={
-                          item.current_image_url ||
-                          "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=800&q=80"
-                        }
-                        alt={title}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
+                    <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-slate-900 border border-slate-800 flex-shrink-0 flex items-center justify-center">
+                      {imgSrc ? (
+                        <img
+                          src={imgSrc}
+                          alt={title}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <ImageIcon className="w-5 h-5 text-slate-600" />
+                      )}
                       {hasBackupImage && (
                         <div
                           title="Backup image slot ready"
@@ -112,6 +117,13 @@ export function AdminBeverageTable({
                     <Badge variant="slate" size="xs">
                       {getCategoryName(item.category_id)}
                     </Badge>
+                  </td>
+
+                  {/* Subcategory */}
+                  <td className="py-3 px-4 whitespace-nowrap">
+                    <span className="text-[11px] font-semibold text-sky-300 bg-sky-950/60 px-2 py-0.5 rounded-md border border-sky-800/40">
+                      {item.subcategory || "-"}
+                    </span>
                   </td>
 
                   {/* Price with Quick Edit Trigger */}
